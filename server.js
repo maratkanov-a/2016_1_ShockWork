@@ -6,11 +6,20 @@ var HOSTNAME = 'localhost',
     PORT = 8080,
     PUBLIC_DIR = __dirname + '/public_html';
 
-app.use(function (req) {
-	// Здесь нужно написать журналирование в формате
-	// (журналирование - вывод в консоль)
-	// [время] [номер запроса по счету]
+var Nomer=0;
+
+app.use(function (req,res,done) {
+	var log4js = require('log4js');
+    var logger = log4js.getLogger();
+
+     Nomer = Nomer +1;
+    logger.debug(Nomer);
+
+    done();
 });
+
+
+
 
 app
 	.use('/', express.static(PUBLIC_DIR))
