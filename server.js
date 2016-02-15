@@ -7,10 +7,11 @@ var HOSTNAME = 'localhost',
     PUBLIC_DIR = __dirname + '/public_html';
 
 var Nomer=0;
+var log4js = require('log4js');
+    var logger = log4js.getLogger();
 
 app.use(function (req,res,done) {
-	var log4js = require('log4js');
-    var logger = log4js.getLogger();
+	
 
      Nomer = Nomer +1;
     logger.debug(Nomer);
