@@ -7,17 +7,16 @@ var HOSTNAME = 'localhost',
     PORT = 8080,
     PUBLIC_DIR = __dirname + '/public_html';
 
-var Nomer = 0;
-var log4js = require('log4js');
-    var logger = log4js.getLogger();
+var counter = 1;
+var now = new Date();
 
-app.use(function (req,res,done) {
-	
-
-     Nomer = Nomer +1;
-    logger.debug(Nomer);
-
-    done();
+app.use(function (req, res, done) {
+	done();
+	console.log("[" + now + "]"+ " [" + counter++ + "]");
+	// Здесь нужно написать журналирование в формате
+	// (журналирование - вывод в консоль)
+	// [время] [номер запроса по счету]
+>>>>>>> 89f00a0ded93be313945520cf5431ad6c0b60457
 });
 
 
