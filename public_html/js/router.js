@@ -1,27 +1,37 @@
 define([
-    'backbone'
+    'backbone', 'require', 'views/main', 'views/game', 'views/login', 'views/scoreboard', 'views/registration'
 ], function(
     Backbone
 ){
 
+
+
     var Router = Backbone.Router.extend({
         routes: {
+            '': 'mainAction',
             'scoreboard': 'scoreboardAction',
             'game': 'gameAction',
             'login': 'loginAction',
+            'registration': 'registrationAction',
             '*default': 'defaultActions'
         },
-        defaultActions: function () {
-            // TODO
+        mainAction: function () {
+            require('views/main').show();
         },
         scoreboardAction: function () {
-            // TODO
+            require('views/scoreboard').show();
         },
         gameAction: function () {
-            // TODO
+           require('views/game').show();
         },
         loginAction: function () {
-            // TODO
+            require('views/login').show();
+        },
+        registrationAction: function () {
+            require('views/registration').show();
+        },
+        defaultActions: function() {
+        //    lala
         }
     });
 

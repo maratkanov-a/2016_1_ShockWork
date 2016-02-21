@@ -1,10 +1,9 @@
 <fest:template xmlns:fest="http://fest.mail.ru" context_name="json">
-    <div id="game" class="row">
-        <!-- TODO: тут стили нефигово придется поменять-->
+    <div id="registraiton" class="row">
         <div class="col s12 m6 offset-m3">
             <nav>
                 <div class="nav-wrapper">
-                    <a href="#" class="brand-logo center">Игра</a>
+                    <a href="#" class="brand-logo center">Регистрация</a>
                     <ul class="left hide-on-med-and-down">
                         <li>
                             <a id="go-back" class="waves-effect waves-light btn">Назад</a>
@@ -12,6 +11,9 @@
                     </ul>
                 </div>
             </nav>
+            <div>
+                content
+            </div>
         </div>
     </div>
 </fest:template>

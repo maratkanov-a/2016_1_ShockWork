@@ -7,21 +7,27 @@ define([
 ){
 
     var View = Backbone.View.extend({
+        events: {
+            "click":   "goBack"
+        },
 
         template: tmpl,
         initialize: function () {
-            // TODO
+            this.render()
         },
         render: function () {
-            // TODO
+            return this;
         },
         show: function () {
-            // TODO
+            $('#page').html(this.template);
+            this.setElement($('#go-back'));
         },
         hide: function () {
             // TODO
+        },
+        goBack: function() {
+            Backbone.history.history.back()
         }
-
     });
 
     return new View();

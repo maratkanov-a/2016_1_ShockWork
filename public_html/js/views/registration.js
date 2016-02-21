@@ -1,6 +1,6 @@
 define([
     'backbone',
-    'tmpl/login'
+    'tmpl/registration'
 ], function(
     Backbone,
     tmpl
@@ -13,7 +13,7 @@ define([
 
         template: tmpl,
         initialize: function () {
-            this.render();
+            this.render()
         },
         render: function () {
             return this;
