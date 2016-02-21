@@ -8,7 +8,8 @@ define([
 
     var View = Backbone.View.extend({
         events: {
-            "click":   "goBack"
+            "click #go-back":   "goBack",
+            "click #submit": "submit"
         },
 
         template: tmpl,
@@ -16,17 +17,20 @@ define([
             this.render();
         },
         render: function () {
+            this.$el.html(this.template());
             return this;
         },
         show: function () {
-            $('#page').html(this.template);
-            this.setElement($('#go-back'));
+            $('#page').html(this.$el);
         },
         hide: function () {
             // TODO
         },
         goBack: function() {
             Backbone.history.history.back()
+        },
+        submit: function(e) {
+            e.preventDefault();
         }
     });
 

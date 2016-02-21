@@ -11,9 +11,25 @@
                     </ul>
                 </div>
             </nav>
-            <div>
-                content
-            </div>
         </div>
+        <div class="col s12 m6 offset-m3">
+              <div class="card-panel">
+                  <form>
+                    <div class="input-field">
+                      <i class="material-icons prefix">perm_identity</i>
+                      <input id="icon_prefix" type="text" class="validate"></input>
+                      <label for="icon_prefix">Username</label>
+                    </div>
+                    <div class="input-field">
+                      <i class="material-icons prefix">lock_open</i>
+                      <input id="password" type="password" class="validate"></input>
+                      <label for="password">Password</label>
+                    </div>
+                    <div class="right">
+                        <input id="submit" class="waves-effect waves-light btn" type="submit"></input>
+                    </div>
+                  </form>
+              </div>
+            </div>
     </div>
 </fest:template>

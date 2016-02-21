@@ -9,13 +9,13 @@ define([
     var View = Backbone.View.extend({
         template: tmpl,
         initialize: function () {
-            //this.render()
+            this.render()
         },
         render: function () {
-            //this.show()
+            this.$el.html(this.template());
         },
         show: function () {
-            $('#page').html(this.template)
+            $('#page').html(this.$el)
         },
         hide: function () {
             this.$el.hide();

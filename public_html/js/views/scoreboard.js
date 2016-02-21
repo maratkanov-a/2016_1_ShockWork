@@ -13,14 +13,14 @@ define([
 
         template: tmpl,
         initialize: function () {
-            this.render()
+            this.render();
         },
         render: function () {
+            this.$el.html(this.template());
             return this;
         },
         show: function () {
-            $('#page').html(this.template);
-            this.setElement($('#go-back'));
+            $('#page').html(this.$el);
         },
         hide: function () {
             // TODO
