@@ -18,7 +18,7 @@ define([
             this.render();
         },
         render: function () {
-            var allScores = new Backbone.Collection([
+            var allScores = new ScoresCollection([
                 {
                     name: 'a',
                     score: 26
@@ -44,7 +44,7 @@ define([
                     score: 19
                 }
             ]);
-            this.$el.html(this.template( { scores : allScores.sort().toJSON() } ));
+            this.$el.html(this.template( { scores : allScores.toJSON() } ));
             return this;
         },
         show: function () {

@@ -13,5 +13,5 @@ define([
         }
     });
 
-    return new ScoresCollection();
+    return ScoresCollection;
 });

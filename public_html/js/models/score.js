@@ -11,5 +11,5 @@ define([
         }
     });
 
-    return new Score();
+    return Score;
 });
