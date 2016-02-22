@@ -11,9 +11,16 @@
                     </ul>
                 </div>
             </nav>
-            <div>
-                content
-            </div>
+            <ul class="collection">
+                <fest:for iterate="json.scores" index="i">
+                    <li class="collection-item">
+                        <fest:value>json.scores[i].name</fest:value>
+                        <div class="secondary-content">
+                            <fest:value>json.scores[i].score</fest:value>
+                        </div>
+                    </li>
+                </fest:for>
+            </ul>
         </div>
     </div>
 </fest:template>

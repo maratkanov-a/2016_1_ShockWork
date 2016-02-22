@@ -8,7 +8,7 @@ define([
 
     var View = Backbone.View.extend({
         events: {
-            "click":   "goBack"
+            "click #go-back":   "goBack"
         },
 
         template: tmpl,

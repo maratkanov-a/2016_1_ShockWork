@@ -25,11 +25,11 @@
                       <input id="password" type="password" class="validate"></input>
                       <label for="password">Password</label>
                     </div>
-                    <div class="right">
+                    <div>
                         <input id="submit" class="waves-effect waves-light btn" type="submit"></input>
                     </div>
                   </form>
               </div>
-            </div>
+        </div>
     </div>
 </fest:template>

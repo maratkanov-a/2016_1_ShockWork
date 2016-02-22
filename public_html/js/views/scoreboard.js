@@ -1,14 +1,16 @@
 define([
     'backbone',
-    'tmpl/scoreboard'
+    'tmpl/scoreboard',
+    'collections/scores'
 ], function(
     Backbone,
-    tmpl
+    tmpl,
+    ScoresCollection
 ){
 
     var View = Backbone.View.extend({
         events: {
-            "click":   "goBack"
+            "click #go-back":   "goBack"
         },
 
         template: tmpl,
@@ -16,7 +18,33 @@ define([
             this.render();
         },
         render: function () {
-            this.$el.html(this.template());
+            var allScores = new Backbone.Collection([
+                {
+                    name: 'a',
+                    score: 26
+                },
+                {
+                    name: 'b',
+                    score: 3
+                },
+                {
+                    name: 'c',
+                    score: 1
+                },
+                {
+                    name: 'd',
+                    score: 55
+                },
+                {
+                    name: 'e',
+                    score: 66
+                },
+                {
+                    name: 'f',
+                    score: 19
+                }
+            ]);
+            this.$el.html(this.template( { scores : allScores.sort().toJSON() } ));
             return this;
         },
         show: function () {
