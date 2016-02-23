@@ -8,7 +8,8 @@ define([
 
     var View = Backbone.View.extend({
         events: {
-            "click #go-back":   "goBack"
+            "click #go-back":   "goBack",
+            "click #submit": "submit"
         },
 
         template: tmpl,
@@ -27,6 +28,9 @@ define([
         },
         goBack: function() {
             Backbone.history.history.back()
+        },
+        submit: function(e) {
+            e.preventDefault();
         }
     });
 

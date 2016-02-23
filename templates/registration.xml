@@ -36,7 +36,8 @@
                           <label for="password_conformation">Repeat Password</label>
                     </div>
                     <div>
-                        <input id="submit" class="waves-effect waves-light btn" type="submit"></input>
+                        <!--<input id="submit" class="waves-effect waves-light btn" type="submit"></input>-->
+                        <a href="#game" class="waves-effect waves-light btn">Зарегистрироваться</a>
                     </div>
                   </form>
               </div>

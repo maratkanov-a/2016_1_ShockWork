@@ -14,7 +14,7 @@
         </div>
         <div class="col s12 m6 offset-m3">
               <div class="card-panel">
-                  <form>
+                  <form action="#game">
                     <div class="input-field">
                       <i class="material-icons prefix">perm_identity</i>
                       <input id="icon_prefix" type="text" class="validate"></input>
@@ -26,7 +26,8 @@
                       <label for="password">Password</label>
                     </div>
                     <div>
-                        <input id="submit" class="waves-effect waves-light btn" type="submit"></input>
+                        <!--<input id="submit" class="waves-effect waves-light btn" type="submit"></input>-->
+                        <a href="#game" class="waves-effect waves-light btn">Войти</a>
                     </div>
                   </form>
               </div>
