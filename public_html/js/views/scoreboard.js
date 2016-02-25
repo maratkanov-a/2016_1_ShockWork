@@ -10,45 +10,20 @@ define([
 
     var View = Backbone.View.extend({
         events: {
-            "click #go-back":   "goBack"
+            "click .js-go-back":   "goBack"
         },
 
         template: tmpl,
         initialize: function () {
-            this.render();
+            
         },
         render: function () {
-            var allScores = new ScoresCollection([
-                {
-                    name: 'a',
-                    score: 26
-                },
-                {
-                    name: 'b',
-                    score: 3
-                },
-                {
-                    name: 'c',
-                    score: 1
-                },
-                {
-                    name: 'd',
-                    score: 55
-                },
-                {
-                    name: 'e',
-                    score: 66
-                },
-                {
-                    name: 'f',
-                    score: 19
-                }
-            ]);
-            this.$el.html(this.template( { scores : allScores.toJSON() } ));
+            this.$el.html(this.template( { scores : ScoresCollection.toJSON() } ));
             return this;
         },
         show: function () {
             $('#page').html(this.$el);
+            this.render();
         },
         hide: function () {
             // TODO

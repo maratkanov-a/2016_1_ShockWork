@@ -1,20 +1,22 @@
 define([
     'backbone',
-    'tmpl/registration'
+    'tmpl/registration',
+    'router'
 ], function(
     Backbone,
-    tmpl
+    tmpl,
+    router
 ){
 
     var View = Backbone.View.extend({
         events: {
-            "click #go-back":   "goBack",
-            "click #submit": "submit"
+            "click .js-go-back":   "goBack",
+            "click .js-submit": "submit"
         },
 
         template: tmpl,
         initialize: function () {
-            this.render();
+
         },
         render: function () {
             this.$el.html(this.template());
@@ -22,15 +24,17 @@ define([
         },
         show: function () {
             $('#page').html(this.$el);
+            this.render();
         },
         hide: function () {
             // TODO
         },
         goBack: function() {
-            Backbone.history.history.back()
+            Backbone.history.history.back();
         },
         submit: function(e) {
             e.preventDefault();
+            Backbone.history.navigate('game', { trigger: true });
         }
     });
 

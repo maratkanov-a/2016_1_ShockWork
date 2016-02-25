@@ -4,10 +4,10 @@
         <div class="col s12 m6 offset-m3">
             <nav>
                 <div class="nav-wrapper">
-                    <a href="#" class="brand-logo center">Игра</a>
+                    <a class="brand-logo center">Игра</a>
                     <ul class="left hide-on-med-and-down">
                         <li>
-                            <a id="go-back" class="waves-effect waves-light btn">Назад</a>
+                            <a class="js-go-back waves-effect waves-light btn">Назад</a>
                         </li>
                     </ul>
                 </div>

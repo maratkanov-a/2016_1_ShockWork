@@ -8,12 +8,12 @@ define([
 
     var View = Backbone.View.extend({
         events: {
-            "click #go-back":   "goBack"
+            "click .js-go-back":   "goBack"
         },
 
         template: tmpl,
         initialize: function () {
-            this.render();
+            //this.render();
         },
         render: function () {
             this.$el.html(this.template());
@@ -21,6 +21,7 @@ define([
         },
         show: function () {
             $('#page').html(this.$el);
+            this.render();
         },
         hide: function () {
             // TODO
