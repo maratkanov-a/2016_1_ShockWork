@@ -9,4 +9,5 @@ define(function (require) {
         QUnit.ok(score instanceof Backbone.Model);
 
     });
+
 });

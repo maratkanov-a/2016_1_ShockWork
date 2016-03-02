@@ -35,7 +35,7 @@ define([
 
         submit: function(e) {
             e.preventDefault();
-            if ( session.validateLogin($('#username'), $('#password')) ) {
+            if ( session.validateLogin($('#username').val(), $('#password').val()) ) {
                 session.login();
                 Backbone.history.navigate('game', { trigger: true });
             }

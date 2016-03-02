@@ -33,7 +33,7 @@ define([
         },
         submit: function(e) {
             e.preventDefault();
-            if ( session.validateRegistration($('#email'), $('#username'), $('#password'), $('#password_conformation')) ) {
+            if ( session.validateRegistration($('#email').val(), $('#username').val(), $('#password').val(), $('#password_conformation').val()) ) {
                 session.registration();
                 Backbone.history.navigate('game', { trigger: true });
             }

@@ -20,7 +20,7 @@ define([
         },
 
         validateLogin: function(username, password) {
-            if ( !(username.val() && password.val()) ) {
+            if ( !(username && password) ) {
                 $('.js-username-error, .js-password-error').text('required').show();
                 return false
             }
@@ -28,10 +28,10 @@ define([
         },
 
         validateRegistration: function(email, username, password1, password2) {
-            if ( !(email.val() && username.val() && password1.val() && password2.val()) ) {
+            if ( !(email && username && password1 && password2) ) {
                 $('.form__error').text('required').show();
                 return false
-            } else if ( !(password1.val() === password2.val()) ){
+            } else if ( !(password1 === password2) ){
                 $('.form__error').hide();
                 $('.js-password1-error, .js-password2-error').text('Passwords dont match').show();
                 return false
