@@ -15,18 +15,18 @@ define([
 
         template: tmpl,
         initialize: function () {
-            
+
         },
         render: function () {
             this.$el.html(this.template( { scores : ScoresCollection.toJSON() } ));
-            return this;
         },
         show: function () {
-            $('#page').html(this.$el);
+            $('#page').html(this.el);
             this.render();
         },
         hide: function () {
-            // TODO
+            this.$el.hide();
+            this.$el.off();
         },
         goBack: function() {
             Backbone.history.history.back()

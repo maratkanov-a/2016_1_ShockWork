@@ -17,13 +17,15 @@
                   <form>
                     <div class="input-field">
                       <i class="material-icons prefix">perm_identity</i>
-                      <input id="icon_prefix" type="text" class="validate"></input>
-                      <label for="icon_prefix">Username</label>
+                      <input id="username" type="text" class="validate"></input>
+                      <label for="username">Username</label>
+                        <div class="js-username-error form__error"></div>
                     </div>
                     <div class="input-field">
                       <i class="material-icons prefix">lock_open</i>
                       <input id="password" type="password" class="validate"></input>
                       <label for="password">Password</label>
+                        <div class="js-password-error form__error"></div>
                     </div>
                     <div>
                         <input class="js-submit waves-effect waves-light btn" type="submit"></input>

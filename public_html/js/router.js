@@ -34,7 +34,7 @@ define([
             registrationView.show();
         },
         defaultActions: function() {
-        //    lala
+
         }
     });
 

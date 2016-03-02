@@ -13,18 +13,18 @@ define([
 
         template: tmpl,
         initialize: function () {
-            //this.render();
+
         },
         render: function () {
             this.$el.html(this.template());
-            return this;
         },
         show: function () {
-            $('#page').html(this.$el);
+            $('#page').html(this.el);
             this.render();
         },
         hide: function () {
-            // TODO
+            this.$el.hide();
+            this.$el.off();
         },
         goBack: function() {
             Backbone.history.history.back()

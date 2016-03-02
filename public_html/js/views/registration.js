@@ -1,13 +1,12 @@
 define([
     'backbone',
     'tmpl/registration',
-    'router'
+    'models/session'
 ], function(
     Backbone,
     tmpl,
-    router
+    session
 ){
-
     var View = Backbone.View.extend({
         events: {
             "click .js-go-back":   "goBack",
@@ -20,21 +19,24 @@ define([
         },
         render: function () {
             this.$el.html(this.template());
-            return this;
         },
         show: function () {
-            $('#page').html(this.$el);
+            $('#page').html(this.el);
             this.render();
         },
         hide: function () {
-            // TODO
+            this.$el.hide();
+            this.$el.off();
         },
         goBack: function() {
             Backbone.history.history.back();
         },
         submit: function(e) {
             e.preventDefault();
-            Backbone.history.navigate('game', { trigger: true });
+            if ( session.validateRegistration($('#email'), $('#username'), $('#password'), $('#password_conformation')) ) {
+                session.registration();
+                Backbone.history.navigate('game', { trigger: true });
+            }
         }
     });
 

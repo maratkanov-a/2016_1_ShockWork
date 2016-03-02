@@ -15,11 +15,12 @@ define([
             this.$el.html(this.template());
         },
         show: function () {
-            $('#page').html(this.$el);
+            $('#page').html(this.el);
             this.render();
         },
         hide: function () {
             this.$el.hide();
+            this.$el.off();
         }
 
     });

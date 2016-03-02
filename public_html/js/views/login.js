@@ -1,9 +1,11 @@
 define([
     'backbone',
-    'tmpl/login'
+    'tmpl/login',
+    'models/session'
 ], function(
     Backbone,
-    tmpl
+    tmpl,
+    session
 ){
 
     var View = Backbone.View.extend({
@@ -18,21 +20,26 @@ define([
         },
         render: function () {
             this.$el.html(this.template());
-            return this;
         },
         show: function () {
-            $('#page').html(this.$el);
+            $('#page').html(this.el);
             this.render();
         },
         hide: function () {
-            // TODO
+            this.$el.hide();
+            this.$el.off();
         },
         goBack: function() {
             Backbone.history.history.back()
         },
+
         submit: function(e) {
             e.preventDefault();
-            Backbone.history.navigate('game', { trigger: true });
+            if ( session.validateLogin($('#username'), $('#password')) ) {
+                session.login();
+                Backbone.history.navigate('game', { trigger: true });
+            }
+
         }
     });
 
