@@ -13,14 +13,10 @@ define([
         },
         render: function () {
             this.$el.html(this.template());
+            return this;
         },
         show: function () {
-            $('#page').html(this.el);
-            this.render();
-        },
-        hide: function () {
-            this.$el.hide();
-            this.$el.off();
+            return this.render();
         }
 
     });

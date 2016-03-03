@@ -15,12 +15,12 @@ require.config({
         },
         'underscore': {
             exports: '_'
+        },
+        'materialize': {
+            deps: ['jquery', 'hammerjs']
         }
-    },
-    'materialize': {
-            deps: ['jquery', 'hammerjs'],
-            exports: 'materializejs'
-        }
+    }
+
 });
 
 define([

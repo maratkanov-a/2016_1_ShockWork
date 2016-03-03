@@ -1,7 +1,7 @@
 <fest:template xmlns:fest="http://fest.mail.ru">
     <div id="login" class="row">
         <div class="col s12 m6 offset-m3">
-            <nav>
+            <nav class="nav">
                 <div class="nav-wrapper">
                     <a class="brand-logo center">Войти</a>
                     <ul class="left hide-on-med-and-down">

@@ -1,7 +1,6 @@
 <fest:template xmlns:fest="http://fest.mail.ru" context_name="json">
     <div id="game" class="row">
-        <!-- TODO: тут стили нефигово придется поменять-->
-        <div class="col s12 m6 offset-m3">
+        <div class="col s12 m8 offset-m2">
             <nav>
                 <div class="nav-wrapper">
                     <a class="brand-logo center">Игра</a>
@@ -12,6 +11,27 @@
                     </ul>
                 </div>
             </nav>
+            <div id="content-game">
+
+                <div id="cardPile">
+                    <!--Стек карт первого игрока-->
+                </div>
+                <div id="cardSlots">
+                    <!--Слоты для карт первого игрока-->
+                </div>
+                <div id = "cardSlots2">
+                    <!--Слоты для карт второго игрока-->
+                </div>
+                <div id = "cardPile2">
+                    <!--Стек карт второго игрока-->
+                </div>
+
+                <!--<div id="successMessage">-->
+                    <!--<h2>Game Over!</h2>-->
+                    <!--<button onclick="init()">Play Again</button>-->
+                <!--</div>-->
+
+            </div>
         </div>
     </div>
 </fest:template>

@@ -1,7 +1,7 @@
 <fest:template xmlns:fest="http://fest.mail.ru" context_name="json">
     <div id="registraiton" class="row">
         <div class="col s12 m6 offset-m3">
-            <nav>
+            <nav class="nav">
                 <div class="nav-wrapper">
                     <a class="brand-logo center">Регистрация</a>
                     <ul class="left hide-on-med-and-down">

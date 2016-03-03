@@ -19,14 +19,10 @@ define([
         },
         render: function () {
             this.$el.html(this.template( { scores : ScoresCollection.toJSON() } ));
+            return this;
         },
         show: function () {
-            $('#page').html(this.el);
-            this.render();
-        },
-        hide: function () {
-            this.$el.hide();
-            this.$el.off();
+            return this.render();
         },
         goBack: function() {
             Backbone.history.history.back()

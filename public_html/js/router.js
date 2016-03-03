@@ -1,5 +1,10 @@
 define([
-'backbone', 'views/main', 'views/game', 'views/login', 'views/scoreboard', 'views/registration'
+    'backbone',
+    'views/main',
+    'views/game',
+    'views/login',
+    'views/scoreboard',
+    'views/registration'
 ], function(
     Backbone,
     mainView,
@@ -19,19 +24,19 @@ define([
             '*default': 'defaultActions'
         },
         mainAction: function () {
-            mainView.show();
+            $('#page').html(mainView.show().el);
         },
         scoreboardAction: function () {
-            scoreboardView.show();
+            $('#page').html(scoreboardView.show().el);
         },
         gameAction: function () {
-           gameView.show();
+            $('#page').html(gameView.show().el);
         },
         loginAction: function () {
-            loginView.show();
+            $('#page').html(loginView.show().el);
         },
         registrationAction: function () {
-            registrationView.show();
+            $('#page').html(registrationView.show().el);
         },
         defaultActions: function() {
 
