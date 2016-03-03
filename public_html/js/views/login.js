@@ -12,7 +12,7 @@ define([
     var View = Backbone.View.extend({
         events: {
             "click .js-go-back":   "goBack",
-            "click .js-submit": "submit"
+            "submit .form": "submit"
         },
 
         template: tmpl,

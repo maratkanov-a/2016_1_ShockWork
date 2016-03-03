@@ -14,7 +14,7 @@
         </div>
         <div class="col s12 m6 offset-m3">
               <div class="card-panel">
-                  <form>
+                  <form class="form">
                       <div class="input-field">
                           <i class="material-icons prefix">info_outline</i>
                         <input id="email" type="email" class="validate"></input>
