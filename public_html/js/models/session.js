@@ -20,28 +20,29 @@ define([
         },
 
         validateLogin: function(username, password) {
-            if ( !(username && password) ) {
-                $('.js-username-error, .js-password-error').text('required').show();
+            if (username && password) {
+            } else {
                 return false
             }
             return true;
         },
 
         validateRegistration: function(email, username, password1, password2) {
+            var errors = [
+                {'fields': 'all', 'error': 'required'},
+                {'fields': 'passwords', 'error': 'Passwords dont match'},
+                {'fields': 'email', 'error': 'Example lala@mail.ru'},
+                {'fields': 'None', error: 'None'}
+            ];
             var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
             if ( !(email && username && password1 && password2) ) {
-                $('.form__error').text('required').show();
-                return false
+                return errors[0]
             } else if ( !(password1 === password2) ){
-                $('.form__error').hide();
-                $('.js-password1-error, .js-password2-error').text('Passwords dont match').show();
-                return false
+                return errors[1]
             } else if (!re.test(email)) {
-                $('.form__error').hide();
-                $('.js-email-error').text('email must consist @ symbol').show();
-                return false;
+                return errors[2];
             }
-            return true;
+            return errors[3];
         }
 
     });

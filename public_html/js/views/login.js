@@ -39,6 +39,8 @@ define([
             if ( session.validateLogin($('#username').val(), $('#password').val()) ) {
                 session.login();
                 Backbone.history.navigate('game', { trigger: true });
+            } else {
+                 $('.js-username-error, .js-password-error').text('Required').show();
             }
 
         }
