@@ -36,6 +36,11 @@ define(function (require) {
 
         var empty = session.validateRegistration('', '', '', '');
         var onlyEmail = session.validateRegistration('12@mail.ru', '', '', '');
+        var badEmail1 = session.validateRegistration('12mail.ru', '', '', '');
+        var badEmail2 = session.validateRegistration('12@.ru', '', '', '');
+        var badEmail3 = session.validateRegistration('12@mail', '', '', '');
+        var badEmail4 = session.validateRegistration('@mail.ru', '', '', '');
+        var badEmail5 = session.validateRegistration('mail.ru', '', '', '');
         var onlyUsername = session.validateRegistration('', '12', '', '');
         var onlyFirstPassword = session.validateRegistration('', '', '12', '');
         var onlySecondPassword = session.validateRegistration('', '', '', '12');
@@ -46,6 +51,11 @@ define(function (require) {
 
         assert.equal( empty, false );
         assert.equal( onlyEmail, false );
+        assert.equal( badEmail1, false );
+        assert.equal( badEmail2, false );
+        assert.equal( badEmail3, false );
+        assert.equal( badEmail4, false );
+        assert.equal( badEmail5, false );
         assert.equal( onlyUsername, false );
         assert.equal( onlyFirstPassword, false );
         assert.equal( onlySecondPassword, false );
