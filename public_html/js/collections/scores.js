@@ -9,7 +9,7 @@ define([
     var ScoresCollection = Backbone.Collection.extend({
         model: Score,
         comparator: function( collection ) {
-            return ( collection.get('score') );
+            return ( -collection.get('score') );
         }
     });
 
@@ -17,28 +17,44 @@ define([
 
     var allScores = new ScoresCollection([
                 {
-                    name: 'a',
+                    name: 'good boy',
                     score: 26
                 },
                 {
-                    name: 'b',
+                    name: 'bab bad not good',
                     score: 3
                 },
                 {
-                    name: 'c',
+                    name: 'lala',
                     score: 1
                 },
                 {
-                    name: 'd',
+                    name: 'kot',
                     score: 55
                 },
                 {
-                    name: 'e',
+                    name: 'pes',
                     score: 66
                 },
                 {
-                    name: 'f',
+                    name: 'bad boy',
                     score: 19
+                },
+                {
+                    name: 'Jesus',
+                    score: 998
+                },
+                {
+                    name: 'Xbox',
+                    score: 0
+                },
+                {
+                    name: 'Dante',
+                    score: 12
+                },
+                {
+                    name: 'Admin Priveta',
+                    score: 999
                 }
             ]);
 
