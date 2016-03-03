@@ -1,7 +1,8 @@
 define([
     'backbone',
     'tmpl/login',
-    'models/session'
+    'models/session',
+    'materialize'
 ], function(
     Backbone,
     tmpl,

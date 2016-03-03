@@ -1,5 +1,5 @@
 define([
-    'backbone', 'views/main', 'views/game', 'views/login', 'views/scoreboard', 'views/registration'
+'backbone', 'views/main', 'views/game', 'views/login', 'views/scoreboard', 'views/registration'
 ], function(
     Backbone,
     mainView,
