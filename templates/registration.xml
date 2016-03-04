@@ -39,6 +39,9 @@
                           <label for="password_conformation">Repeat Password</label>
                             <div class="js-password2-error form__error"></div>
                     </div>
+                      <div class="form__error js-login-error">
+                        Username already exists
+                      </div>
                     <div>
                         <input class="js-submit waves-effect waves-light btn" type="submit"></input>
                     </div>

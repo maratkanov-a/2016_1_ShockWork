@@ -29,11 +29,24 @@ define([
 
         submit: function(e) {
             e.preventDefault();
-            if ( session.validateLogin($('#username').val(), $('#password').val()) ) {
-                session.login();
-                Backbone.history.navigate('game', { trigger: true });
+
+            var username = $('#username').val();
+            var password = $('#password').val();
+
+            if ( session.validateLogin(username, password) ) {
+
+                session.login(username, password);
+                $(window).ajaxError(function() {
+                        $('.form__error').hide();
+                        $('.js-login-error').show();
+                });
+                $(window).ajaxSuccess(
+                    function() {
+                        Backbone.history.navigate('game', { trigger: true })
+                });
+
             } else {
-                 $('.js-username-error, .js-password-error').text('Required').show();
+                 this.$el.find('.js-username-error, .js-password-error').text('Required').show();
             }
 
         }

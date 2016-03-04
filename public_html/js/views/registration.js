@@ -27,25 +27,38 @@ define([
         },
         submit: function(e) {
             e.preventDefault();
-            var valid = session.validateRegistration($('#email').val(), $('#username').val(), $('#password').val(), $('#password_conformation').val());
+
+            var email = $('#email').val();
+            var username = $('#username').val();
+            var password1 = $('#password').val();
+            var password2 = $('#password_conformation').val();
+
+            var valid = session.validateRegistration(email, username, password1, password2);
             if ( valid['fields'] === 'None' ) {
 
-                session.registration();
-                Backbone.history.navigate('game', { trigger: true });
+                session.registration(username, password1, email);
+                $(window).ajaxError(function() {
+                        $('.form__error').hide();
+                        $('.js-login-error').show();
+                });
+                $(window).ajaxSuccess(
+                    function() {
+                        Backbone.history.navigate('game', { trigger: true })
+                });
 
             } else if( valid['fields'] === 'passwords' ) {
 
                 this.$el.find('.form__error').hide();
-                this.$el.find('.js-password1-error, .js-password2-error').text('Passwords dont match').show();
+                this.$el.find('.js-password1-error, .js-password2-error').text(valid['error']).show();
 
             } else if ( valid['fields'] === 'email' ) {
 
                 this.$el.find('.form__error').hide();
-                this.$el.find('.js-email-error').text('email must consist @ symbol').show();
+                this.$el.find('.js-email-error').text(valid['error']).show();
 
             } else if ( valid['fields'] === 'all' ) {
 
-                this.$el.find('.form__error').text('required').show();
+                this.$el.find('.form__error').text(valid['error']).show();
 
             }
         }

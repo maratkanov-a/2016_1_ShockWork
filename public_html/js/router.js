@@ -42,6 +42,7 @@ define([
             this.$page.html(registrationView.render().el);
         },
         defaultActions: function() {
+            // TODO: 404 or remove mainAction
             this.$page.html(mainView.render().el);
         }
     });

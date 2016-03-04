@@ -5,18 +5,57 @@ define([
 ) {
 
     var SessionModel = Backbone.Model.extend({
-        url: '/api/v1/session',
+        url: '/api/session',
 
-        login: function() {
+        login: function(username, password) {
+            $.ajax({
+                method: 'POST',
+                url: this.url,
+                data: {
+                    username: username,
+                    password: password
+                },
+                success: function () {
+                //    TODO
+                },
+                error: function () {
+                //    TODO
+                }
 
+            });
         },
 
         logout: function() {
+            $.ajax({
+                method: 'DELETE',
+                url: '/api/session',
+                success: function () {
+                //    TODO
+                },
+                error: function () {
+                //    TODO
+                }
 
+            });
         },
 
-        registration: function() {
+        registration: function(username, password, email) {
+            $.ajax({
+                method: 'POST',
+                url: '/api/user',
+                data: {
+                    username: username,
+                    password:password,
+                    email: email
+                },
+                success: function () {
+                //    TODO
+                },
+                error: function () {
+                //    TODO
+                }
 
+            });
         },
 
         validateLogin: function(username, password) {
@@ -29,7 +68,7 @@ define([
 
         validateRegistration: function(email, username, password1, password2) {
             var errors = [
-                {'fields': 'all', 'error': 'required'},
+                {'fields': 'all', 'error': 'Required'},
                 {'fields': 'passwords', 'error': 'Passwords dont match'},
                 {'fields': 'email', 'error': 'Example lala@mail.ru'},
                 {'fields': 'None', error: 'None'}
