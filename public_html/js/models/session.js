@@ -5,21 +5,25 @@ define([
 ) {
 
     var SessionModel = Backbone.Model.extend({
-        url: '/api/session',
-
-        login: function(username, password) {
+        urlLogin: '/api/session/',
+        urlLogout: '/api/session/',
+        urlRegistration: 'api/user/',
+        
+        login: function (username, password) {
             $.ajax({
-                method: 'POST',
-                url: this.url,
-                data: {
-                    username: username,
+                type: 'GET',
+                url: this.urlLogin,
+                dataType: 'json',
+                contentType: 'application/json',
+                data: JSON.stringify({
+                    login: username,
                     password: password
+                }),
+                success: function (data) {
+                    // TODO
                 },
-                success: function () {
-                //    TODO
-                },
-                error: function () {
-                //    TODO
+                error: function (xhr, str) {
+                    // TODO
                 }
 
             });
@@ -27,8 +31,8 @@ define([
 
         logout: function() {
             $.ajax({
-                method: 'DELETE',
-                url: '/api/session',
+                type: 'DELETE',
+                url: this.urlLogout,
                 success: function () {
                 //    TODO
                 },
@@ -41,13 +45,15 @@ define([
 
         registration: function(username, password, email) {
             $.ajax({
-                method: 'POST',
-                url: '/api/user',
-                data: {
-                    username: username,
-                    password:password,
+                type: 'PUT',
+                url: this.urlRegistration,
+                dataType: 'json',
+                contentType: 'application/json',
+                data: JSON.stringify({
+                    login: username,
+                    password: password,
                     email: email
-                },
+                }),
                 success: function () {
                 //    TODO
                 },
