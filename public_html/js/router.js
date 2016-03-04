@@ -4,14 +4,16 @@ define([
     'views/game',
     'views/login',
     'views/scoreboard',
-    'views/registration'
+    'views/registration',
+    'models/session'
 ], function(
     Backbone,
     mainView,
     gameView,
     loginView,
     scoreboardView,
-    registrationView
+    registrationView,
+    session
 ){
 
     var Router = Backbone.Router.extend({
@@ -33,7 +35,13 @@ define([
             this.$page.html(scoreboardView.render().el);
         },
         gameAction: function () {
-            this.$page.html(gameView.render().el);
+            session.isLoggedIn();
+            $(window).ajaxError(function(){
+                Backbone.history.navigate('login', { trigger: true });
+            });
+            $(window).ajaxSuccess(function(){
+                this.$page.html(gameView.render().el);
+            });
         },
         loginAction: function () {
             this.$page.html(loginView.render().el);
@@ -42,7 +50,8 @@ define([
             this.$page.html(registrationView.render().el);
         },
         defaultActions: function() {
-
+            // TODO: 404 or remove mainAction
+            this.$page.html(mainView.render().el);
         }
     });
 

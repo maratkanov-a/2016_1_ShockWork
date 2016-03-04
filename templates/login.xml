@@ -27,6 +27,9 @@
                       <label for="password">Password</label>
                         <div class="js-password-error form__error"></div>
                     </div>
+                      <div class="form__error js-login-error">
+                        Unknown username/password
+                      </div>
                     <div>
                         <input class="js-submit waves-effect waves-light btn" type="submit"></input>
                     </div>
