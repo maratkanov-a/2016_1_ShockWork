@@ -23,7 +23,7 @@ define([
             return this.render();
         },
         goBack: function() {
-            Backbone.history.history.back()
+            Backbone.history.navigate('', { trigger: true });
         }
     });
 

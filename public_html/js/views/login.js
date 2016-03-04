@@ -17,7 +17,7 @@ define([
 
         template: tmpl,
         initialize: function () {
-            
+
         },
         render: function () {
             this.$el.html(this.template());
