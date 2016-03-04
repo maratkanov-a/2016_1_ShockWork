@@ -7,11 +7,11 @@ define([
     var SessionModel = Backbone.Model.extend({
         urlLogin: '/api/session/',
         urlLogout: '/api/session/',
-        urlRegistration: 'api/user/',
-        
+        urlRegistration: '/api/user/',
+
         login: function (username, password) {
             $.ajax({
-                type: 'GET',
+                type: 'PUT',
                 url: this.urlLogin,
                 dataType: 'json',
                 contentType: 'application/json',
