@@ -1,0 +1,49 @@
+<fest:template xmlns:fest="http://fest.mail.ru" context_name="json">
+    <div id="registraiton" class="row">
+        <div class="col s12 m6 offset-m3">
+            <nav class="nav">
+                <div class="nav-wrapper">
+                    <a class="brand-logo center">Регистрация</a>
+                    <ul class="left hide-on-med-and-down">
+                        <li>
+                            <a class="js-go-back waves-effect waves-light btn">Назад</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <div class="col s12 m6 offset-m3">
+              <div class="card-panel">
+                  <form class="form">
+                      <div class="input-field">
+                          <i class="material-icons prefix">info_outline</i>
+                        <input id="email" type="email" class="validate"></input>
+                        <label for="email">Email</label>
+                          <div class="js-email-error form__error"></div>
+                    </div>
+                    <div class="input-field">
+                          <i class="material-icons prefix">perm_identity</i>
+                          <input id="username" type="text" class="validate"></input>
+                          <label for="username">Username</label>
+                            <div class="js-username-error form__error"></div>
+                    </div>
+                    <div class="input-field">
+                          <i class="material-icons prefix">lock_open</i>
+                          <input id="password" type="password" class="validate"></input>
+                          <label for="password">Password</label>
+                            <div class="js-password1-error form__error"></div>
+                    </div>
+                    <div class="input-field">
+                          <i class="material-icons prefix">lock</i>
+                          <input id="password_conformation" type="password" class="validate"></input>
+                          <label for="password_conformation">Repeat Password</label>
+                            <div class="js-password2-error form__error"></div>
+                    </div>
+                    <div>
+                        <input class="js-submit waves-effect waves-light btn" type="submit"></input>
+                    </div>
+                  </form>
+              </div>
+        </div>
+    </div>
+</fest:template>
