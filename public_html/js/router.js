@@ -23,20 +23,23 @@ define([
             'registration': 'registrationAction',
             '*default': 'defaultActions'
         },
+
+        $page: $('#page'),
+
         mainAction: function () {
-            $('#page').html(mainView.show().el);
+            this.$page.html(mainView.render().el);
         },
         scoreboardAction: function () {
-            $('#page').html(scoreboardView.show().el);
+            this.$page.html(scoreboardView.render().el);
         },
         gameAction: function () {
-            $('#page').html(gameView.show().el);
+            this.$page.html(gameView.render().el);
         },
         loginAction: function () {
-            $('#page').html(loginView.show().el);
+            this.$page.html(loginView.render().el);
         },
         registrationAction: function () {
-            $('#page').html(registrationView.show().el);
+            this.$page.html(registrationView.render().el);
         },
         defaultActions: function() {
 

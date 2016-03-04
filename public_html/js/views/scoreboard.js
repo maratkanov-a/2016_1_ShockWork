@@ -21,9 +21,6 @@ define([
             this.$el.html(this.template( { scores : ScoresCollection.toJSON() } ));
             return this;
         },
-        show: function () {
-            return this.render();
-        },
         goBack: function() {
             Backbone.history.history.back()
         }

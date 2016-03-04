@@ -17,14 +17,11 @@ define([
 
         template: tmpl,
         initialize: function () {
-
+            
         },
         render: function () {
             this.$el.html(this.template());
             return this;
-        },
-        show: function () {
-            return this.render();
         },
         goBack: function() {
             Backbone.history.history.back()
