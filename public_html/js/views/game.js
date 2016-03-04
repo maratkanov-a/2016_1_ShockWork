@@ -19,9 +19,6 @@ define([
             this.$el.html(this.template());
             return this;
         },
-        show: function () {
-            return this.render();
-        },
         goBack: function() {
             Backbone.history.navigate('', { trigger: true });
         }

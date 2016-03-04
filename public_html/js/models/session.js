@@ -6,7 +6,6 @@ define([
 
     var SessionModel = Backbone.Model.extend({
         urlLogin: '/api/session/',
-        urlLogout: '/api/session/',
         urlRegistration: '/api/user/',
 
         login: function (username, password) {
@@ -29,10 +28,24 @@ define([
             });
         },
 
+        isLoggedIn: function() {
+            $.ajax({
+                type: 'GET',
+                url: this.urlLogin,
+                success: function (data) {
+                    // TODO
+                },
+                error: function (xhr, str) {
+                    // TODO
+                }
+
+            });
+        },
+
         logout: function() {
             $.ajax({
                 type: 'DELETE',
-                url: this.urlLogout,
+                url: this.urlLogin,
                 success: function () {
                 //    TODO
                 },
