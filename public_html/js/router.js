@@ -42,7 +42,7 @@ define([
             this.$page.html(registrationView.render().el);
         },
         defaultActions: function() {
-
+            this.$page.html(mainView.render().el);
         }
     });
 
