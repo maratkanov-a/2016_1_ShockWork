@@ -40,7 +40,7 @@ define([
                 Backbone.history.navigate('login', { trigger: true });
             });
             $(window).ajaxSuccess(function(){
-                this.$page.html(gameView.render().el);
+                $('#page').html(gameView.render().el);
             });
         },
         loginAction: function () {
