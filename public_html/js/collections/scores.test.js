@@ -12,7 +12,7 @@ define(function (require) {
             }
         }
 
-        assert.ok( result, true );
+        assert.equal( result, true );
     });
 
 });
