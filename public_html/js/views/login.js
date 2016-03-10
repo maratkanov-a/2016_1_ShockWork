@@ -46,7 +46,13 @@ define([
                 });
 
             } else {
-                 this.$el.find('.js-username-error, .js-password-error').text('Required').show();
+                 this.$el.find('.form__error').hide();
+                $.each(this.$el.find('.js-validate'), function() {
+                    if ($(this).val() === '') {
+                        $(this).parent().find('.form__error').text("Required").show()
+                    }
+                });
+
             }
 
         }
