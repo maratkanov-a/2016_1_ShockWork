@@ -19,7 +19,9 @@ require.config({
 });
 
 var tests = [
-    'models/score.test'
+    'models/score.test',
+    'models/session.test',
+    'collections/scores.test'
 ];
 
 require(tests, function () {

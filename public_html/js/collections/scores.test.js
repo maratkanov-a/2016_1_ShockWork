@@ -1,8 +1,8 @@
 define(function (require) {
     QUnit.module("models/score");
 
-    QUnit.test('Check sorted collection', function() {
-        var ScoresCollection = require('./scores');
+    QUnit.test('Check sorted collection', function(assert) {
+        var ScoresCollection = require('models/score');
 
         var result = true;
 
@@ -12,7 +12,7 @@ define(function (require) {
             }
         }
 
-        assert.equal( result, true );
+        assert.ok( result, true );
     });
 
 });

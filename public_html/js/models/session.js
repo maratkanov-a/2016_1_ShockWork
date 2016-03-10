@@ -87,9 +87,9 @@ define([
 
         validateRegistration: function(email, username, password1, password2) {
             var errors = {
-                'all': 'Required',
-                'passwords': 'Passwords dont match',
-                'email_validation': 'Example lala@mail.ru',
+                'all': 'all',
+                'passwords': 'passwords',
+                'email_validation': 'bad_email',
                 'None': 'None'
                 };
             var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;

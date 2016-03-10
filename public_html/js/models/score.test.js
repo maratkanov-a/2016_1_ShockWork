@@ -3,7 +3,7 @@ define(function (require) {
 
     QUnit.test("ScoreModel - экземпляр Backbone.Model", function () {
 
-        var ScoreModel = require('./score'),
+        var ScoreModel = require('models/score'),
             score = new ScoreModel();
 
         QUnit.ok(score instanceof Backbone.Model);

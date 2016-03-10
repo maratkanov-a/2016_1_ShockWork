@@ -1,23 +1,8 @@
 define(function (require) {
     QUnit.module("models/session");
 
-    QUnit.test("При fetch вызывается метод sync", function () {
-
-        var SessionModel = require('./session'),
-            Backbone = require('backbone'),
-            session = new SessionModel();
-
-        sinon.spy(Backbone, 'sync');
-
-        session.fetch();
-
-        QUnit.ok(Backbone.sync.calledOnce);
-
-    });
-
-    QUnit.test('Check login validation', function() {
-        var SessionModel = require('./session'),
-            session = new SessionModel();
+    QUnit.test('Check login validation', function(assert) {
+        var session = require('models/session');
 
         var empty = session.validateLogin('', '');
         var onlyUsername = session.validateLogin('12', '');
@@ -30,9 +15,8 @@ define(function (require) {
         assert.equal( allData, true );
     });
 
-    QUnit.test('Check registration validation', function() {
-        var SessionModel = require('./session'),
-            session = new SessionModel();
+    QUnit.test('Check registration validation', function(assert) {
+        var session = require('models/session');
 
         var empty = session.validateRegistration('', '', '', '');
         var onlyEmail = session.validateRegistration('12@mail.ru', '', '', '');
@@ -50,20 +34,20 @@ define(function (require) {
         var differentPasswords = session.validateRegistration('12@mail.ru', '12', '1', '12');
         var allData = session.validateRegistration('12@mail.ru', '12', '12', '12');
 
-        assert.equal( empty['error'], 'all' );
-        assert.equal( onlyEmail['error'], 'all' );
-        assert.equal( badEmail1['error'], 'email' );
-        assert.equal( badEmail2['error'], 'email' );
-        assert.equal( badEmail3['error'], 'email' );
-        assert.equal( badEmail4['error'], 'email' );
-        assert.equal( badEmail5['error'], 'email' );
-        assert.equal( onlyUsername['error'], 'all' );
-        assert.equal( onlyFirstPassword['error'], 'all' );
-        assert.equal( onlySecondPassword['error'], 'all' );
-        assert.equal( email_Username['error'], 'all' );
-        assert.equal( email_Username_firstPassword['error'], 'all' );
-        assert.equal( email_Username_SecondPassword['error'], 'all' );
-        assert.equal( differentPasswords['error'], 'passwords' );
-        assert.equal( allData['error'], 'None' );
+        assert.equal( empty, 'all' );
+        assert.equal( onlyEmail, 'all' );
+        assert.equal( badEmail1, 'bad_email' );
+        assert.equal( badEmail2, 'bad_email' );
+        assert.equal( badEmail3, 'bad_email' );
+        assert.equal( badEmail4, 'bad_email' );
+        assert.equal( badEmail5, 'bad_email' );
+        assert.equal( onlyUsername, 'all' );
+        assert.equal( onlyFirstPassword, 'all' );
+        assert.equal( onlySecondPassword, 'all' );
+        assert.equal( email_Username, 'all' );
+        assert.equal( email_Username_firstPassword, 'all' );
+        assert.equal( email_Username_SecondPassword, 'all' );
+        assert.equal( differentPasswords, 'passwords' );
+        assert.equal( allData, 'None' );
     })
 });

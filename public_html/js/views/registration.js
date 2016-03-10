@@ -46,22 +46,22 @@ define([
                         Backbone.history.navigate('game', { trigger: true })
                 });
 
-            } else if( valid === 'Passwords dont match' ) {
+            } else if( valid === 'passwords' ) {
 
                 this.$el.find('.form__error, .form__email__error').hide();
-                this.$el.find('.js-password1-error, .js-password2-error').text(valid).show();
+                this.$el.find('.js-password1-error, .js-password2-error').text('Passwords dont match').show();
 
-            } else if ( valid === 'Example lala@mail.ru' ) {
+            } else if ( valid === 'bad_email' ) {
 
                 this.$el.find('.form__error, .form__email__error').hide();
-                this.$el.find('.js-email-error').text(valid).show();
+                this.$el.find('.js-email-error').text('Example lala@mail.ru').show();
 
-            } else if ( valid === 'Required' ) {
+            } else if ( valid === 'all' ) {
 
                 this.$el.find('.form__error, .form__email__error').hide();
                 $.each(this.$el.find('.js-validate'), function() {
                     if ($(this).val() === '') {
-                        $(this).parent().find('.form__error').text(valid).show()
+                        $(this).parent().find('.form__error').text("Required").show()
                     }
                 });
 
