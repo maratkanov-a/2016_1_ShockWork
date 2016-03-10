@@ -86,21 +86,21 @@ define([
         },
 
         validateRegistration: function(email, username, password1, password2) {
-            var errors = [
-                {'fields': 'all', 'error': 'Required'},
-                {'fields': 'passwords', 'error': 'Passwords dont match'},
-                {'fields': 'email', 'error': 'Example lala@mail.ru'},
-                {'fields': 'None', error: 'None'}
-            ];
+            var errors = {
+                'all': 'Required',
+                'passwords': 'Passwords dont match',
+                'email_validation': 'Example lala@mail.ru',
+                'None': 'None'
+                };
             var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
             if ( !(email && username && password1 && password2) ) {
-                return errors[0]
+                return errors['all']
             } else if ( !(password1 === password2) ){
-                return errors[1]
+                return errors['passwords']
             } else if (!re.test(email)) {
-                return errors[2];
+                return errors['email_validation'];
             }
-            return errors[3];
+            return errors['None'];
         }
 
     });

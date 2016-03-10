@@ -10,7 +10,7 @@ html {
   background-size: cover;
 }
 
-.form__error {
+.form__error, .form__email__error{
     display:none;
     color: white;
     margin: 0 20px 20px 20px;

@@ -12,34 +12,62 @@
                 </div>
             </nav>
         </div>
+
+        <fest:set name="form__input">
+            <div class="input-field">
+                  <i class="material-icons prefix"><fest:value>params.icon</fest:value></i>
+                <input id="{params.id}" type="{params.type}" class="js-validate"></input>
+                <label for="{params.id}">
+                    <fest:value>params.label</fest:value>
+                </label>
+                  <div class="js-{params.id}-error form__error"></div>
+            </div>
+        </fest:set>
+
         <div class="col s12 m6 offset-m3">
               <div class="card-panel">
                   <form class="form">
-                      <div class="input-field">
-                          <i class="material-icons prefix">info_outline</i>
-                        <input id="email" type="email" class="validate"></input>
-                        <label for="email">Email</label>
-                          <div class="js-email-error form__error"></div>
-                    </div>
-                    <div class="input-field">
-                          <i class="material-icons prefix">perm_identity</i>
-                          <input id="username" type="text" class="validate"></input>
-                          <label for="username">Username</label>
-                            <div class="js-username-error form__error"></div>
-                    </div>
-                    <div class="input-field">
-                          <i class="material-icons prefix">lock_open</i>
-                          <input id="password" type="password" class="validate"></input>
-                          <label for="password">Password</label>
-                            <div class="js-password1-error form__error"></div>
-                    </div>
-                    <div class="input-field">
-                          <i class="material-icons prefix">lock</i>
-                          <input id="password_conformation" type="password" class="validate"></input>
-                          <label for="password_conformation">Repeat Password</label>
-                            <div class="js-password2-error form__error"></div>
-                    </div>
-                      <div class="form__error js-login-error">
+                    <fest:get name="form__input">
+                        <fest:params>
+                            {
+                                id: "email",
+                                label: "Email",
+                                type: "email",
+                                icon: "info_outline"
+                            }
+                        </fest:params>
+                    </fest:get>
+                    <fest:get name="form__input">
+                        <fest:params>
+                            {
+                                id: "username",
+                                label: "Username",
+                                type: "text",
+                                icon: "perm_identity"
+                            }
+                            </fest:params>
+                    </fest:get>
+                    <fest:get name="form__input">
+                        <fest:params>
+                            {
+                                id: "password1",
+                                label: "Password",
+                                type: "password",
+                                icon: "lock_open"
+                            }
+                            </fest:params>
+                    </fest:get>
+                    <fest:get name="form__input">
+                        <fest:params>
+                            {
+                                id: "password2",
+                                label: "Repeat Password",
+                                type: "password",
+                                icon: "lock"
+                            }
+                            </fest:params>
+                    </fest:get>
+                      <div class="form__email__error js-login-error">
                         Username already exists
                       </div>
                     <div>
