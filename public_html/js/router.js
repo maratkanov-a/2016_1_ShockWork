@@ -35,13 +35,14 @@ define([
             this.$page.html(scoreboardView.render().el);
         },
         gameAction: function () {
-            session.isLoggedIn();
-            $(window).ajaxError(function(){
+
+            var response = session.isLoggedIn();
+
+            if (response === 'bad') {
                 Backbone.history.navigate('login', { trigger: true });
-            });
-            $(window).ajaxSuccess(function(){
-                $('#page').html(gameView.render().el);
-            });
+            } else if (response === 'good') {
+                this.$page.html(gameView.render().el);
+            }
         },
         loginAction: function () {
             this.$page.html(loginView.render().el);

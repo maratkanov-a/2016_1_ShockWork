@@ -36,18 +36,18 @@ define([
 
             if ( session.validateLogin(username, password) ) {
 
-                session.login(username, password);
-                $(window).ajaxError(function() {
-                        $('.form__error').hide();
-                        $('.js-login-error').show();
-                });
-                $(window).ajaxSuccess(
-                    function() {
+                var response = session.login(username, password);
+
+                if (response === 'bad') {
+                        this.$el.find('.form__error').hide();
+                        this.$el.find('.js-login-error').show();
+                } else if (response === 'good'){
                         Backbone.history.navigate('game', { trigger: true })
-                });
+                }
 
             } else {
-                 this.$el.find('.form__error').hide();
+
+                this.$el.find('.form__error').hide();
                 $.each(this.$el.find('.js-validate'), function() {
                     if ($(this).val() === '') {
                         $(this).parent().find('.form__error').text("Required").show()

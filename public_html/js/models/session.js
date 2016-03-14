@@ -1,16 +1,20 @@
 define([
     'backbone'
-], function (
-    Backbone
-) {
+], function (Backbone) {
 
     var SessionModel = Backbone.Model.extend({
         urlLogin: '/api/session/',
         urlRegistration: '/api/user/',
 
         login: function (username, password) {
+            var ajaxResult = {
+                'success': 'good',
+                'error': 'bad'
+            };
+            var requestResult;
             $.ajax({
                 type: 'PUT',
+                async: false,
                 url: this.urlLogin,
                 dataType: 'json',
                 contentType: 'application/json',
@@ -19,47 +23,61 @@ define([
                     password: password
                 }),
                 success: function (data) {
-                    // TODO
+                    requestResult = ajaxResult['success']
                 },
                 error: function (xhr, str) {
-                    // TODO
+                    requestResult = ajaxResult['error']
                 }
 
             });
+            return requestResult;
         },
 
-        isLoggedIn: function() {
+        isLoggedIn: function () {
+            var ajaxResult = {
+                'success': 'good',
+                'error': 'bad'
+            };
+            var requestResult;
             $.ajax({
                 type: 'GET',
+                async: false,
                 url: this.urlLogin,
                 success: function (data) {
-                    // TODO
+                    requestResult = ajaxResult['success']
                 },
                 error: function (xhr, str) {
-                    // TODO
+                    requestResult = ajaxResult['error']
                 }
 
             });
+            return requestResult;
         },
 
-        logout: function() {
+        logout: function () {
             $.ajax({
                 type: 'DELETE',
                 url: this.urlLogin,
                 success: function () {
-                //    TODO
+                    //    TODO
                 },
                 error: function () {
-                //    TODO
+                    //    TODO
                 }
 
             });
         },
 
-        registration: function(username, password, email) {
+        registration: function (username, password, email) {
+            var ajaxResult = {
+                'success': 'good',
+                'error': 'bad'
+            };
+            var requestResult;
             $.ajax({
                 type: 'PUT',
                 url: this.urlRegistration,
+                async: false,
                 dataType: 'json',
                 contentType: 'application/json',
                 data: JSON.stringify({
@@ -67,17 +85,18 @@ define([
                     password: password,
                     email: email
                 }),
-                success: function () {
-                //    TODO
+                success: function (data) {
+                    requestResult = ajaxResult['success']
                 },
-                error: function () {
-                //    TODO
+                error: function (xhr, str) {
+                    requestResult = ajaxResult['error']
                 }
 
             });
+            return requestResult;
         },
 
-        validateLogin: function(username, password) {
+        validateLogin: function (username, password) {
             if (username && password) {
             } else {
                 return false
@@ -85,17 +104,17 @@ define([
             return true;
         },
 
-        validateRegistration: function(email, username, password1, password2) {
+        validateRegistration: function (email, username, password1, password2) {
             var errors = {
                 'all': 'all',
                 'passwords': 'passwords',
                 'email_validation': 'bad_email',
                 'None': 'None'
-                };
+            };
             var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-            if ( !(email && username && password1 && password2) ) {
+            if (!(email && username && password1 && password2)) {
                 return errors['all']
-            } else if ( !(password1 === password2) ){
+            } else if (!(password1 === password2)) {
                 return errors['passwords']
             } else if (!re.test(email)) {
                 return errors['email_validation'];
@@ -104,7 +123,6 @@ define([
         }
 
     });
-
 
 
     return new SessionModel();
