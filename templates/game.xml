@@ -1,37 +1,42 @@
 <fest:template xmlns:fest="http://fest.mail.ru" context_name="json">
-    <div id="game" class="row">
-        <div class="col s12 m8 offset-m2">
-            <nav>
-                <div class="nav-wrapper">
-                    <a class="brand-logo center">Игра</a>
-                    <ul class="left hide-on-med-and-down">
-                        <li>
-                            <a class="js-go-back waves-effect waves-light btn">Назад</a>
-                        </li>
+    <div id="wrapper">
+        <div class="row">
+            <div class="container">
+                <div class="leftBar fl">
+                    <ul id="sortable1" class="connectedSortable">
+                        <li class="ui-state-default"><img src="img/Grichin.png" alt=""></li>
+                        <li class="ui-state-default"><img src="img/Grichin.png" alt=""></li>
+                        <li class="ui-state-default"><img src="img/Grichin.png" alt=""></li>
                     </ul>
                 </div>
-            </nav>
-            <div id="content-game">
+                <div class="rightBar fr">
 
-                <div id="cardPile">
-                    <!--Стек карт первого игрока-->
                 </div>
-                <div id="cardSlots">
-                    <!--Слоты для карт первого игрока-->
+                <div id="table">
+                    <div class="leftBar fl">
+                        <ul id="sortable2" class="connectedSortable"></ul>
+                    </div>
+                    <div class="rightBar fr"></div>
                 </div>
-                <div id = "cardSlots2">
-                    <!--Слоты для карт второго игрока-->
-                </div>
-                <div id = "cardPile2">
-                    <!--Стек карт второго игрока-->
-                </div>
-
-                <!--<div id="successMessage">-->
-                    <!--<h2>Game Over!</h2>-->
-                    <!--<button onclick="init()">Play Again</button>-->
-                <!--</div>-->
-
             </div>
         </div>
     </div>
+
+
+    <!--JS-->
+
+    <!--[if IE 6]>
+    <script type="text/javascript" src="/js/ie6fix.js"></script>
+    <script type="text/javascript">DD_belatedPNG.fix('.png24');</script>
+    <![endif]-->
+    <!--[if lt IE 9]>
+    <script src="/js/html5.js"></script>
+    <script src="/js/css3-mediaqueries.js"></script>
+    <![endif]-->
+    <script src="js/jquery-latest.min.js" type="text/javascript" ></script>
+    <script src="js/function.js" type="text/javascript"></script>
+    <script src="js/jquery-1.10.2.js" type="text/javascript"></script>
+    <script src="js/jquery-ui.js" type="text/javascript"></script>
+
+    <!--.JS-->
 </fest:template>
