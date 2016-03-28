@@ -1,4 +1,5 @@
 <fest:template xmlns:fest="http://fest.mail.ru" context_name="json">
+    <fest:include src="./input_field_template.xml"/>
     <div id="registraiton" class="row">
         <div class="col s12 m6 offset-m3">
             <nav class="nav">
@@ -12,17 +13,6 @@
                 </div>
             </nav>
         </div>
-
-        <fest:set name="form__input">
-            <div class="input-field">
-                  <i class="material-icons prefix"><fest:value>params.icon</fest:value></i>
-                <input id="{params.id}" type="{params.type}" class="js-validate"></input>
-                <label for="{params.id}">
-                    <fest:value>params.label</fest:value>
-                </label>
-                  <div class="js-{params.id}-error form__error"></div>
-            </div>
-        </fest:set>
 
         <div class="col s12 m6 offset-m3">
               <div class="card-panel">
@@ -67,7 +57,7 @@
                             }
                             </fest:params>
                     </fest:get>
-                      <div class="form__email__error js-login-error">
+                      <div class="form__error form__user__create__error">
                         Username already exists
                       </div>
                     <div>

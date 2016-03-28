@@ -25,7 +25,10 @@ define([
             Backbone.history.history.back();
         },
         submit: function (e) {
+
             e.preventDefault();
+
+            var $this = this;
 
             var email = $('#email').val();
             var username = $('#username').val();
@@ -33,16 +36,16 @@ define([
             var password2 = $('#password2').val();
 
             var valid = session.validateRegistration(email, username, password1, password2);
+
             if (valid === 'None') {
 
-                var response = session.registration(username, password1, email);
-
-                if (response === 'bad') {
-                    this.$el.find('.form__error, .form__email__error').hide();
-                    this.$el.find('.js-login-error').show();
-                } else if (response === 'good') {
+                session.registration(username, password1, email).done(function() {
+                    $this.$el.find('.form__error, .form__email__error').hide();
+                    $this.$el.find('.form__user__create__error').show();
+                })
+                .fail(function(){
                     Backbone.history.navigate('game', {trigger: true})
-                }
+                });
 
             } else if (valid === 'passwords') {
 

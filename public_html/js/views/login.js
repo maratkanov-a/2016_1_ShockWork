@@ -16,8 +16,9 @@ define([
         },
 
         template: tmpl,
-        initialize: function () {
 
+        initialize: function () {
+            _.bindAll(this, 'submit')
         },
         render: function () {
             this.$el.html(this.template());
@@ -29,21 +30,24 @@ define([
         },
 
         submit: function(e) {
+
             e.preventDefault();
+
+            var $this = this;
 
             var username = $('#username').val();
             var password = $('#password').val();
 
             if ( session.validateLogin(username, password) ) {
 
-                var response = session.login(username, password);
-
-                if (response === 'bad') {
-                        this.$el.find('.form__error').hide();
-                        this.$el.find('.js-login-error').show();
-                } else if (response === 'good'){
-                        Backbone.history.navigate('game', { trigger: true })
-                }
+                session.login(username, password)
+                    .done(function() {
+                        Backbone.history.navigate('game', { trigger: true });
+                    })
+                    .fail(function(){
+                        $this.$el.find('.form__error, form__login__error').hide();
+                        $this.$el.find('.form__login__error').show();
+                    });
 
             } else {
 

@@ -7,51 +7,19 @@ define([
         urlRegistration: '/api/user/',
 
         login: function (username, password) {
-            var ajaxResult = {
-                'success': 'good',
-                'error': 'bad'
-            };
-            var requestResult;
-            $.ajax({
+            return this.save({ login: username, password: password }, {
                 type: 'PUT',
-                async: false,
-                url: this.urlLogin,
-                dataType: 'json',
-                contentType: 'application/json',
-                data: JSON.stringify({
-                    login: username,
-                    password: password
-                }),
-                success: function (data) {
-                    requestResult = ajaxResult['success']
-                },
-                error: function (xhr, str) {
-                    requestResult = ajaxResult['error']
-                }
-
-            });
-            return requestResult;
+                wait: true,
+                url: this.urlLogin
+            })
         },
 
         isLoggedIn: function () {
-            var ajaxResult = {
-                'success': 'good',
-                'error': 'bad'
-            };
-            var requestResult;
-            $.ajax({
+            return this.save({}, {
                 type: 'GET',
-                async: false,
-                url: this.urlLogin,
-                success: function (data) {
-                    requestResult = ajaxResult['success']
-                },
-                error: function (xhr, str) {
-                    requestResult = ajaxResult['error']
-                }
-
+                wait: true,
+                url: this.urlLogin
             });
-            return requestResult;
         },
 
         logout: function () {
@@ -69,31 +37,11 @@ define([
         },
 
         registration: function (username, password, email) {
-            var ajaxResult = {
-                'success': 'good',
-                'error': 'bad'
-            };
-            var requestResult;
-            $.ajax({
+            return this.save({ login: username, password: password, email: email}, {
                 type: 'PUT',
-                url: this.urlRegistration,
-                async: false,
-                dataType: 'json',
-                contentType: 'application/json',
-                data: JSON.stringify({
-                    login: username,
-                    password: password,
-                    email: email
-                }),
-                success: function (data) {
-                    requestResult = ajaxResult['success']
-                },
-                error: function (xhr, str) {
-                    requestResult = ajaxResult['error']
-                }
-
+                wait: true,
+                url: this.urlRegistration
             });
-            return requestResult;
         },
 
         validateLogin: function (username, password) {

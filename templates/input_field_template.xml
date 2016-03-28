@@ -1,0 +1,12 @@
+<fest:template xmlns:fest="http://fest.mail.ru">
+    <fest:set name="form__input">
+        <div class="input-field">
+              <i class="material-icons prefix"><fest:value>params.icon</fest:value></i>
+            <input id="{params.id}" type="{params.type}" class="js-validate"></input>
+            <label for="{params.id}">
+                <fest:value>params.label</fest:value>
+            </label>
+              <div class="js-{params.id}-error form__error"></div>
+        </div>
+    </fest:set>
+</fest:template>

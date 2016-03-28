@@ -36,13 +36,15 @@ define([
         },
         gameAction: function () {
 
-            var response = session.isLoggedIn();
+            var $this = this;
 
-            if (response === 'bad') {
-                Backbone.history.navigate('login', { trigger: true });
-            } else if (response === 'good') {
-                this.$page.html(gameView.render().el);
-            }
+            session.isLoggedIn()
+                .done(function() {
+                    $this.$el.find('#page').html(gameView.render().el);
+                })
+                .fail(function(){
+                    Backbone.history.navigate('login', { trigger: true });
+                });
         },
         loginAction: function () {
             this.$page.html(loginView.render().el);
