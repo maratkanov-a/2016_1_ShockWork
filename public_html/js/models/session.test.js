@@ -9,10 +9,12 @@ define(function (require) {
         var onlyPassword = session.validateLogin('', '12');
         var allData = session.validateLogin('12', '12');
 
-        assert.equal( empty, false );
-        assert.equal( onlyUsername, false );
-        assert.equal( onlyPassword, false );
-        assert.equal( allData, true );
+        console.log(empty === ['username','password']);
+
+        assert.deepEqual( empty, ["username","password"] );
+        assert.deepEqual( onlyUsername, ['password'] );
+        assert.deepEqual( onlyPassword, ['username'] );
+        assert.equal( allData, 'None' );
     });
 
     QUnit.test('Check registration validation', function(assert) {
@@ -34,19 +36,19 @@ define(function (require) {
         var differentPasswords = session.validateRegistration('12@mail.ru', '12', '1', '12');
         var allData = session.validateRegistration('12@mail.ru', '12', '12', '12');
 
-        assert.equal( empty, 'all' );
-        assert.equal( onlyEmail, 'all' );
+        assert.deepEqual( empty, ["email", "username", "password1", "password2"] );
+        assert.deepEqual( onlyEmail, ["username", "password1", "password2"] );
         assert.equal( badEmail1, 'bad_email' );
         assert.equal( badEmail2, 'bad_email' );
         assert.equal( badEmail3, 'bad_email' );
         assert.equal( badEmail4, 'bad_email' );
         assert.equal( badEmail5, 'bad_email' );
-        assert.equal( onlyUsername, 'all' );
-        assert.equal( onlyFirstPassword, 'all' );
-        assert.equal( onlySecondPassword, 'all' );
-        assert.equal( email_Username, 'all' );
-        assert.equal( email_Username_firstPassword, 'all' );
-        assert.equal( email_Username_SecondPassword, 'all' );
+        assert.deepEqual( onlyUsername, ["email", "password1", "password2"] );
+        assert.deepEqual( onlyFirstPassword, ["email", "username", "password2"] );
+        assert.deepEqual( onlySecondPassword, ["email", "username", "password1"] );
+        assert.deepEqual( email_Username, ["password1", "password2"] );
+        assert.deepEqual( email_Username_firstPassword, ["password2"] );
+        assert.deepEqual( email_Username_SecondPassword, ["password1"] );
         assert.equal( differentPasswords, 'passwords' );
         assert.equal( allData, 'None' );
     })
