@@ -40,7 +40,7 @@ define([
             if (valid === 'None') {
 
                 session.registration(username, password1, email).done(function() {
-                    $this.$el.find('.form__error, .form__email__error').hide();
+                    $this.$el.find('.form__error').hide();
                     $this.$el.find('.form__user__create__error').show();
                 })
                 .fail(function(){
@@ -49,17 +49,17 @@ define([
 
             } else if (valid === 'passwords') {
 
-                this.$el.find('.form__error, .form__email__error').hide();
-                this.$el.find('.js-password1-error, .js-password2-error').text('Passwords dont match').show();
+                this.$el.find('.form__error').hide();
+                this.$el.find('.form__password1__error, .form__password2__error').text('Passwords dont match').show();
 
             } else if (valid === 'bad_email') {
 
-                this.$el.find('.form__error, .form__email__error').hide();
-                this.$el.find('.js-email-error').text('Example lala@mail.ru').show();
+                this.$el.find('.form__error').hide();
+                this.$el.find('.form__email__error').text('Example lala@mail.ru').show();
 
             } else if (valid === 'all') {
 
-                this.$el.find('.form__error, .form__email__error').hide();
+                this.$el.find('.form__error').hide();
                 $.each(this.$el.find('.js-validate'), function () {
                     if ($(this).val() === '') {
                         $(this).parent().find('.form__error').text("Required").show()

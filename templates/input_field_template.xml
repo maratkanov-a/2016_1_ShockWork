@@ -6,7 +6,7 @@
             <label for="{params.id}">
                 <fest:value>params.label</fest:value>
             </label>
-              <div class="js-{params.id}-error form__error"></div>
+              <div class="form__error form__{params.id}__error"></div>
         </div>
     </fest:set>
 </fest:template>

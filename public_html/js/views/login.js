@@ -18,7 +18,7 @@ define([
         template: tmpl,
 
         initialize: function () {
-            _.bindAll(this, 'submit')
+
         },
         render: function () {
             this.$el.html(this.template());
@@ -45,7 +45,7 @@ define([
                         Backbone.history.navigate('game', { trigger: true });
                     })
                     .fail(function(){
-                        $this.$el.find('.form__error, form__login__error').hide();
+                        $this.$el.find('.form__error').hide();
                         $this.$el.find('.form__login__error').show();
                     });
 
