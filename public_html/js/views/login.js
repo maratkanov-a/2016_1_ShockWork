@@ -38,7 +38,9 @@ define([
             var username = $('#username').val();
             var password = $('#password').val();
 
-            if ( session.validateLogin(username, password) ) {
+            var valid = session.validateLogin(username, password)
+
+            if ( valid === 'None' ) {
 
                 session.login(username, password)
                     .done(function() {
@@ -52,10 +54,8 @@ define([
             } else {
 
                 this.$el.find('.form__error').hide();
-                $.each(this.$el.find('.js-validate'), function() {
-                    if ($(this).val() === '') {
-                        $(this).parent().find('.form__error').text("Required").show()
-                    }
+                valid.forEach(function (item) {
+                    $('.form__'+ item +'__error').text("Required").show()
                 });
 
             }

@@ -45,24 +45,52 @@ define([
         },
 
         validateLogin: function (username, password) {
+            var errors = {
+                'all': [],
+                'username': 'username',
+                'password': 'password',
+                'None': 'None'
+            };
             if (username && password) {
             } else {
-                return false
+                if (!(username)) {
+                    errors['all'].push(errors['username'])
+                }
+                if (!(password)) {
+                    errors['all'].push(errors['password'])
+                }
+                return errors['all']
             }
-            return true;
+            return errors['None']
         },
 
         validateRegistration: function (email, username, password1, password2) {
             var errors = {
-                'all': 'all',
+                'all': [],
                 'passwords': 'passwords',
                 'email_validation': 'bad_email',
-                'None': 'None'
+                'None': 'None',
+                'email': 'email',
+                'username': 'username',
+                'password1': 'password1',
+                'password2': 'password2'
             };
             var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
             if (!(email && username && password1 && password2)) {
+                if (!(email)) {
+                    errors['all'].push(errors['email'])
+                }
+                if (!(username)) {
+                    errors['all'].push(errors['username'])
+                }
+                if (!(password1)) {
+                    errors['all'].push(errors['password1'])
+                }
+                if (!(password2)) {
+                    errors['all'].push(errors['password2'])
+                }
                 return errors['all']
-            } else if (!(password1 === password2)) {
+            } else if (!(password1 == password2)) {
                 return errors['passwords']
             } else if (!re.test(email)) {
                 return errors['email_validation'];

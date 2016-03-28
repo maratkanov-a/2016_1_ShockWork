@@ -36,11 +36,9 @@ define([
         },
         gameAction: function () {
 
-            var $this = this;
-
             session.isLoggedIn()
                 .done(function() {
-                    $this.$el.find('#page').html(gameView.render().el);
+                    $('#page').html(gameView.render().el);
                 })
                 .fail(function(){
                     Backbone.history.navigate('login', { trigger: true });

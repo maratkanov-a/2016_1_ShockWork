@@ -47,6 +47,11 @@ define([
                     Backbone.history.navigate('game', {trigger: true})
                 });
 
+            } else if ( Array.isArray(valid) ) {
+                this.$el.find('.form__error').hide();
+                valid.forEach(function (item) {
+                    $('.form__'+ item +'__error').text("Required").show()
+                });
             } else if (valid === 'passwords') {
 
                 this.$el.find('.form__error').hide();
@@ -67,6 +72,7 @@ define([
                 });
 
             }
+
         }
     });
 
