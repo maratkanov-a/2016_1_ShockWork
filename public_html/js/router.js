@@ -5,7 +5,8 @@ define([
     'views/login',
     'views/scoreboard',
     'views/registration',
-    'models/session'
+    'models/session',
+    'view_manager'
 ], function(
     Backbone,
     mainView,
@@ -13,7 +14,8 @@ define([
     loginView,
     scoreboardView,
     registrationView,
-    session
+    session,
+    manager
 ){
 
     var Router = Backbone.Router.extend({
@@ -29,30 +31,42 @@ define([
         $page: $('#page'),
 
         mainAction: function () {
-            this.$page.html(mainView.render().el);
+            this.$page.append(mainView.el);
+            manager.display();
+            mainView.show();
         },
         scoreboardAction: function () {
-            this.$page.html(scoreboardView.render().el);
+            this.$page.append(scoreboardView.el);
+            manager.display();
+            scoreboardView.show();
         },
         gameAction: function () {
 
             session.isLoggedIn()
                 .done(function() {
-                    $('#page').html(gameView.render().el);
+                    $('#page').append(gameView.el);
+                    manager.display();
+                    gameView.show();
                 })
                 .fail(function(){
                     Backbone.history.navigate('login', { trigger: true });
                 });
         },
         loginAction: function () {
-            this.$page.html(loginView.render().el);
+            this.$page.append(loginView.el);
+            manager.display();
+            loginView.show();
         },
         registrationAction: function () {
-            this.$page.html(registrationView.render().el);
+            this.$page.append(registrationView.el);
+            manager.display();
+            registrationView.show();
         },
         defaultActions: function() {
-            // TODO: 404 or remove mainAction
-            this.$page.html(mainView.render().el);
+            //// TODO: 404 or remove mainAction
+            this.$page.append(mainView.el);
+            manager.display();
+            mainView.show();
         }
     });
 

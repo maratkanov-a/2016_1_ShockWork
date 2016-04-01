@@ -18,12 +18,16 @@ define([
         template: tmpl,
 
         initialize: function () {
-
+            this.render();
         },
         render: function () {
             this.$el.html(this.template());
-            this.delegateEvents();
-            return this;
+        },
+        show: function() {
+            this.$el.show();
+        },
+        hide: function() {
+            this.$el.hide();
         },
         goBack: function() {
             Backbone.history.history.back()
@@ -38,7 +42,7 @@ define([
             var username = $('#username').val();
             var password = $('#password').val();
 
-            var valid = session.validateLogin(username, password)
+            var valid = session.validateLogin(username, password);
 
             if ( valid === 'None' ) {
 
