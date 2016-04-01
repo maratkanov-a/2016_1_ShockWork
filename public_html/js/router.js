@@ -6,7 +6,7 @@ define([
     'views/scoreboard',
     'views/registration',
     'models/session',
-    'view_manager'
+    'views/view_manager'
 ], function(
     Backbone,
     mainView,
@@ -63,7 +63,7 @@ define([
             registrationView.show();
         },
         defaultActions: function() {
-            //// TODO: 404 or remove mainAction
+             //TODO: 404 or remove mainAction
             this.$page.append(mainView.el);
             manager.display();
             mainView.show();
