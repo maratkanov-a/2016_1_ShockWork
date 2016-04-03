@@ -1,37 +1,72 @@
 <fest:template xmlns:fest="http://fest.mail.ru" context_name="json">
+
+    <link rel="stylesheet" href="css/cards/jquery-ui.css" />
+    <link rel="stylesheet" href="css/cards/reset.css" />
+    <link rel="stylesheet" href="css/cards/style.css" />
+    <link rel="stylesheet" href="css/cards/template.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
+
     <div id="game" class="row">
-        <div class="col s12 m8 offset-m2">
-            <nav>
-                <div class="nav-wrapper">
-                    <a class="brand-logo center">Игра</a>
-                    <ul class="left hide-on-med-and-down">
-                        <li>
-                            <a class="js-go-back waves-effect waves-light btn">Назад</a>
-                        </li>
+        <div id="wrapper">
+
+    <div class="row">
+        <div class="container">
+            <div id = "user_stack" class="leftBar fl" style="">
+            </div>
+            <div class="rightBar fr">
+
+            </div>
+
+            <div id="table">
+                <div class="leftBar fl">
+                    <ul id="sortable2" class="connectedSortable">
+
                     </ul>
                 </div>
-            </nav>
-            <div id="content-game">
 
-                <div id="cardPile">
-                    <!--Стек карт первого игрока-->
-                </div>
-                <div id="cardSlots">
-                    <!--Слоты для карт первого игрока-->
-                </div>
-                <div id = "cardSlots2">
-                    <!--Слоты для карт второго игрока-->
-                </div>
-                <div id = "cardPile2">
-                    <!--Стек карт второго игрока-->
+                <div class = "score" style = "width: 120px; height:120px; color: #940d13; position: absolute;
+                                  left: 580px; top: 100px; " align = "center">
+                    <span style = "font: 52pt/40pt sans-serif;">0</span>
                 </div>
 
-                <!--<div id="successMessage">-->
-                    <!--<h2>Game Over!</h2>-->
-                    <!--<button onclick="init()">Play Again</button>-->
-                <!--</div>-->
+                <div class = "button-finish" id = "button_done">
 
+                </div>
+
+                <div class = "health" style = "color: brown;">
+                    <span>HP:</span><span id = "your_health">50</span>
+                    <span>Enemy:</span><span id = "enemy_health">50</span>
+                </div>
+
+
+                <div id = "restart_button" align = "center" style = "position: absolute;
+                                                                            top: 540px;
+                                                                            left: 610px;
+                                                                            display:none;">
+                    <img src="img/cards/button.png" height="60" width="60">
+                        <span style = "position: absolute;
+                                                top: 14px;
+                                                    left: 17px;
+                                                    font-size: 32px;
+                                                    color: aqua;"><i class="fa fa-refresh"></i></span>
+                    </img>
+
+                </div>
+
+
+                <div class="rightBar fr">
+                    <ul id="sortable3" class="connectedSortable">
+
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
+</div>
+    </div>
+
+<fest:script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"/>
+    <fest:script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"/>
+    <fest:script src="js/cards/function.js"/>
+
 </fest:template>

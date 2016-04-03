@@ -1,6 +1,8 @@
 define([
     'backbone',
-    'tmpl/game'
+    'tmpl/game',
+    'jquery_ui',
+    'gameplay'
 ], function(
     Backbone,
     tmpl

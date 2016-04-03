@@ -6,7 +6,11 @@ require.config({
         underscore: "lib/underscore",
         backbone: "lib/backbone",
         materialize: 'lib/materialize.min',
-        hammerjs: 'lib/hammerjs'
+        hammerjs: 'lib/hammerjs',
+        jquery_ui: 'lib/cards/jquery-ui',
+        gameplay: 'lib/cards/function',
+        la: 'lib/cards/jquery-latest.min',
+        la1: 'lib/cards/jquery-1.10.2'
     },
     shim: {
         'backbone': {
