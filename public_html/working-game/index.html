@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Главная</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="author" content="http://web-boss.info" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <link href="css/reset.css" rel="stylesheet"/>
+    <link href="css/style.css" rel="stylesheet"/>
+    <link href="css/template.css" rel="stylesheet"/>
+    <link href="css/jquery-ui.css" rel="stylesheet"/>
+
+    <!--FONT Awesome-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <style>
+        .button-finish{
+            height: 188px;
+            width: 175px;
+            background-image: url(img/Button_not_down.png);
+            background-size: contain;
+            position: absolute;
+            left: 553px;
+            top: 278px;
+        }
+        .button-finish:hover{
+            background-image: url(img/Button_downed.png);
+        }
+
+    </style>
+
+</head>
+<body>
+<div id="wrapper">
+
+    <div class="row">
+        <div class="container">
+            <div id = "user_stack" class="leftBar fl" style="">
+            </div>
+            <div class="rightBar fr">
+
+            </div>
+
+            <div id="table">
+                <div class="leftBar fl">
+                    <ul id="sortable2" class="connectedSortable">
+
+                    </ul>
+                </div>
+
+                <div class = "score" style = "width: 120px; height:120px; color: #940d13; position: absolute;
+                                  left: 580px; top: 100px; " align = "center">
+                    <span style = "font: 52pt/40pt sans-serif;">0</span>
+                </div>
+
+                <div class = "button-finish" id = "button_done">
+
+                </div>
+
+                <div class = "health" style = "color: brown;">
+                    <span>HP:</span><span id = "your_health">50</span>
+                    <span>Enemy:</span><span id = "enemy_health">50</span>
+                </div>
+
+
+                <div id = "restart_button" align = "center" style = "position: absolute;
+                                                                            top: 540px;
+                                                                            left: 610px;
+                                                                            display:none;">
+                    <img src="img/button.png" height="60" width="60">
+                        <span style = "position: absolute;
+                                                top: 14px;
+                                                    left: 17px;
+                                                    font-size: 32px;
+                                                    color: aqua;"><i class="fa fa-refresh"></i></span>
+                    </img>
+
+                </div>
+
+
+                <div class="rightBar fr">
+                    <ul id="sortable3" class="connectedSortable">
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--JS-->
+
+<!--[if IE 6]>
+<script type="text/javascript" src="/js/ie6fix.js"></script>
+<script type="text/javascript">DD_belatedPNG.fix('.png24');</script>
+<![endif]-->
+<!--[if lt IE 9]>
+<script src="/js/html5.js"></script>
+<script src="/js/css3-mediaqueries.js"></script>
+<![endif]-->
+<script src="js/jquery-latest.min.js" type="text/javascript" ></script>
+<script src="js/function.js" type="text/javascript"></script>
+<script src="js/jquery-1.10.2.js" type="text/javascript"></script>
+<script src="js/jquery-ui.js" type="text/javascript"></script>
+
+<!--.JS-->
+</body>
+</html>
