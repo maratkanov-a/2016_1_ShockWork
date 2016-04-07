@@ -1,7 +1,6 @@
 define([
     'backbone',
     'tmpl/game',
-    'jquery_ui',
     'gameplay'
 ], function(
     Backbone,
@@ -285,6 +284,7 @@ define([
         },
         draw: function(stack) {
             stack_to_delete = [];
+            alert(stack);
             cards_counter = 0;
             count = 3;
             if (stack.length < 3) var count = stack.length;
