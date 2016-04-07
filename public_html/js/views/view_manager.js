@@ -16,11 +16,16 @@ define([
 
     var View = Backbone.View.extend({
 
-        views: [ mainView, gameView, loginView, scoreboardView, registrationView ],
+        initialize: function() {
 
-        display: function () {
-            _.each(this.views || [], function(view) {
-                view.hide();
+            var views = [ mainView, gameView, loginView, scoreboardView, registrationView ];
+
+            this.on('show', function() {
+                _.each(views || [], function (view) {
+                    if (view) {
+                        view.hide();
+                    }
+                });
             });
         }
     });

@@ -2,11 +2,13 @@ define([
     'backbone',
     'tmpl/login',
     'models/session',
+    'views/view_manager',
     'materialize'
 ], function(
     Backbone,
     tmpl,
-    session
+    session,
+    manager
 ){
 
     var View = Backbone.View.extend({
@@ -24,6 +26,7 @@ define([
             this.$el.html(this.template());
         },
         show: function() {
+            manager.trigger('show', this);
             this.$el.show();
         },
         hide: function() {

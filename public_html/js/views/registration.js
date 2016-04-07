@@ -2,10 +2,14 @@ define([
     'backbone',
     'tmpl/registration',
     'models/session',
+    'views/view_manager',
     'materialize'
-], function (Backbone,
-             tmpl,
-             session) {
+], function (
+    Backbone,
+    tmpl,
+    session,
+    manager
+) {
     var View = Backbone.View.extend({
         events: {
             "click .js-go-back": "goBack",
@@ -20,6 +24,7 @@ define([
             this.$el.html(this.template());
         },
         show: function() {
+            manager.trigger('show', this);
             this.$el.show();
         },
         hide: function() {

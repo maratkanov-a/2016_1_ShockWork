@@ -1,9 +1,11 @@
 define([
     'backbone',
-    'tmpl/main'
+    'tmpl/main',
+    'views/view_manager'
 ], function(
     Backbone,
-    tmpl
+    tmpl,
+    manager
 ){
 
     var View = Backbone.View.extend({
@@ -15,8 +17,8 @@ define([
             this.$el.html(this.template());
         },
         show: function() {
-            this.delegateEvents();
             this.$el.show();
+            manager.trigger('show', this);
         },
         hide: function() {
             this.$el.hide();

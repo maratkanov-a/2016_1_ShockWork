@@ -1,21 +1,25 @@
 define([
     'backbone',
     'tmpl/game',
-    'gameplay'
+    'gameplay',
+    'views/view_manager'
 ], function(
     Backbone,
-    tmpl
+    tmpl,
+    gameplay,
+    manager
 ){
 
     var View = Backbone.View.extend({
         events: {
             "click .js-go-back":   "goBack",
-            "click #restart_button" : "restart_button"
+            "click #restart_button" : "restartButton"
         },
 
         template: tmpl,
         initialize: function () {
             this.render()
+
         },
         render: function () {
             var round = 1;
@@ -255,6 +259,7 @@ define([
             this.draw(user1_stack);
         },
         show: function() {
+            manager.trigger('show', this);
             this.$el.show();
         },
         hide: function() {
@@ -284,7 +289,6 @@ define([
         },
         draw: function(stack) {
             stack_to_delete = [];
-            alert(stack);
             cards_counter = 0;
             count = 3;
             if (stack.length < 3) var count = stack.length;
@@ -304,7 +308,7 @@ define([
                     });
             }
         },
-        restart_button: function(){
+        restartButton: function(){
             new_round()
         }
     });

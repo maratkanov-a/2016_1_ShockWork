@@ -1,11 +1,13 @@
 define([
     'backbone',
     'tmpl/scoreboard',
-    'collections/scores'
+    'collections/scores',
+    'views/view_manager'
 ], function(
     Backbone,
     tmpl,
-    ScoresCollection
+    ScoresCollection,
+    manager
 ){
 
     var View = Backbone.View.extend({
@@ -22,6 +24,7 @@ define([
         },
         show: function() {
             this.$el.show();
+            manager.trigger('show', this);
         },
         hide: function() {
             this.$el.hide();
