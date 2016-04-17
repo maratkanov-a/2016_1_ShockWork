@@ -15,9 +15,6 @@ app.use(function (req, res, done) {
 	done();
 });
 
-
-
-
 app
 	.use('/', express.static(PUBLIC_DIR))
 	.use(errorHandler());
@@ -26,10 +23,10 @@ app.listen(PORT, function () {
 	console.log("Simple static server showing %s listening at http://%s:%s", PUBLIC_DIR, HOSTNAME, PORT);
 });
 
-
-app.use('/proxy', proxy('http://vk.com', {
+app.use('/api', proxy('127.0.0.1:8081', {
 	forwardPath: function(req, res) {
-		console.log(1234);
-		return require('url').parse(req.url).path;
+		var url = '/api' + req.url; 
+		console.log('Proxy to ' + url);
+		return require('url').parse(url).path;
 	}
 }));
