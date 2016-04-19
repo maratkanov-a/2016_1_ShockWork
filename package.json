@@ -16,13 +16,14 @@
     "grunt-contrib-qunit": "^0.7.0",
     "grunt-contrib-watch": "~0.5.3",
     "grunt-fest": "~0.1.4",
-    "grunt-shell": "^1.1.1"
+    "grunt-shell": "^1.1.1",
+    "http-proxy-middleware": "^0.14.0"
   },
   "scripts": {
     "start": "node server"
   },
   "dependencies": {
-    "express-http-proxy": "^0.6.0",
-    "express-rewrite": "0.0.4"
+    "express-rewrite": "0.0.4",
+    "http-proxy-middleware": "^0.14.0"
   }
 }
