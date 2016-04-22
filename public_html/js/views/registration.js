@@ -49,11 +49,11 @@ define([
             if (valid === 'None') {
 
                 session.registration(username, password1, email).done(function() {
-                    $this.$el.find('.form__error').hide();
-                    $this.$el.find('.form__user__create__error').show();
+                	Backbone.history.navigate('game', {trigger: true});
                 })
                 .fail(function(){
-                    Backbone.history.navigate('game', {trigger: true})
+                    $this.$el.find('.form__error').hide();
+                    $this.$el.find('.form__user__create__error').show();
                 });
 
             } else if ( Array.isArray(valid) ) {
