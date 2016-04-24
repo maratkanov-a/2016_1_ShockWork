@@ -28,7 +28,10 @@ require.config({
 var tests = [
     'models/score.test',
     'models/session.test',
+    'models/card.test',
+    'models/user.test',
     'collections/scores.test',
+    'collections/cards.test',
     'views/view_manager.test'
 ];
 
