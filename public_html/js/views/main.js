@@ -11,14 +11,14 @@ define([
     var View = Backbone.View.extend({
         template: tmpl,
         initialize: function () {
+            manager.register(this);
             this.render();
         },
         render: function () {
             this.$el.html(this.template());
         },
         show: function() {
-            this.$el.show();
-            manager.trigger('show', this);
+            manager.show(this);
         },
         hide: function() {
             this.$el.hide();

@@ -20,14 +20,14 @@ define([
         template: tmpl,
 
         initialize: function () {
+            manager.register(this);
             this.render();
         },
         render: function () {
             this.$el.html(this.template());
         },
         show: function() {
-            manager.trigger('show', this);
-            this.$el.show();
+            manager.show(this);
         },
         hide: function() {
             this.$el.hide();

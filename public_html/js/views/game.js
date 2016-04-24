@@ -246,6 +246,7 @@ define([
             ],
         template: tmpl,
         initialize: function () {
+            manager.register(this);
             this.render()
         },
         render: function () {
@@ -489,8 +490,7 @@ define([
             this.draw(this.user1_stack);
         },
         show: function() {
-            manager.trigger('show', this);
-            this.$el.show();
+            manager.show(this);
         },
         hide: function() {
             this.$el.hide();

@@ -1,33 +1,31 @@
 define([
-    'backbone',
-    'views/main',
-    'views/game',
-    'views/login',
-    'views/scoreboard',
-    'views/registration'
+    'backbone'
 ], function(
-    Backbone,
-    mainView,
-    gameView,
-    loginView,
-    scoreboardView,
-    registrationView
+    Backbone
 ){
 
     var View = Backbone.View.extend({
 
-        initialize: function() {
+        views: [],
 
-            var views = [ mainView, gameView, loginView, scoreboardView, registrationView ];
+        register: function (view) {
+            this.views.push(view);
+        },
 
-            this.on('show', function() {
-                _.each(views || [], function (view) {
-                    if (view) {
-                        view.hide();
-                    }
-                });
+        // который вызовет метод hide у всех кроме newView
+        show: function (newView) {
+
+            this.views.forEach(function (view) {
+                if (view !== newView) {
+                    view.hide();
+                } else {
+                    view.$el.show();
+                }
+
             });
+
         }
+
     });
 
     return new View();
