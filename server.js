@@ -1,11 +1,11 @@
 var express = require('express'),
-    errorHandler = require('errorhandler'),
-    app = express(),
-	proxy = require('express-http-proxy');
+	errorHandler = require('errorhandler'),
+	app = express(),
+	proxy = require('http-proxy-middleware');
 
 var HOSTNAME = 'localhost',
-    PORT = 8080,
-    PUBLIC_DIR = __dirname + '/public_html';
+	PORT = 8080,
+	PUBLIC_DIR = __dirname + '/public_html';
 
 var counter = 1;
 var now = new Date();
@@ -23,10 +23,11 @@ app.listen(PORT, function () {
 	console.log("Simple static server showing %s listening at http://%s:%s", PUBLIC_DIR, HOSTNAME, PORT);
 });
 
-app.use('/api', proxy('127.0.0.1:8081', {
-	forwardPath: function(req, res) {
-		var url = '/api' + req.url; 
-		console.log('Proxy to ' + url);
-		return require('url').parse(url).path;
-	}
-}));
+var context = '/api';
+
+var options = {
+		target: 'http://localhost:8081',
+		ws: true,
+	};
+
+app.use(proxy(context, options));
