@@ -490,7 +490,8 @@ define([
             this.draw(this.user1_stack);
         },
         show: function() {
-            manager.show(this);
+            this.$el.show();
+            this.trigger("show",this);
         },
         hide: function() {
             this.$el.hide();

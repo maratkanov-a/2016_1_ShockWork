@@ -8,24 +8,18 @@ define([
 
         views: [],
 
-        register: function (view) {
-            this.views.push(view);
+        register: function (currentView) {
+            this.views.push(currentView);
+            this.listenTo(currentView, 'show', this.onShow.bind(this, currentView));
         },
 
-        // который вызовет метод hide у всех кроме newView
-        show: function (newView) {
-
+        onShow: function (currentView) {
             this.views.forEach(function (view) {
-                if (view !== newView) {
+                if (view !== currentView) {
                     view.hide();
-                } else {
-                    view.$el.show();
                 }
-
             });
-
         }
-
     });
 
     return new View();
