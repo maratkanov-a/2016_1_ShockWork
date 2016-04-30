@@ -7,9 +7,19 @@ define([
 ){
 
     var ScoresCollection = Backbone.Collection.extend({
+
         model: Score,
+        scoresUrl: '',
+
         comparator: function( collection ) {
             return ( -collection.get('score') );
+        },
+        getScores: function() {
+            return this.save({}, {
+                type: 'GET',
+                wait: true,
+                url: this.scoresUrl
+            })
         }
     });
 
