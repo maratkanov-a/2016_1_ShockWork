@@ -14,7 +14,8 @@ define([
     var View = Backbone.View.extend({
         events: {
             "click .js-go-back": "goBack",
-            "submit .form": "submit"
+            "submit .form": "submit",
+            "click .js-make-photo": "makePhoto"
         },
 
         template: tmpl,
@@ -24,6 +25,12 @@ define([
         },
         render: function () {
             this.$el.html(this.template());
+            // for canvas
+            var canvas = this.$el.find("#canvas"),
+            context = canvas[0].getContext('2d'),
+            video = this.$el.find("#video"),
+            videoObj = { "video": true };
+            //-----------
         },
         show: function() {
             this.$el.show();
@@ -34,6 +41,9 @@ define([
         },
         goBack: function () {
             Backbone.history.history.back();
+        },
+        makePhoto: function(){
+            context.drawImage(video, 0, 0, 640, 480);
         },
         submit: function (e) {
 
