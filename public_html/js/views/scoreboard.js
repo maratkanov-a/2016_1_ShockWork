@@ -24,7 +24,8 @@ define([
             this.$el.html(this.template( { scores : ScoresCollection.toJSON() } ));
         },
         show: function() {
-            manager.show(this);
+            this.$el.show();
+            this.trigger("show",this);
         },
         hide: function() {
             this.$el.hide();

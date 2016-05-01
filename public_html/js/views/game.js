@@ -2,12 +2,14 @@ define([
     'backbone',
     'tmpl/game',
     'gameplay',
-    'views/view_manager'
+    'views/view_manager',
+    'socket'
 ], function(
     Backbone,
     tmpl,
     gameplay,
-    manager
+    manager,
+    socket
 ){
 
     var View = Backbone.View.extend({
@@ -245,10 +247,12 @@ define([
                 }
             ],
         template: tmpl,
+
         initialize: function () {
             manager.register(this);
-            this.render()
+            this.render();
         },
+
         render: function () {
             this.round = 1;
             this.cards_counter = 0;
@@ -490,7 +494,20 @@ define([
             this.draw(this.user1_stack);
         },
         show: function() {
-            manager.show(this);
+            this.$el.show();
+            this.trigger("show",this);
+
+            socket.onopen = function() {
+                alert('Open connection')
+            };
+            socket.onclose = function() {
+                Backbone.history.navigate('', { trigger: true })
+            };
+            socket.onmessage = function(evt) {
+                $('body').addClass('loaded');
+		        $('h1').css('color','#222222');
+            };
+
         },
         hide: function() {
             this.$el.hide();

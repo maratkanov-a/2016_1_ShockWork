@@ -8,7 +8,8 @@ require.config({
         materialize: 'lib/materialize.min',
         hammerjs: 'lib/hammerjs',
         jquery_ui: 'lib/cards/jquery-ui',
-        gameplay: 'lib/cards/function'
+        gameplay: 'lib/cards/function',
+        socket: 'webSocket/webSocket'
     },
     shim: {
         'backbone': {
@@ -32,5 +33,13 @@ define([
     Backbone,
     router
 ){
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('./js/serviceWorker.js').then(function(reg) {
+            console.log('Registration succeeded. Scope is ' + reg.scope);
+        }).catch(function(error) {
+            console.log('Registration failed with ' + error);
+        });
+    }
+
     Backbone.history.start();
 });

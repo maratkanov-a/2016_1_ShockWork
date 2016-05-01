@@ -7,9 +7,16 @@ define([
 ){
 
     var CardsCollection = Backbone.Collection.extend({
+
         model: Cards,
+        cardsUrl: '',
+
         getCards: function() {
-            return this.sync()
+            return this.save({}, {
+                type: 'GET',
+                wait: true,
+                url: this.cardsUrl
+            })
         }
     });
 

@@ -6,6 +6,15 @@
     <link rel="stylesheet" href="css/cards/template.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
 
+    <!--=======loader=================================-->
+    <div id="loader-wrapper">
+        <div id="loader"></div>
+
+        <div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+    </div>
+    <!--==============================================-->
+
     <div id="game" class="row">
         <div id="wrapper">
 
