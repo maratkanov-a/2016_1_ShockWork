@@ -3,7 +3,8 @@ define([
     'tmpl/registration',
     'models/session',
     'views/view_manager',
-    'materialize'
+    'materialize',
+    'camera'
 ], function (
     Backbone,
     tmpl,
