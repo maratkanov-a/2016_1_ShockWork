@@ -498,13 +498,15 @@ define([
             this.trigger("show",this);
 
             socket.onopen = function() {
-                $('body').addClass('loaded');
-		        $('h1').css('color','#222222');
+                alert('Open connection')
             };
             socket.onclose = function() {
                 Backbone.history.navigate('', { trigger: true })
             };
-            socket.onmessage = function(evt) {  };
+            socket.onmessage = function(evt) {
+                $('body').addClass('loaded');
+		        $('h1').css('color','#222222');
+            };
 
         },
         hide: function() {
