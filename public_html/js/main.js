@@ -8,7 +8,8 @@ require.config({
         materialize: 'lib/materialize.min',
         hammerjs: 'lib/hammerjs',
         jquery_ui: 'lib/cards/jquery-ui',
-        gameplay: 'lib/cards/function'
+        gameplay: 'lib/cards/function',
+        socket: 'webSocket/webSocket'
     },
     shim: {
         'backbone': {
