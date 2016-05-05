@@ -57,9 +57,7 @@ define([
         },
         makePhoto: function(){
 
-            this.context.drawImage(video, 0, 0, 640, 480);
-
-
+            this.context.drawImage(this.video, 0, 0, 640, 480);
 
         },
         submit: function (e) {
