@@ -17,7 +17,8 @@ define([
         events: {
             "click .js-go-back": "goBack",
             "submit .form": "submit",
-            "click .js-make-photo": "makePhoto"
+            "click .js-make-photo": "makePhoto",
+            "js-video": "show"
         },
 
         template: tmpl,
@@ -37,10 +38,10 @@ define([
         show: function() {
             this.$el.show();
             this.trigger("show",this);
-            var canvas = document.getElementById("canvas"),
-            		context = canvas.getContext("2d"),
-            		video = document.getElementById("video"),
-            		videoObj = { "video": true },
+          var canvas = this.$el.find("#canvas"),
+                      context = canvas[0].getContext('2d'),
+                      video = this.$el.find("#video"),
+                      videoObj = { "video": true };
             		errBack = function(error) {
             			console.log("Video error: ", error.code);
             		};

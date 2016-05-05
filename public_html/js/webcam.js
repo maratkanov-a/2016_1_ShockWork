@@ -32,4 +32,24 @@ window.addEventListener("DOMContentLoaded", function() {
     	context.drawImage(video, 0, 0, 640, 480);
     });
 
+
+
+
 }, false);
+
+ ///преобразование canvas в IMG
+    function convertCanvasToImage(canvas) {
+    	var image = new Image();
+    	image.src = canvas.toDataURL("image/png");
+    	return image;
+    }
+    ///ОТправка
+    var imgData = convertCanvasToImage(drawImage);
+    var postData = JSON.stringify({imageData: imgData});
+
+    $. ajax({
+        url: '[http://localhost/api/user/]',
+        type: "POST",
+        data: postData,
+        contentType: "aplication/json"
+    });
