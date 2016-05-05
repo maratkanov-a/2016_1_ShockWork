@@ -58,9 +58,11 @@
                             </fest:params>
                     </fest:get>
                       <div class="form__avatar">
+
                           <video id="video" class="form__avatar__video"></video>
                           <a class="js-make-photo waves-effect waves-light btn" id="snap">Сделать фото</a>
                           <canvas id="canvas" class="form__avatar__canvas" width="640" height="480"></canvas>
+
                       </div>
                       <div class="form__error form__user__create__error">
                         Username already exists
