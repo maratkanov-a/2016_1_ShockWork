@@ -10,7 +10,6 @@ require.config({
         jquery_ui: 'lib/cards/jquery-ui',
         gameplay: 'lib/cards/function',
         socket: 'webSocket/webSocket',
-        camera: 'lib/registration/webcam'
     },
     shim: {
         'backbone': {
