@@ -19,6 +19,11 @@ html {
     border-radius: 5px;
 }
 
+.form__avatar__video, .form__avatar__canvas{
+    width: 100%;
+    height: 100%;
+}
+
 
 /* Add some margin to the page and set a default font and colour */
 

@@ -3,8 +3,7 @@ define([
     'tmpl/registration',
     'models/session',
     'views/view_manager',
-    'materialize',
-    'camera'
+    'materialize'
 ], function (
     Backbone,
     tmpl,
@@ -22,21 +21,17 @@ define([
         },
 
         template: tmpl,
+
         initialize: function () {
             manager.register(this);
             this.render()
         },
         render: function () {
             this.$el.html(this.template());
-            // for canvas
-            var canvas = this.$el.find("#canvas"),
-            context = canvas[0].getContext('2d'),
-            video = this.$el.find("#video"),
-            videoObj = { "video": true };
-            //-----------
         },
         show: function() {
             this.$el.show();
+            this.initialize_avatar()
             this.trigger("show",this);
           var canvas = this.$el.find("#canvas"),
                       context = canvas[0].getContext('2d'),
@@ -71,10 +66,28 @@ define([
         goBack: function () {
             Backbone.history.history.back();
         },
+        initialize_avatar: function() {
+            this.canvas = this.$el.find("#canvas");
+            this.context = this.canvas[0].getContext('2d');
+            this.video = this.$el.find("#video");
+            this.videoObj = { "video": true };
+            if (navigator.webkitGetUserMedia) { //
+                navigator.webkitGetUserMedia(this.videoObj, function (stream) {
+                    this.video.src = window.webkitURL.createObjectURL(stream);
+                    this.video.play();
+                }, function () {
+                    console.log('please switch on camera')
+                }).bind(this);
+            }
+        },
         makePhoto: function(){
+<<<<<<< HEAD
 
                	context.drawImage(video, 0, 0, 640, 480);
                
+=======
+            this.context.drawImage(video, 0, 0, 640, 480);
+>>>>>>> eb01cd1ae5e015efa891e23ebdaada48e20de87a
         },
         submit: function (e) {
 
