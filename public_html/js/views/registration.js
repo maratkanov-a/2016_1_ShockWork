@@ -81,13 +81,16 @@ define([
             }
         },
         makePhoto: function(){
-<<<<<<< HEAD
 
-               	context.drawImage(video, 0, 0, 640, 480);
-               
-=======
             this.context.drawImage(video, 0, 0, 640, 480);
->>>>>>> eb01cd1ae5e015efa891e23ebdaada48e20de87a
+            //function convertCanvasToImage(canvas) {
+              //  	var image = new Image();
+                //	image.src = canvas.toDataURL("image/png");
+          //  return image;
+            var imgData = this.context.drawImage;
+
+
+
         },
         submit: function (e) {
 
@@ -99,8 +102,9 @@ define([
             var username = $('#username').val();
             var password1 = $('#password1').val();
             var password2 = $('#password2').val();
+            var imgData = $('#imgData').val();
 
-            var valid = session.validateRegistration(email, username, password1, password2);
+            var valid = session.validateRegistration(email, username, password1, password2,imgData);
 
             if (valid === 'None') {
 
