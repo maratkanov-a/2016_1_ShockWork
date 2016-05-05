@@ -31,34 +31,9 @@ define([
         },
         show: function() {
             this.$el.show();
-            this.initialize_avatar()
+            this.initialize_avatar();
             this.trigger("show",this);
-          var canvas = this.$el.find("#canvas"),
-                      context = canvas[0].getContext('2d'),
-                      video = this.$el.find("#video"),
-                      videoObj = { "video": true };
-            		errBack = function(error) {
-            			console.log("Video error: ", error.code);
-            		};
 
-            	// Вставляем видео в зависимости от браузера
-            	if(navigator.getUserMedia) { // Сток
-            		navigator.getUserMedia(videoObj, function(stream) {
-            			video.src = stream;
-            			video.play();
-            		}, errBack);
-            	} else if(navigator.webkitGetUserMedia) { //
-            		navigator.webkitGetUserMedia(videoObj, function(stream){
-            			video.src = window.webkitURL.createObjectURL(stream);
-            			video.play();
-            		}, errBack);
-            	}
-            	else if(navigator.mozGetUserMedia) { // Мз.ск
-            		navigator.mozGetUserMedia(videoObj, function(stream){
-            			video.src = window.URL.createObjectURL(stream);
-            			video.play();
-            		}, errBack);
-            	}
         },
         hide: function() {
             this.$el.hide();
@@ -83,11 +58,6 @@ define([
         makePhoto: function(){
 
             this.context.drawImage(video, 0, 0, 640, 480);
-            //function convertCanvasToImage(canvas) {
-              //  	var image = new Image();
-                //	image.src = canvas.toDataURL("image/png");
-          //  return image;
-            var imgData = this.context.drawImage;
 
 
 

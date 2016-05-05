@@ -23,16 +23,10 @@ define([
         },
 
         logout: function () {
-            $.ajax({
-                type: 'DELETE',
-                url: this.urlLogin,
-                success: function () {
-                    //    TODO
-                },
-                error: function () {
-                    //    TODO
-                }
-
+            return this.save({}, {
+                type: 'GET',
+                wait: true,
+                url: this.urlLogin
             });
         },
 
