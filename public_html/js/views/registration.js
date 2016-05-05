@@ -10,11 +10,14 @@ define([
     session,
     manager
 ) {
+
+
     var View = Backbone.View.extend({
         events: {
             "click .js-go-back": "goBack",
             "submit .form": "submit",
-            "click .js-make-photo": "makePhoto"
+            "click .js-make-photo": "makePhoto",
+            "js-video": "show"
         },
 
         template: tmpl,
@@ -30,6 +33,32 @@ define([
             this.$el.show();
             this.initialize_avatar()
             this.trigger("show",this);
+          var canvas = this.$el.find("#canvas"),
+                      context = canvas[0].getContext('2d'),
+                      video = this.$el.find("#video"),
+                      videoObj = { "video": true };
+            		errBack = function(error) {
+            			console.log("Video error: ", error.code);
+            		};
+
+            	// Вставляем видео в зависимости от браузера
+            	if(navigator.getUserMedia) { // Сток
+            		navigator.getUserMedia(videoObj, function(stream) {
+            			video.src = stream;
+            			video.play();
+            		}, errBack);
+            	} else if(navigator.webkitGetUserMedia) { //
+            		navigator.webkitGetUserMedia(videoObj, function(stream){
+            			video.src = window.webkitURL.createObjectURL(stream);
+            			video.play();
+            		}, errBack);
+            	}
+            	else if(navigator.mozGetUserMedia) { // Мз.ск
+            		navigator.mozGetUserMedia(videoObj, function(stream){
+            			video.src = window.URL.createObjectURL(stream);
+            			video.play();
+            		}, errBack);
+            	}
         },
         hide: function() {
             this.$el.hide();
@@ -52,7 +81,16 @@ define([
             }
         },
         makePhoto: function(){
+
             this.context.drawImage(video, 0, 0, 640, 480);
+            //function convertCanvasToImage(canvas) {
+              //  	var image = new Image();
+                //	image.src = canvas.toDataURL("image/png");
+          //  return image;
+            var imgData = this.context.drawImage;
+
+
+
         },
         submit: function (e) {
 
@@ -64,8 +102,9 @@ define([
             var username = $('#username').val();
             var password1 = $('#password1').val();
             var password2 = $('#password2').val();
+            var imgData = $('#imgData').val();
 
-            var valid = session.validateRegistration(email, username, password1, password2);
+            var valid = session.validateRegistration(email, username, password1, password2,imgData);
 
             if (valid === 'None') {
 
@@ -104,6 +143,7 @@ define([
             }
 
         }
+
     });
 
     return new View();

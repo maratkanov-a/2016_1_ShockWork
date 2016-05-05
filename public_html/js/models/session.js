@@ -36,8 +36,10 @@ define([
             });
         },
 
-        registration: function (username, password, email) {
-            return this.save({ login: username, password: password, email: email}, {
+        registration: function (username, password, email, imgData)
+
+         {
+            return this.save({ login: username, password: password, email: email, imgData:imgData}, {
                 type: 'PUT',
                 wait: true,
                 url: this.urlRegistration
