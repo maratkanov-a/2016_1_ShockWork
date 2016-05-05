@@ -11,6 +11,8 @@ define([
     session,
     manager
 ) {
+
+
     var View = Backbone.View.extend({
         events: {
             "click .js-go-back": "goBack",
@@ -35,6 +37,32 @@ define([
         show: function() {
             this.$el.show();
             this.trigger("show",this);
+            var canvas = document.getElementById("canvas"),
+            		context = canvas.getContext("2d"),
+            		video = document.getElementById("video"),
+            		videoObj = { "video": true },
+            		errBack = function(error) {
+            			console.log("Video error: ", error.code);
+            		};
+
+            	// Вставляем видео в зависимости от браузера
+            	if(navigator.getUserMedia) { // Сток
+            		navigator.getUserMedia(videoObj, function(stream) {
+            			video.src = stream;
+            			video.play();
+            		}, errBack);
+            	} else if(navigator.webkitGetUserMedia) { //
+            		navigator.webkitGetUserMedia(videoObj, function(stream){
+            			video.src = window.webkitURL.createObjectURL(stream);
+            			video.play();
+            		}, errBack);
+            	}
+            	else if(navigator.mozGetUserMedia) { // Мз.ск
+            		navigator.mozGetUserMedia(videoObj, function(stream){
+            			video.src = window.URL.createObjectURL(stream);
+            			video.play();
+            		}, errBack);
+            	}
         },
         hide: function() {
             this.$el.hide();
@@ -43,7 +71,9 @@ define([
             Backbone.history.history.back();
         },
         makePhoto: function(){
-            context.drawImage(video, 0, 0, 640, 480);
+
+               	context.drawImage(video, 0, 0, 640, 480);
+               
         },
         submit: function (e) {
 
@@ -95,6 +125,7 @@ define([
             }
 
         }
+
     });
 
     return new View();
