@@ -72,10 +72,8 @@ define([
         },
         remakePhoto: function() {
             this.isSnapped = false;
-            if (!$(canvas).is(":visible")) { 
+            if (!$(canvas).is(":visible"))
                 $(canvas).show();
-                $(".nav").css("margin-top", 20);
-            }
         	this.startWebCam();
 			this.toggleElements();
         },
