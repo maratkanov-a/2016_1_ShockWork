@@ -11,12 +11,12 @@ define([
     manager
 ) {
 
-
     var View = Backbone.View.extend({
         events: {
             "click .js-go-back": "goBack",
             "submit .form": "submit",
             "click .js-make-photo": "makePhoto",
+            "click .js-remake-photo": "remakePhoto",
             "js-video": "show"
         },
 
@@ -24,42 +24,70 @@ define([
 
         initialize: function () {
             manager.register(this);
-            this.render()
+            this.render();
+
+            this.isSnapped = false;
+            this.canvas = this.$el.find("#canvas");
+            this.context = this.canvas[0].getContext('2d');
+            this.video = this.$el.find("#video");
+            this.videoObj = { "video": true, "audio": false };
         },
         render: function () {
             this.$el.html(this.template());
         },
         show: function() {
             this.$el.show();
-            this.initialize_avatar();
             this.trigger("show",this);
-
+            if ($(video).is(":visible")) 
+                this.startWebCam();
         },
         hide: function() {
+        	this.stopWebCam();
             this.$el.hide();
         },
         goBack: function () {
             Backbone.history.history.back();
         },
-        initialize_avatar: function() {
-            this.canvas = this.$el.find("#canvas");
-            this.context = this.canvas[0].getContext('2d');
-            this.video = this.$el.find("#video");
-            this.videoObj = { "video": true };
-            if (navigator.webkitGetUserMedia) { //
-                navigator.webkitGetUserMedia(this.videoObj, function (stream) {
-                    this.video.src = window.webkitURL.createObjectURL(stream);
+        startWebCam: function() {
+            if (navigator.webkitGetUserMedia) {
+                this.usermedia = navigator.webkitGetUserMedia(this.videoObj, function (localMediaStream) {
+                    this.video.src = window.URL.createObjectURL(localMediaStream);
                     this.video.play();
+                    this.webcamStream=localMediaStream;
                 }, function () {
-                    console.log('please switch on camera')
-                }).bind(this);
+                    $(video).hide();
+                    $(snap).hide();
+                });
             }
         },
-        makePhoto: function(){
-
-            this.context.drawImage(this.video, 0, 0, 640, 480);
-
+        stopWebCam: function() {
+            if (typeof(webcamStream) != "undefined")
+        	   webcamStream.getVideoTracks()[0].stop();
         },
+        makePhoto: function(){
+            this.isSnapped = true;
+        	this.context.drawImage(video, 0, 0, 640, 480);
+        	this.toggleElements();
+            this.stopWebCam();
+        },
+        remakePhoto: function() {
+            this.isSnapped = false;
+            if (!$(canvas).is(":visible")) { 
+                $(canvas).show();
+                $(".nav").css("margin-top", 20);
+            }
+        	this.startWebCam();
+			this.toggleElements();
+        },
+        toggleElements: function() {
+        	$(canvas).toggle();
+        	$(video).toggle();
+        	$(snap).toggle();
+        	$(resnap).toggle();
+        },
+        canvasToString: function (canvas) {
+			return (this.isSnapped) ? canvas.toDataURL("image/png").replace(/^data:image\/(png|jpg);base64,/, "") : "";
+		},
         submit: function (e) {
 
             e.preventDefault();
@@ -70,13 +98,13 @@ define([
             var username = $('#username').val();
             var password1 = $('#password1').val();
             var password2 = $('#password2').val();
-            var imgData = $('#imgData').val();
+            var imgData = this.canvasToString(canvas);
 
-            var valid = session.validateRegistration(email, username, password1, password2,imgData);
+            var valid = session.validateRegistration(email, username, password1, password2);
 
             if (valid === 'None') {
 
-                session.registration(username, password1, email).done(function() {
+                session.registration(username, password1, email, imgData).done(function() {
                 	Backbone.history.navigate('game', {trigger: true});
                 })
                 .fail(function(){

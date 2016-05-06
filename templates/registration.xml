@@ -1,77 +1,77 @@
 <fest:template xmlns:fest="http://fest.mail.ru" context_name="json">
-    <fest:include src="./input_field_template.xml"/>
-    <div id="registraiton" class="row">
-        <div class="col s12 m6 offset-m3">
-            <nav class="nav">
-                <div class="nav-wrapper">
-                    <a class="brand-logo center">Регистрация</a>
-                    <ul class="left hide-on-med-and-down">
-                        <li>
-                            <a class="js-go-back waves-effect waves-light btn">Назад</a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </div>
-
-        <div class="col s12 m6 offset-m3">
-              <div class="card-panel">
-                  <form class="form">
-                    <fest:get name="form__input">
-                        <fest:params>
-                            {
-                                id: "email",
-                                label: "Email",
-                                type: "email",
-                                icon: "info_outline"
-                            }
-                        </fest:params>
-                    </fest:get>
-                    <fest:get name="form__input">
-                        <fest:params>
-                            {
-                                id: "username",
-                                label: "Username",
-                                type: "text",
-                                icon: "perm_identity"
-                            }
-                            </fest:params>
-                    </fest:get>
-                    <fest:get name="form__input">
-                        <fest:params>
-                            {
-                                id: "password1",
-                                label: "Password",
-                                type: "password",
-                                icon: "lock_open"
-                            }
-                            </fest:params>
-                    </fest:get>
-                    <fest:get name="form__input">
-                        <fest:params>
-                            {
-                                id: "password2",
-                                label: "Repeat Password",
-                                type: "password",
-                                icon: "lock"
-                            }
-                            </fest:params>
-                    </fest:get>
-                      <div class="form__avatar">
-
-                          <video id="video" class="form__avatar__video"></video>
-                          <a class="js-make-photo waves-effect waves-light btn" id="snap">Сделать фото</a>
-                          <canvas id="canvas" class="form__avatar__canvas" width="640" height="480"></canvas>
-
-                      </div>
-                      <div class="form__error form__user__create__error">
-                        Username already exists
-                      </div>
-                    <div>
-                        <input class="js-submit waves-effect waves-light btn" type="submit"></input>
-                    </div>
-                  </form>
-              </div>
-        </div>
-    </div>
+   <fest:include src="./input_field_template.xml"/>
+   <div id="registraiton" class="row">
+      <div class="col s12 m6 offset-m3">
+         <nav class="nav">
+            <div class="nav-wrapper">
+               <a class="brand-logo center">Регистрация</a>
+               <ul class="left hide-on-med-and-down">
+                  <li>
+                     <a class="js-go-back waves-effect waves-light btn">Назад</a>
+                  </li>
+               </ul>
+            </div>
+         </nav>
+      </div>
+      <div class="col s12 m6 offset-m3">
+         <div class="card-panel">
+            <form class="form">
+               <fest:get name="form__input">
+                  <fest:params>
+                     {
+                     id: "email",
+                     label: "Email",
+                     type: "email",
+                     icon: "info_outline"
+                     }
+                  </fest:params>
+               </fest:get>
+               <fest:get name="form__input">
+                  <fest:params>
+                     {
+                     id: "username",
+                     label: "Логин",
+                     type: "text",
+                     icon: "perm_identity"
+                     }
+                  </fest:params>
+               </fest:get>
+               <fest:get name="form__input">
+                  <fest:params>
+                     {
+                     id: "password1",
+                     label: "Пароль",
+                     type: "password",
+                     icon: "lock_open"
+                     }
+                  </fest:params>
+               </fest:get>
+               <fest:get name="form__input">
+                  <fest:params>
+                     {
+                     id: "password2",
+                     label: "Повторите пароль",
+                     type: "password",
+                     icon: "lock"
+                     }
+                  </fest:params>
+               </fest:get>
+               <div class="form__avatar">
+                  <video id="video" class="form__avatar__video" style="display: none;"></video>
+                  <canvas id="canvas" class="form__avatar__canvas" width="640" height="480" style="display: none;"></canvas>
+                  <div class="form__avatar__buttons">  
+                     <a class="js-make-photo waves-effect waves-light btn" id="snap" style="display: none;">Сфотографировать</a>
+                     <a class="js-remake-photo waves-effect waves-light btn" id="resnap">Сделать фото</a>
+                  </div>
+               </div>
+               <div class="form__error form__user__create__error">
+                  Пользователь уже существует
+               </div>
+               <div>
+                  <input class="js-submit waves-effect waves-light btn" type="submit"></input>
+               </div>
+            </form>
+         </div>
+      </div>
+   </div>
 </fest:template>

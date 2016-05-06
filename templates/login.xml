@@ -21,7 +21,7 @@
                         <fest:params>
                             {
                                 id: "username",
-                                label: "Username",
+                                label: "Логин",
                                 type: "text",
                                 icon: "perm_identity"
                             }
@@ -31,14 +31,14 @@
                         <fest:params>
                             {
                                 id: "password",
-                                label: "Password",
+                                label: "Пароль",
                                 type: "password",
                                 icon: "lock_open"
                             }
                         </fest:params>
                     </fest:get>
                       <div class="form__error form__login__error">
-                        Unknown username/password
+                        Неизвестный логин/пароль
                       </div>
                     <div>
                         <input class="js-submit waves-effect waves-light btn" type="submit"></input>
