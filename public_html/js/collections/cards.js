@@ -1,6 +1,6 @@
 define([
     'backbone',
-    'models/cards'
+    'models/card'
 ], function(
     Backbone,
     Cards
@@ -9,17 +9,9 @@ define([
     var CardsCollection = Backbone.Collection.extend({
 
         model: Cards,
-        cardsUrl: '',
-
-        getCards: function() {
-            return this.save({}, {
-                type: 'GET',
-                wait: true,
-                url: this.cardsUrl
-            })
-        }
+        url: 'ws://localhost:8081/api/gameplay/cards/'
     });
 
-    return CardsCollection.getCards();
+    return new CardsCollection().getCards();
 
 });
