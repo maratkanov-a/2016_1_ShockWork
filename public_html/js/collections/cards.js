@@ -12,6 +12,6 @@ define([
         url: 'ws://localhost:8081/api/gameplay/cards/'
     });
 
-    return new CardsCollection().getCards();
+    return new CardsCollection();
 
 });
