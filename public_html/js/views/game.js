@@ -302,20 +302,20 @@ define([
             $(".score span").text('0');
             newThis = this.$el;
             for (var i = 1; i <= 3; i++) {
-                $('<div style = "height: 205px; width: 100%"> </div>').
-                    data('user', 1)
+                $('<div style = "height: 205px; width: 100%"> </div>')
+                    .data('user', 1)
                     .appendTo(newThis.find('#sortable2')).droppable({
-                    accept: '.playing_card',
-                    hoverClass: 'hovered',
-                    drop: this.handleDrop
-                });
+                        accept: '.playing_card',
+                        hoverClass: 'hovered',
+                        drop: this.handleDrop
+                    });
             }
         },
         manaPush: function(mana){
             this.mana_stack.push(mana);
         },
         handleDrop: function(event, ui){
-            ui.draggable.data('this').manaPush(ui.draggable.data('class'))
+            ui.draggable.data('this').manaPush(ui.draggable.data('class'));
             var cardPower = ui.draggable.data('power');
             ui.draggable.data('this').stack_to_delete.push(ui.draggable.data('number'));
             ui.draggable.addClass( 'correct' );
