@@ -34,10 +34,15 @@ define([
     router
 ){
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('./js/serviceWorker.js').then(function(reg) {
-            console.log('Registration succeeded. Scope is ' + reg.scope);
-        }).catch(function(error) {
-            console.log('Registration failed with ' + error);
+        navigator.serviceWorker.register(
+           '/js/webSocket/appCache.js'
+        ).then(function(registration) {
+            // при удачной регистрации имеем объект типа ServiceWorkerRegistration
+            console.log('ServiceWorker registration', registration);
+            // строкой ниже можно прекратить работу serviceWorker’а
+            //registration.unregister();
+        }).catch(function(err) {
+            throw new Error('ServiceWorker error: ' + err);
         });
     }
 
