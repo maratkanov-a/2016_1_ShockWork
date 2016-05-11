@@ -3,14 +3,12 @@ define([
     'tmpl/game',
     'gameplay',
     'views/view_manager',
-    'socket',
     'collections/cards'
 ], function(
     Backbone,
     tmpl,
     gameplay,
     manager,
-    socket,
     cardCollection
 ){
 
@@ -35,7 +33,7 @@ define([
             this.initializeGame();
             this.trigger("show",this);
 
-            socket.onopen = function() {
+            var socket = new WebSocket("ws://0.0.0.0:8081/api/gameplay").onopen = function() {
                 alert('Open connection')
             };
             socket.onclose = function() {
