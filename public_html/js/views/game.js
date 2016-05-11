@@ -33,7 +33,7 @@ define([
             this.initializeGame();
             this.trigger("show",this);
 
-            var socket = new WebSocket("ws://0.0.0.0:8081/api/gameplay").onopen = function() {
+            var socket = new WebSocket("ws://localhost:8081/api/gameplay").onopen = function() {
                 alert('Open connection')
             };
             socket.onclose = function() {
@@ -53,7 +53,7 @@ define([
         },
         initializeGame: function(){
             //debugger;
-            console.log(cardCollection.fetch());
+            //console.log(cardCollection.fetch());
             this.round = 1;
             this.cards_counter = 0;
             this.mana_stack = [];
