@@ -38,13 +38,15 @@ define([
            '/js/webSocket/appCache.js'
         ).then(function(registration) {
             // при удачной регистрации имеем объект типа ServiceWorkerRegistration
-            console.log('ServiceWorker registration', registration);
+            console.log('ServiceWorker registration', registration.scope);
             // строкой ниже можно прекратить работу serviceWorker’а
             //registration.unregister();
         }).catch(function(err) {
-            throw new Error('ServiceWorker error: ' + err);
+             console.log('ServiceWorker registration failed: ', err);
         });
     }
+
+
 
     Backbone.history.start();
 });
