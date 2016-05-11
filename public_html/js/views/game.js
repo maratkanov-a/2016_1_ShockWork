@@ -33,7 +33,7 @@ define([
             this.initializeGame();
             this.trigger("show",this);
 
-            var socket = new WebSocket("ws://localhost:8081/api/gameplay").onopen = function() {
+            var socket = new WebSocket("ws://" + window.location.hostname + ":" + 8081 + "/api/gameplay").onopen = function() {
                 alert('Open connection')
             };
             socket.onclose = function() {
