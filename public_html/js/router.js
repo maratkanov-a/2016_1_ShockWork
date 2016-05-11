@@ -38,14 +38,14 @@ define([
         },
         gameAction: function () {
 
-            //session.isLoggedIn()
-            //    .done(function() {
+            session.isLoggedIn()
+                .done(function() {
                     $('#page').append(gameView.el);
                     gameView.show();
-                //})
-                //.fail(function(){
-                //    Backbone.history.navigate('login', { trigger: true });
-                //});
+                })
+                .fail(function(){
+                    Backbone.history.navigate('login', { trigger: true });
+                });
         },
         loginAction: function () {
             this.$page.append(loginView.el);

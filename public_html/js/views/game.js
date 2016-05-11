@@ -39,7 +39,8 @@ define([
             socket.onclose = function() {
                 Backbone.history.navigate('', { trigger: true })
             };
-            socket.onmessage = function(evt) {
+            socket.onmessage = function(msg) {
+                alert(msg);
                 $('body').addClass('loaded');
 		        $('h1').css('color','#222222');
             };
