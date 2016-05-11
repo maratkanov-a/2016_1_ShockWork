@@ -30,16 +30,17 @@ define([
             this.initializeGame();
             this.trigger("show",this);
 
-            var socket = new WebSocket("ws://" + window.location.hostname + ":" + 8081 + "/api/gameplay").onopen = function() {
+            var socket = new WebSocket("ws://" + window.location.hostname + ":" + 8081 + "/api/gameplay");
+            socket.onopen = function () {
                 alert('Open connection')
             };
-            socket.onclose = function() {
-                Backbone.history.navigate('', { trigger: true })
+            socket.onclose = function () {
+                Backbone.history.navigate('', {trigger: true})
             };
-            socket.onmessage = function(msg) {
-                alert(msg);
+            socket.onmessage = function (msg) {
+                alert(msg.data);
                 $('body').addClass('loaded');
-		        $('h1').css('color','#222222');
+                $('h1').css('color', '#222222');
             };
 
         },
