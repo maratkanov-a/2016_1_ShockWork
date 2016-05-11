@@ -2,13 +2,11 @@ define([
     'backbone',
     'tmpl/game',
     'gameplay',
-    'views/view_manager',
     'collections/cards'
 ], function(
     Backbone,
     tmpl,
     gameplay,
-    manager,
     cardCollection
 ){
 
@@ -21,7 +19,6 @@ define([
         template: tmpl,
 
         initialize: function () {
-            manager.register(this);
             this.render();
         },
 

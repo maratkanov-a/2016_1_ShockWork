@@ -1,17 +1,14 @@
 define([
     'backbone',
-    'tmpl/main',
-    'views/view_manager'
+    'tmpl/main'
 ], function(
     Backbone,
-    tmpl,
-    manager
+    tmpl
 ){
 
     var View = Backbone.View.extend({
         template: tmpl,
         initialize: function () {
-            manager.register(this);
             this.render();
         },
         render: function () {

@@ -5,7 +5,8 @@ define([
     'views/login',
     'views/scoreboard',
     'views/registration',
-    'models/session'
+    'models/session',
+    'views/view_manager'
 ], function(
     Backbone,
     mainView,
@@ -13,7 +14,8 @@ define([
     loginView,
     scoreboardView,
     registrationView,
-    session
+    session,
+    manager
 ){
 
     var Router = Backbone.Router.extend({
@@ -27,6 +29,14 @@ define([
         },
 
         $page: $('#page'),
+
+        initialize: function(){
+            manager.register(mainView);
+            manager.register(gameView);
+            manager.register(loginView);
+            manager.register(scoreboardView);
+            manager.register(registrationView);
+        },
 
         mainAction: function () {
             this.$page.append(mainView.el);
