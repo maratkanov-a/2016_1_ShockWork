@@ -35,14 +35,14 @@ define([
 ){
     if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register(
-           '/js/webSocket/appCache.js'
+           '/appCache.js'
         ).then(function(registration) {
             // при удачной регистрации имеем объект типа ServiceWorkerRegistration
-            console.log('ServiceWorker registration', registration.scope);
+            console.log('ServiceWorker registration');
             // строкой ниже можно прекратить работу serviceWorker’а
             //registration.unregister();
         }).catch(function(err) {
-             console.log('ServiceWorker registration failed: ', err);
+             console.log('ServiceWorker registration failed');
         });
     }
 
