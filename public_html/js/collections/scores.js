@@ -9,7 +9,7 @@ define([
     var ScoresCollection = Backbone.Collection.extend({
 
         model: Score,
-        url: 'http://localhost:8081/api/scoreboard',
+        url: '/api/scoreboard',
 
         comparator: function( collection ) {
             return ( -collection.get('score') );
