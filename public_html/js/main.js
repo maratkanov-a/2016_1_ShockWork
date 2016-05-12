@@ -37,10 +37,7 @@ define([
         navigator.serviceWorker.register(
            '/appCache.js'
         ).then(function(registration) {
-            // при удачной регистрации имеем объект типа ServiceWorkerRegistration
             console.log('ServiceWorker registration');
-            // строкой ниже можно прекратить работу serviceWorker’а
-            //registration.unregister();
         }).catch(function(err) {
              console.log('ServiceWorker registration failed');
         });

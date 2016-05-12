@@ -1,17 +1,11 @@
-console.log("SW startup");
 self.addEventListener('install', function(event) {
   event.waitUntil(
     caches.open('MMG-v1').then(function(cache) {
       return cache.addAll([
                  '/',
-
                  '/css/main.css',
-
                  '/img/la.jpg'
-
-
-
-      ]);
+                 ]);
     })
   );
   console.log("SW installed");
@@ -29,7 +23,6 @@ self.addEventListener('activate', function(event) {
       );
     })
   );
-   console.log("SW activated");
 });
 
 self.addEventListener('fetch', function(event) {
