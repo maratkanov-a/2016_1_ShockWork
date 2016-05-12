@@ -1,12 +1,10 @@
 define([
     'backbone',
     'tmpl/game',
-    'gameplay',
     'collections/cards'
 ], function(
     Backbone,
     tmpl,
-    gameplay,
     cardCollection
 ){
 

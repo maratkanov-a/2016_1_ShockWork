@@ -7,8 +7,7 @@ require.config({
         backbone: "lib/backbone",
         materialize: 'lib/materialize.min',
         hammerjs: 'lib/hammerjs',
-        jquery_ui: 'lib/cards/jquery-ui',
-        gameplay: 'lib/cards/function'
+        jquery_ui: 'lib/cards/jquery-ui'
     },
     shim: {
         'backbone': {

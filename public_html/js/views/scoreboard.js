@@ -18,8 +18,9 @@ define([
             this.render();
         },
         render: function () {
-            var collection = ScoresCollection.fetch();
-            this.$el.html(this.template( { scores : collection.toJSON() } ));
+            //var collection = ScoresCollection.fetch();
+            //this.$el.html(this.template( { scores : collection.toJSON() } ));
+            this.$el.html(this.template());
         },
         show: function() {
             this.$el.show();
