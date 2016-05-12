@@ -10,6 +10,7 @@ define([
 
         register: function (currentView) {
             this.views.push(currentView);
+            $('#page').append(currentView.el);
             this.listenTo(currentView, 'show', this.onShow.bind(this, currentView));
         },
 

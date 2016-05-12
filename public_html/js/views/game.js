@@ -38,7 +38,8 @@ define([
                 Backbone.history.navigate('', {trigger: true})
             };
             socket.onmessage = function (msg) {
-                alert(msg.data);
+                debugger;
+                alert(msg.data['cards']);
                 $('body').addClass('loaded');
                 $('h1').css('color', '#222222');
             };
