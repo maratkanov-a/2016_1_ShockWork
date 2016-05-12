@@ -29,6 +29,11 @@ html {
     height: 240px;  
 }
 
+.card__size {
+    width: 120px;
+    height: 180px;
+    margin-bottom: 30px
+}
 
 /* Add some margin to the page and set a default font and colour */
 
