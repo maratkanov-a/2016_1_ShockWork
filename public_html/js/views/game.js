@@ -28,14 +28,14 @@ define([
             this.$el.show();
             this.trigger("show",this);
 
-            var socket = new WebSocket("ws://" + window.location.hostname + ":" + window.location.port + "/api/gameplay");
-            socket.onopen = function () {
+            this.socket = new WebSocket("ws://" + window.location.hostname + ":" + window.location.port + "/api/gameplay");
+            this.socket.onopen = function () {
                 alert('Open connection')
             };
-            socket.onclose = function () {
+            this.socket.onclose = function () {
                 Backbone.history.navigate('', {trigger: true})
             };
-            socket.onmessage = function (msg) {
+            this.socket.onmessage = function (msg) {
                 this.cardsCollection =  JSON.parse(msg.data)['cards'];
                 this.initializeGame();
                 $('body').addClass('loaded');
@@ -97,14 +97,14 @@ define([
             ui.draggable.data('this').USER_power += cardPower;
         },
         draw: function(stack) {
-            if (stack.length < 3) var count = stack.length;
+            var count = stack.length;
             var newThis = this.$el;
             for (var i=0; i < count; i++ ){
                 $('<li class="ui-state-default"><img src="img/cards/'+stack[i].img+'.png" alt=""> </li>')
                 .data('power', stack[i].power)
                 .data('class', stack[i].mana)
                     .data('this',this)
-                .data('number', i)
+                .data('number', stack[i].id)
                 .attr('id', 'card_user1_' + stack[i].id)
                 .attr('class', 'playing_card').appendTo(newThis.find('#user_stack'))
                 .draggable({
@@ -124,6 +124,8 @@ define([
 
         done: function () {
             this.result(this.USER_power, this.aiSimulation(this.AI_stack));
+            debugger;
+            this.socket.send(this.stack_to_delete);
         },
 
         restartButton: function(){
