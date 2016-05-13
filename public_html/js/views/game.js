@@ -190,7 +190,7 @@ define([
         },
         init_table: function() {
             $(".score span").text('0');
-            newThis = this.$el;
+            var newThis = this.$el;
             for (var i = 1; i <= 3; i++) {
                 $('<div style = "height: 205px; width: 100%"> </div>')
                     .data('user', 1)
@@ -221,7 +221,7 @@ define([
             cards_counter = 0;
             count = 3;
             if (stack.length < 3) var count = stack.length;
-            newThis = this.$el;
+            var newThis = this.$el;
             for (var i=0; i < count; i++ ){
                 $('<li class="ui-state-default"><img src="img/cards/'+stack[i].img+'.png" alt=""> </li>')
                 .data('power', stack[i].power)
@@ -246,9 +246,8 @@ define([
         },
         aiSimulation: function (stack) {
             this.cards_counter = 0;
-            count = 3;
             if (stack.length < 3) var count = stack.length;
-            newThis = this;
+            var newThis = this;
             for (var i = 0; i < count; i++) {
                 $('<li class="ui-state-default"><img src="img/cards/' + stack[i].img + '.png" alt=""> </li>')
                     .data('power', stack[i].power)
@@ -267,9 +266,7 @@ define([
         },
 
         result: function (user, ai) {
-            console.log('USER POWER = '+user);
-            console.log('AI POWER = '+ai);
-            newThis = this;
+            var newThis = this;
             if (this.mana_stack[0] == this.mana_stack[1] && this.mana_stack[1] == this.mana_stack[2]) {
                 alert("Mana win");
             }
@@ -293,7 +290,6 @@ define([
         },
         restartButton: function(){
             this.round++;
-            console.log('Round = '+this.round);
             if (this.round > 5) alert ('game over!');
             this.stack_to_delete.sort();
             this.stack_to_delete.reverse();

@@ -5,6 +5,7 @@ define([
     'views/login',
     'views/scoreboard',
     'views/registration',
+    'views/offline',
     'models/session',
     'views/view_manager'
 ], function(
@@ -14,6 +15,7 @@ define([
     loginView,
     scoreboardView,
     registrationView,
+    offlineView,
     session,
     manager
 ){
@@ -25,6 +27,7 @@ define([
             'game': 'gameAction',
             'login': 'loginAction',
             'registration': 'registrationAction',
+            'tryit': 'offlineGameAction',
             '*default': 'defaultActions'
         },
 
@@ -34,6 +37,7 @@ define([
             manager.register(loginView);
             manager.register(scoreboardView);
             manager.register(registrationView);
+            manager.register(offlineView);
         },
 
         mainAction: function () {
@@ -57,6 +61,9 @@ define([
         },
         registrationAction: function () {
             registrationView.show();
+        },
+        offlineGameAction: function () {
+            offlineView.show();
         },
         defaultActions: function() {
              //TODO: 404 or remove mainAction

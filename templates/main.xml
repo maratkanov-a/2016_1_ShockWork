@@ -10,6 +10,9 @@
                 <a href="#login" class="collection-item">
                     Войти<i class="secondary-content material-icons">send</i>
                 </a>
+                <a href="#tryit" class="collection-item">
+                    Попробовать одиночную игру<i class="secondary-content material-icons">send</i>
+                </a>
                 <a href="#registration" class="collection-item">
                     Регистрация<i class="secondary-content material-icons">send</i>
                 </a>
