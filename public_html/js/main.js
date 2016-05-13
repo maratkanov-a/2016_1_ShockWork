@@ -32,12 +32,16 @@ define([
     router
 ){
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('./js/serviceWorker.js').then(function(reg) {
-            console.log('Registration succeeded. Scope is ' + reg.scope);
-        }).catch(function(error) {
-            console.log('Registration failed with ' + error);
+        navigator.serviceWorker.register(
+           '/appCache.js'
+        ).then(function(registration) {
+            console.log('ServiceWorker registration');
+        }).catch(function(err) {
+             console.log('ServiceWorker registration failed');
         });
     }
+
+
 
     Backbone.history.start();
 });

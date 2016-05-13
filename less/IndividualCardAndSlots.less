@@ -1,0 +1,41 @@
+@import "variables.less";
+
+#cardSlots div, #cardPile div, #cardSlots2 div, #cardPile2 div {
+    float: left;
+    width: 58px;
+    height: 60px;
+    padding: 10px;
+    padding-top: 40px;
+    padding-bottom: 0;
+    border: 2px solid #333;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    margin: 0 0 0 10px;
+    background: #fff;
+}
+
+#cardSlots div:first-child, #cardPile div:first-child, #cardSlots2 div:first-child, #cardPile2 div:first-child {
+    margin-left: 0;
+}
+
+#cardSlots div.hovered, #cardSlots2 div.hovered {
+    background: #aaa;
+}
+
+#cardSlots div, #cardSlots2 div {
+    border-style: dashed;
+}
+
+#cardPile div, #cardPile2 div {
+    background: #666;
+    color: #fff;
+    font-size: 50px;
+    text-shadow: 0 0 3px #000;
+}
+
+#cardPile div.ui-draggable-dragging, #cardPile2 div.ui-draggable-dragging {
+    -moz-box-shadow: @ICAS-cardPile;
+    -webkit-box-shadow: @ICAS-cardPile;
+    box-shadow: @ICAS-cardPile;
+}

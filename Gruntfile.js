@@ -1,6 +1,25 @@
 module.exports = function (grunt) {
 
     grunt.initConfig({
+
+    //add less
+
+        less: {
+              development: {
+                options: {
+                  paths: ['less'],
+                  plugins: [
+                    new(require('less-plugin-autoprefix'))({
+                      browsers: ["last 2 versions"]
+                    })
+                  ],
+                },
+                files: {
+                  'public_html/css/main.css': 'less/main.less'
+                }
+              }
+            },
+
         shell: {
             options: {
                 stdout: true,
@@ -46,6 +65,9 @@ module.exports = function (grunt) {
                     livereload: true
                 }
             }
+
+
+
         },
         concurrent: {
             target: ['watch', 'shell'],
@@ -58,13 +80,16 @@ module.exports = function (grunt) {
         }
     });
 
+
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-qunit');
     grunt.loadNpmTasks('grunt-concurrent');
     grunt.loadNpmTasks('grunt-shell');
     grunt.loadNpmTasks('grunt-fest');
+    grunt.loadNpmTasks('grunt-contrib-less');
 
     grunt.registerTask('test', ['qunit:all']);
     grunt.registerTask('default', ['concurrent']);
+    grunt.registerTask('less', ['less']);
 
 };
