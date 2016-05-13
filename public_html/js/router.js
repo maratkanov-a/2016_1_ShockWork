@@ -5,7 +5,8 @@ define([
     'views/login',
     'views/scoreboard',
     'views/registration',
-    'models/session'
+    'models/session',
+    'views/view_manager'
 ], function(
     Backbone,
     mainView,
@@ -13,7 +14,8 @@ define([
     loginView,
     scoreboardView,
     registrationView,
-    session
+    session,
+    manager
 ){
 
     var Router = Backbone.Router.extend({
@@ -26,21 +28,24 @@ define([
             '*default': 'defaultActions'
         },
 
-        $page: $('#page'),
+        initialize: function(){
+            manager.register(mainView);
+            manager.register(gameView);
+            manager.register(loginView);
+            manager.register(scoreboardView);
+            manager.register(registrationView);
+        },
 
         mainAction: function () {
-            this.$page.append(mainView.el);
             mainView.show();
         },
         scoreboardAction: function () {
-            this.$page.append(scoreboardView.el);
             scoreboardView.show();
         },
         gameAction: function () {
 
             session.isLoggedIn()
                 .done(function() {
-                    $('#page').append(gameView.el);
                     gameView.show();
                 })
                 .fail(function(){
@@ -48,16 +53,13 @@ define([
                 });
         },
         loginAction: function () {
-            this.$page.append(loginView.el);
             loginView.show();
         },
         registrationAction: function () {
-            this.$page.append(registrationView.el);
             registrationView.show();
         },
         defaultActions: function() {
              //TODO: 404 or remove mainAction
-            this.$page.append(mainView.el);
             mainView.show();
         }
     });

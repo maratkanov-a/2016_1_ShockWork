@@ -22,7 +22,7 @@
         <div class="container">
             <div id = "user_stack" class="leftBar fl" style="">
             </div>
-            <div class="rightBar fr">
+            <div class="js-insert-back rightBar fr">
 
             </div>
 
@@ -74,6 +74,6 @@
 </div>
     </div>
 
-<fest:script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"/>
+
 
 </fest:template>
