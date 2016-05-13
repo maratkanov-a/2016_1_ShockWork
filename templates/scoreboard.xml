@@ -14,7 +14,7 @@
             <ul class="collection">
                 <fest:for iterate="json.scores" index="i">
                     <li class="collection-item">
-                        <fest:value>json.scores[i].name</fest:value>
+                        <fest:value>json.scores[i].username</fest:value>
                         <div class="secondary-content">
                             <fest:value>json.scores[i].score</fest:value>
                         </div>
