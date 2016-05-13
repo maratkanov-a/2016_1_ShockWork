@@ -27,7 +27,7 @@ define([
             this.$el.show();
             this.trigger("show",this);
 
-            var socket = new WebSocket("ws://" + window.location.hostname + ":" + 8081 + "/api/gameplay");
+            var socket = new WebSocket("ws://" + window.location.hostname + ":" + window.location.port + "/api/gameplay");
             socket.onopen = function () {
                 alert('Open connection')
             };
