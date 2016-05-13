@@ -20,7 +20,6 @@ define([
         render: function () {
             ScoresCollection.fetch({remove: false});
             this.$el.html(this.template( { scores : ScoresCollection.toJSON() } ));
-            this.$el.html(this.template());
         },
         show: function() {
             this.$el.show();
