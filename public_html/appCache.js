@@ -2,9 +2,20 @@ self.addEventListener('install', function(event) {
   event.waitUntil(
     caches.open('MMG-v1').then(function(cache) {
       return cache.addAll([
-                 '/',
-                 '/css/main.css',
-                 '/img/la.jpg'
+                    '/',
+                  '/js/main.js',
+                  '/css/main.css',
+                  '/img/la.jpg',
+                  '/js/router.js',
+                  /*'/css/loader.css',
+                   '/css/materialize.min.css',*/
+                    '/js/lib/require.js',
+                  '/js/router.js',
+                    /*'/js/lib/jquery.js',
+                    '/js/lib/underscore.js',*/
+                    'appCache.js'
+
+
                  ]);
     })
   );
@@ -24,7 +35,6 @@ self.addEventListener('activate', function(event) {
     })
   );
 });
-
 self.addEventListener('fetch', function(event) {
   event.respondWith(
     fetch(event.request).catch(function() {
