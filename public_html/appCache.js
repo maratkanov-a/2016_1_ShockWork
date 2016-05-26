@@ -13,7 +13,9 @@ self.addEventListener('install', function(event) {
                   '/js/router.js',
                     /*'/js/lib/jquery.js',
                     '/js/lib/underscore.js',*/
-                    'appCache.js'
+                    'appCache.js',
+                    '/js/build/app.js',
+                    '/css/main.min.css'
 
 
                  ]);
