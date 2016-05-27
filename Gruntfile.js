@@ -15,7 +15,8 @@ module.exports = function (grunt) {
                   ],
                 },
                 files: {
-                  'public_html/css/main.css': 'less/main.less'
+                  'public_html/css/main.css': 'less/main.less',
+                  'public_html/css/cards/template.css': 'less/less_for_template/main.less'
                 }
               }
             },
@@ -77,28 +78,29 @@ module.exports = function (grunt) {
         },
         qunit: {
             all: ['./public_html/tests/index.html']
-        }
+        },
+        
         //addReqJS
          requirejs: {
-         build: {
-         options: {
-         almond: true,
-         baseUrl: "public_html/js",
-         mainConfigFile: "public_html/config.js",
-         name: "main",
-         optimize: "uglify",
-         out: "public_html/js/build/app.js",
-         }
-         },
+            build: {
+                options: {
+                             almond: true,
+                             baseUrl: "public_html/js",
+                             mainConfigFile: "public_html/config.js",
+                             name: "main",
+                             optimize: "uglify",
+                             out: "public_html/js/build/app.js",
+                         }
+                     },
          css: {
-         options: {
-         optimizeCss: "standard",
-         cssImportIgnore: null,
-         cssIn: "public_html/css/main.css",
-         out: "public_html/css/main.min.css",
-         }
-         }
-         } 
+            options: {
+                        optimizeCss: "standard",
+                        cssImportIgnore: null,
+                        cssIn: "public_html/css/main.css",
+                        out: "public_html/css/main.min.css",
+                    }
+                }      
+                     }           
 
 
     });
