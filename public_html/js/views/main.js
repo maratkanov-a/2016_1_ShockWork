@@ -2,7 +2,7 @@ define([
     'backbone',
     'tmpl/main'
 ], function(
-    Backbone,
+    Backbone1,
     tmpl
 ){
 
