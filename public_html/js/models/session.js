@@ -1,6 +1,6 @@
 define([
     'backbone'
-], function (Backbone) {
+], function (Backbone1) {
 
     var SessionModel = Backbone.Model.extend({
         urlLogin: '/api/session/',
