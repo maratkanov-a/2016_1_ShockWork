@@ -89,10 +89,10 @@ define([
 
             var $this = this;
 
-            var email = $('#email').val();
-            var username = $('#username').val();
-            var password1 = $('#password1').val();
-            var password2 = $('#password2').val();
+            var email = this.$el.find('#email').val();
+            var username = this.$el.find('#username').val();
+            var password1 = this.$el.find('#password1').val();
+            var password2 = this.$el.find('#password2').val();
             var imgData = this.canvasToString(canvas);
 
             var valid = session.validateRegistration(email, username, password1, password2);
