@@ -2,7 +2,11 @@
 
 Для работы Less <br>
 npm install grunt-contrib-less --save-dev <br>
-npm install -g less-plugin-autoprefix
+npm install -g less-plugin-autoprefix <br>
+Для запуска Less<br>
+<stromg>grunt less</strong>
 
 Для подключения ReqJS <br>
- npm install grunt-contrib-requirejs --save-dev
+ npm install grunt-contrib-requirejs --save-dev <br>
+ Для запуска ReqJS<br>
+ <strong> grunt requirejs:build </strong>
