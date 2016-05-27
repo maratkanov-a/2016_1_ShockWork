@@ -4,3 +4,5 @@
 npm install grunt-contrib-less --save-dev <br>
 npm install -g less-plugin-autoprefix
 
+Для подключения ReqJS <br>
+ npm install grunt-contrib-requirejs --save-dev
