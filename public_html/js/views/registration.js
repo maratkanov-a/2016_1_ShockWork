@@ -39,7 +39,7 @@ define([
                 this.startWebCam();
         },
         hide: function() {
-        	this.stopWebCam();
+            this.stopWebCam();
             this.$el.hide();
         },
         goBack: function () {
@@ -59,30 +59,30 @@ define([
         },
         stopWebCam: function() {
             if (typeof(webcamStream) != "undefined")
-        	   webcamStream.getVideoTracks()[0].stop();
+               webcamStream.getVideoTracks()[0].stop();
         },
         makePhoto: function(){
             this.isSnapped = true;
-        	this.context.drawImage(video, 0, 0, 640, 480);
-        	this.toggleElements();
+            this.context.drawImage(video, 0, 0, 640, 480);
+            this.toggleElements();
             this.stopWebCam();
         },
         remakePhoto: function() {
             this.isSnapped = false;
             if (!$(canvas).is(":visible"))
                 $(canvas).show();
-        	this.startWebCam();
-			this.toggleElements();
+            this.startWebCam();
+            this.toggleElements();
         },
         toggleElements: function() {
-        	$(canvas).toggle();
-        	$(video).toggle();
-        	$(snap).toggle();
-        	$(resnap).toggle();
+            $(canvas).toggle();
+            $(video).toggle();
+            $(snap).toggle();
+            $(resnap).toggle();
         },
         canvasToString: function (canvas) {
-			return (this.isSnapped) ? canvas.toDataURL("image/png").replace(/^data:image\/(png|jpg);base64,/, "") : "";
-		},
+            return (this.isSnapped) ? canvas.toDataURL("image/png").replace(/^data:image\/(png|jpg);base64,/, "") : "";
+        },
         submit: function (e) {
 
             e.preventDefault();
@@ -100,7 +100,7 @@ define([
             if (valid === 'None') {
 
                 session.registration(username, password1, email, imgData).done(function() {
-                	Backbone.history.navigate('game', {trigger: true});
+                    Backbone.history.navigate('game', {trigger: true});
                 })
                 .fail(function(){
                     $this.$el.find('.form__error').hide();
