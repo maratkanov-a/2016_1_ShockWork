@@ -40,8 +40,8 @@ define([
 
             var $this = this;
 
-            var username = $('#username').val();
-            var password = $('#password').val();
+            var username = this.$el.find('#username').val();
+            var password = this.$el.find('#password').val();
 
             var valid = session.validateLogin(username, password);
 
