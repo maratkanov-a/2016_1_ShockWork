@@ -11,6 +11,23 @@
     <script src="js/lib/require.js" data-main="js/main"></script>
 </head>
 <body>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementsByTagName('body')[0].className = 'loaded';
+        });
+    </script>
+    <div id="loader-wrapper">
+        <div id="loader"></div>
+
+        <div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+    </div>
+
     <div id="page"></div>
+
+    <script src="js/lib/require.js" data-main="js/main"></script>
+    <script>
+        document.getElementsByTagName('body')[0].className = '';
+    </script>
 </body>
 </html>

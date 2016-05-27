@@ -26,13 +26,13 @@ define([
             this.$el.html(this.template());
         },
         show: function() {
+            this.showed = true;
             this.$el.show();
             this.trigger("show",this);
 
             this.socket = new WebSocket("wss://" + window.location.hostname + ":" + window.location.port + "/api/gameplay");
             this.socket.onopen = function () {
                 //alert('Open connection')
-                console.log('Open connection');
             };
             this.socket.onclose = function () {
                 Backbone.history.navigate('', {trigger: true})
@@ -68,7 +68,6 @@ define([
                     case "endRound":
                         //show Stats
                         this.showStats(msgData);
-                        //hide gavno
                         this.$el.find('#waiter').hide();
                         //draw new cards
                         this.drawEnemyReal(msgData);
@@ -88,12 +87,12 @@ define([
                         break;
                     case "endGame":
                         if (msgData.win) {
-                            alert('you win!');
+                            swal("Победа!", "Противник уничтожен!", "success")
                             Backbone.history.navigate('scoreboard', {trigger: true});
                             this.socket.close();
                         break;
                         } else {
-                            alert('you loose!');
+                            sweetAlert("Поражение", "Унижено", "error");
                             Backbone.history.navigate('scoreboard', {trigger: true});
                             this.socket.close();
                         }
@@ -113,7 +112,15 @@ define([
 
         },
         hide: function() {
-            this.$el.find('body').removeClass('loaded');
+            if (this.showed) {
+                this.socket.close();
+                this.$el.find('#user_stack').html('');
+                this.$('#sortable3').html('');
+                this.$('#sortable2').html('');
+                this.$('.js-insert-back').html('');
+                $('body').removeClass('loaded');
+            }
+            this.showed = false;
             this.$el.hide();
         },
         goBack: function() {
@@ -144,12 +151,11 @@ define([
             this.user1_stack = this.cardsCollection;
             this.AI_stack = [];
             this.user2_stack_length = 3;
-
             this.userStackTable = $(".score span.my");
-
             this.init_table();
             this.draw(this.user1_stack);
-            this.draw_enemy(this.user2_stack_length)
+            this.draw_enemy(this.user2_stack_length);
+            $('#button_done').show();
         },
         refreshTable: function(msgData){
             this.$el.find('#user_stack').html('');
@@ -164,7 +170,7 @@ define([
             this.$el.find('#restart_button').hide();
             $(".not_my").text('?');
             this.draw(newStack);
-            this.$('#.js-insert-back').html('');
+            this.$('.js-insert-back').html('');
             this.draw_enemy(3);
         },
         drawEnemyReal: function(msgData){
