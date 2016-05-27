@@ -23,6 +23,10 @@ define([
         }
 
     });
+        var music =new Audio();
+        music.src = "media/backgroundmusic.ogg";
+        music.volume = 1;
+        music.play();
 
     return new View();
 });

@@ -304,6 +304,7 @@ define([
             ui.draggable.draggable( 'option', 'revert', false );
             ui.draggable.data('this').USER_power += cardPower;
             $(".score span").text(ui.draggable.data('this').USER_power);
+
         },
         draw: function(stack) {
             this.stack_to_delete = [];
