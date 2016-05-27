@@ -32,6 +32,7 @@ define([
             this.socket = new WebSocket("wss://" + window.location.hostname + ":" + window.location.port + "/api/gameplay");
             this.socket.onopen = function () {
                 //alert('Open connection')
+                console.log('Open connection');
             };
             this.socket.onclose = function () {
                 Backbone.history.navigate('', {trigger: true})
