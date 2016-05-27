@@ -38,6 +38,9 @@ define([
             manager.register(scoreboardView);
             manager.register(registrationView);
             manager.register(offlineView);
+            // loader
+            $('body').addClass('loaded');
+            $('h1').css('color', '#222222');
         },
 
         mainAction: function () {
