@@ -1,6 +1,7 @@
 <fest:template xmlns:fest="http://fest.mail.ru" context_name="json">
 
     <link rel="stylesheet" href="css/cards/jquery-ui.css" />
+    <link rel="stylesheet" href="css/cards/reset.css" />
     <link rel="stylesheet" href="css/cards/style.css" />
     <link rel="stylesheet" href="css/cards/template.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
@@ -13,6 +14,18 @@
         <div class="loader-section section-right"></div>
     </div>
     <!--==============================================-->
+
+    <div id = "waiter"
+            style = "width:100%;
+                    height:100%;
+                    position: fixed;
+                    top: 0px;
+                    left: 0px;
+                    background-color: gray;
+                    z-index:350;
+                    opacity: 0.7;">
+        <span style = "position: fixed; top: 200px; left: 550px;">Ожидание...</span>
+    </div>
 
     <div id="game" class="row">
         <div id="wrapper">
@@ -34,7 +47,9 @@
 
                 <div class = "score" style = "width: 120px; height:120px; color: #940d13; position: absolute;
                                   left: 580px; top: 100px; " align = "center">
-                    <span style = "font: 52pt/40pt sans-serif;">0</span>
+                    <span class = "my" style = "font: 52pt/40pt sans-serif;">0</span>
+                    <span style = "font: 52pt/40pt sans-serif;">VS</span>
+                    <span class = "not_my" style = "font: 52pt/40pt sans-serif;">?</span>
                 </div>
 
                 <div class = "button-finish" id = "button_done">

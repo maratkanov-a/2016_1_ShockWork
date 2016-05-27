@@ -1,7 +1,8 @@
 define([
     'backbone',
     'tmpl/game',
-    'collections/cards'
+    'collections/cards',
+    'sweetalert'
 ], function(
     Backbone,
     tmpl,
@@ -28,26 +29,107 @@ define([
             this.$el.show();
             this.trigger("show",this);
 
-            this.socket = new WebSocket("ws://" + window.location.hostname + ":" + window.location.port + "/api/gameplay");
+            this.socket = new WebSocket("wss://" + window.location.hostname + ":" + window.location.port + "/api/gameplay");
             this.socket.onopen = function () {
-                alert('Open connection')
+                //alert('Open connection')
             };
             this.socket.onclose = function () {
                 Backbone.history.navigate('', {trigger: true})
             };
             this.socket.onmessage = function (msg) {
-                this.cardsCollection =  JSON.parse(msg.data)['cards'];
-                this.initializeGame();
-                $('body').addClass('loaded');
-                $('h1').css('color', '#222222');
-            }.bind(this);
+                console.log(msg.data);
+                var msgData = JSON.parse(msg.data);
+                switch (msgData.command) {
+                    case "start":
+                        this.cardsCollection = 0;
+                        this.cardsCollection = msgData['cards'];
+                        this.initializeGame();
+                        $('body').addClass('loaded');
+                        $('h1').css('color', '#222222');
+                        if (msgData.turn) {
+                            this.$el.find('#waiter').hide();
+                        }
+                        else {
+                            this.$el.find('#waiter').show();
+                        }
+                        break;
+                    case "nextTurn":
+                        if (msgData.cards > 0) {
+                            this.transferCards(msgData.cards);
+                        }
+                         if (msgData.turn) {
+                            this.$el.find('#waiter').hide();
+                        }
+                        else {
+                            this.$el.find('#waiter').show();
+                        }
+                        break;
+                    case "endRound":
+                        //show Stats
+                        this.showStats(msgData);
+                        //hide gavno
+                        this.$el.find('#waiter').hide();
+                        //draw new cards
+                        this.drawEnemyReal(msgData);
+                        this.makePapauPschhhh(msgData);
+                        //show restartButton
+                        //make able to clats-clats it
+                        this.$el.find('#restart_button').show();
+                        break;
+                    case "nextRound":
+                        if (msgData.turn) {
+                            this.$el.find('#waiter').hide();
+                        }
+                        else {
+                            this.$el.find('#waiter').show();
+                        }
+                        this.refreshTable(msgData);
+                        break;
+                    case "endGame":
+                        if (msgData.win) {
+                            alert('you win!');
+                            Backbone.history.navigate('scoreboard', {trigger: true});
+                            this.socket.close();
+                        break;
+                        } else {
+                            alert('you loose!');
+                            Backbone.history.navigate('scoreboard', {trigger: true});
+                            this.socket.close();
+                        }
+                        break;
+                    case "enemyDisconnected":
+                        //TODO показать что второй вышел и выйти на главный экран
+                        swal({
+                            title: "Ошибка!",
+                            text: "Противник вышел из игры :(",
+                            type: "error",
+                            confirmButtonText: "Мразь!"
+                        });
+                        Backbone.history.navigate('', {trigger: true});
+                        this.socket.close();
+                        break;
+                }}.bind(this);
 
         },
         hide: function() {
+            this.$el.find('body').removeClass('loaded');
             this.$el.hide();
         },
         goBack: function() {
             Backbone.history.navigate('', { trigger: true });
+        },
+        makePapauPschhhh: function(msgData){
+            if (msgData.enemyPower > msgData.power){
+                this.$el.find('.correct').prepend('<img id="theImg" src="img/explosion.gif"  style = "margin-top:10px; margin-left:26%; position:absolute; z-index: 100;"/>');
+            }
+            else if (msgData.enemyPower < msgData.power) {
+                 this.$el.find('.enemy__real__card').prepend('<img id="theImg" src="img/explosion.gif"  style = "margin-top:10px; margin-left:25px; position:absolute; z-index: 100;"/>');
+                }
+            else {
+                 this.$el.find('.correct').prepend('<img id="theImg" src="img/explosion.gif"  style = "margin-top:10px; margin-left:26%; position:absolute; z-index: 100;"/>');
+                 this.$el.find('.enemy__real__card').prepend('<img id="theImg" src="img/explosion.gif"  style = "margin-top:10px; margin-left:25px; position:absolute; z-index: 100;"/>');
+
+            }
         },
         initializeGame: function(){
             this.round = 1;
@@ -62,17 +144,54 @@ define([
             this.AI_stack = [];
             this.user2_stack_length = 3;
 
-            this.userStackTable = $(".score span");
+            this.userStackTable = $(".score span.my");
 
             this.init_table();
             this.draw(this.user1_stack);
             this.draw_enemy(this.user2_stack_length)
         },
+        refreshTable: function(msgData){
+            this.$el.find('#user_stack').html('');
+            var newStack = msgData.newCards;
+            console.log(newStack);
+            this.stack_to_delete = [];
+            this.USER_power = 0;
+            this.$('#sortable3').html('');
+            this.$('#sortable2').html('');
+            this.init_table();
+            this.$el.find('#button_done').show();
+            this.$el.find('#restart_button').hide();
+            $(".not_my").text('?');
+            this.draw(newStack);
+            this.$('#.js-insert-back').html('');
+            this.draw_enemy(3);
+        },
+        drawEnemyReal: function(msgData){
+            this.$el.find('#sortable3').html('');
+            var newThis = this.$el;
+            for (var i=0; i < msgData.enemyCards.length; i++ ){
+                $('<li class="ui-state-default" style = "list-style: none;"><img src="img/cards/'+msgData.enemyCards[i].img+'.png" alt=""> </li>')
+                .data('power', msgData.enemyCards[i].id)
+                .attr('class', 'enemy__real__card').appendTo(newThis.find('#sortable3'));
+            }
+        },
+        transferCards: function(number){
+            for (var i=0; i< number; i++) {
+                this.$el.find('.card__size').last().remove();
+                this.$el.find('#sortable3').append('<img class="card__size__game" src="img/back.png">');
+            }
+        },
+        showStats: function(msgData){
+            $("#your_health").text(msgData.health);
+            $("#enemy_health").text(msgData.enemyHealth);
+            $(".not_my").text(msgData.enemyPower);
+            $(".my").text(msgData.power);
+        },
         init_table: function() {
-            $(".score span").text('0');
+            $(".score span.my").text('0');
             var newThis = this.$el;
             for (var i = 1; i <= 3; i++) {
-                $('<div style = "height: 205px; width: 100%"> </div>')
+                $('<div style = "height: 180px; width: 100%"> </div>')
                     .data('user', 1)
                     .appendTo(newThis.find('#sortable2')).droppable({
                         accept: '.playing_card',
@@ -93,14 +212,14 @@ define([
             $(this).droppable( 'disable' );
             ui.draggable.position( { of: $(this), my: 'left top', at: 'left top' } );
             ui.draggable.draggable( 'option', 'revert', false );
-            $(".score span").text(parseInt($(".score span").text())+cardPower);
             ui.draggable.data('this').USER_power += cardPower;
+            $(".score span.my").text(ui.draggable.data('this').USER_power);
         },
         draw: function(stack) {
             var count = stack.length;
             var newThis = this.$el;
             for (var i=0; i < count; i++ ){
-                $('<li class="ui-state-default"><img src="img/cards/'+stack[i].img+'.png" alt=""> </li>')
+                $('<li class="ui-state-default" style = "list-style: none;"><img src="img/cards/'+stack[i].img+'.png" alt=""> </li>')
                 .data('power', stack[i].power)
                 .data('class', stack[i].mana)
                     .data('this',this)
@@ -123,30 +242,19 @@ define([
         },
 
         done: function () {
-            this.result(this.USER_power, this.aiSimulation(this.AI_stack));
-            debugger;
-            this.socket.send(this.stack_to_delete);
+            //this.result(this.USER_power, this.aiSimulation(this.AI_stack));
+            this.$el.find('#button_done').hide();
+            console.log(this.stack_to_delete);
+            this.socket.send(JSON.stringify({
+                command: 'nextTurn',
+                cards: this.stack_to_delete
+            })); //????
         },
 
         restartButton: function(){
-            this.round++;
-            if (this.round > 5) alert ('game over!');
-            this.stack_to_delete.sort();
-            this.stack_to_delete.reverse();
-            var newThis = this;
-            this.stack_to_delete.forEach(function(item, i, stack){
-                newThis.user1_stack.splice(item,1);
-                console.log(newThis.user1_stack);
-            });
-            this.AI_power = 0;
-            this.USER_power = 0;
-            this.mana_stack = [];
-            this.$('.result').hide();
-            this.$('#sortable2').html('');
-            this.$('#sortable3').html('');
-            this.$('#user_stack').html('');
-            this.draw(this.user1_stack);
-            this.init_table();
+            this.socket.send(JSON.stringify({
+                command: 'nextRound',
+            }));
     }
     });
 
