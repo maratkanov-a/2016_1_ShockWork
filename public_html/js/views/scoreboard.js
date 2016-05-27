@@ -3,7 +3,7 @@ define([
     'tmpl/scoreboard',
     'collections/scores'
 ], function(
-    Backbone,
+    Backbone1,
     tmpl,
     ScoresCollection
 ){

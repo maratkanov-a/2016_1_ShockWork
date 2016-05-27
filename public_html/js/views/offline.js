@@ -2,7 +2,7 @@ define([
     'backbone',
     'tmpl/game'
 ], function(
-    Backbone,
+    Backbone1,
     tmpl
 ){
 

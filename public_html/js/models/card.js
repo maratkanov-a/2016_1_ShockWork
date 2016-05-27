@@ -1,7 +1,7 @@
 define([
     'backbone'
 ], function(
-    Backbone
+    Backbone1
 ){
 
     var Card = Backbone.Model.extend({

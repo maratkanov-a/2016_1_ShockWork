@@ -4,7 +4,7 @@ define([
     'collections/cards',
     'sweetalert'
 ], function(
-    Backbone,
+    Backbone1,
     tmpl,
     cardCollection
 ){

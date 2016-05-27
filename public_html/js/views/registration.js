@@ -4,7 +4,7 @@ define([
     'models/session',
     'materialize'
 ], function (
-    Backbone,
+    Backbone1,
     tmpl,
     session
 ) {

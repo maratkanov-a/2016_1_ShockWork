@@ -2,7 +2,7 @@ define([
     'backbone',
     'models/card'
 ], function(
-    Backbone,
+    Backbone1,
     Cards
 ){
 
