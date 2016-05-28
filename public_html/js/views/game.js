@@ -128,14 +128,14 @@ define([
         },
         makePapauPschhhh: function(msgData){
             if (msgData.enemyPower > msgData.power){
-                this.$el.find('.correct').prepend('<img id="theImg" src="img/explosion.gif"  style = "margin-top:10px; margin-left:26%; position:absolute; z-index: 100;"/>');
+                this.$el.find('.correct').prepend('<img class="flame__my" src="img/explosion.gif"  style = "margin-top:10px; margin-left:26%; position:absolute; z-index: 100;"/>');
             }
             else if (msgData.enemyPower < msgData.power) {
-                 this.$el.find('.enemy__real__card').prepend('<img id="theImg" src="img/explosion.gif"  style = "margin-top:10px; margin-left:25px; position:absolute; z-index: 100;"/>');
+                 this.$el.find('.enemy__real__card').prepend('<img class="flame__enemy" src="img/explosion.gif"  style = "margin-top:10px; margin-left:25px; position:absolute; z-index: 100;"/>');
                 }
             else {
-                 this.$el.find('.correct').prepend('<img id="theImg" src="img/explosion.gif"  style = "margin-top:10px; margin-left:26%; position:absolute; z-index: 100;"/>');
-                 this.$el.find('.enemy__real__card').prepend('<img id="theImg" src="img/explosion.gif"  style = "margin-top:10px; margin-left:25px; position:absolute; z-index: 100;"/>');
+                 this.$el.find('.correct').prepend('<img class="flame__my" src="img/explosion.gif" />');
+                 this.$el.find('.enemy__real__card').prepend('<img class="flame__enemy" src="img/explosion.gif" />');
 
             }
         },
@@ -155,7 +155,6 @@ define([
             this.init_table();
             this.draw(this.user1_stack);
             this.draw_enemy(this.user2_stack_length);
-            $('#button_done').show();
         },
         refreshTable: function(msgData){
             this.$el.find('#user_stack').html('');
@@ -166,7 +165,6 @@ define([
             this.$('#sortable3').html('');
             this.$('#sortable2').html('');
             this.init_table();
-            this.$el.find('#button_done').show();
             this.$el.find('#restart_button').hide();
             $(".not_my").text('?');
             this.draw(newStack);
@@ -211,6 +209,7 @@ define([
             this.mana_stack.push(mana);
         },
         handleDrop: function(event, ui){
+            ui.draggable.data('this').$el.find('#button_done').show();
             ui.draggable.data('this').manaPush(ui.draggable.data('class'));
             var cardPower = ui.draggable.data('power');
             ui.draggable.data('this').stack_to_delete.push(ui.draggable.data('number'));
@@ -249,13 +248,12 @@ define([
         },
 
         done: function () {
-            //this.result(this.USER_power, this.aiSimulation(this.AI_stack));
             this.$el.find('#button_done').hide();
             console.log(this.stack_to_delete);
             this.socket.send(JSON.stringify({
                 command: 'nextTurn',
                 cards: this.stack_to_delete
-            })); //????
+            }));
         },
 
         restartButton: function(){

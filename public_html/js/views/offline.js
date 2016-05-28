@@ -537,9 +537,9 @@ define([
         draw: function(stack) {
             this.$el.find('#waiter').remove();
             this.stack_to_delete = [];
-            cards_counter = 0;
-            count = 3;
-            if (stack.length < 3) var count = stack.length;
+            var cards_counter = 0;
+            var count = 3;
+            if (stack.length < 3) count = stack.length;
             var newThis = this.$el;
             for (var i=0; i < count; i++ ){
                 $('<li class="ui-state-default"  style = "list-style: none;"><img src="img/cards/'+stack[i].img+'.png" alt=""> </li>')
@@ -560,8 +560,8 @@ define([
         },
         aiSimulation: function (stack) {
             this.cards_counter = 0;
-            count = 3;
-            if (stack.length < 3) var count = stack.length;
+            var count = 3;
+            if (stack.length < 3) count = stack.length;
             var newThis = this;
             for (var i = 0; i < count; i++) {
                 $('<li class="ui-state-default"><img src="img/cards/' + stack[i].img + '.png" alt=""> </li>')

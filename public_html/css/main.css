@@ -5,6 +5,19 @@ html {
   background: url(../img/la.jpg) no-repeat center center fixed;
   background-size: cover;
 }
+.flame__my{
+  margin-top:10px;
+  margin-left:26%;
+  position:absolute;
+  z-index: 100;
+
+}
+.flame__enemy{
+  margin-top:10px;
+  margin-left:25px;
+  position:absolute;
+  z-index: 100;
+}
 .form__error {
   display: none;
   color: white;
