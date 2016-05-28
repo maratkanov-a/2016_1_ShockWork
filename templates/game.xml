@@ -52,7 +52,7 @@
                     <span class = "not_my" style = "font: 52pt/40pt sans-serif;">?</span>
                 </div>
 
-                <div class = "button-finish" id = "button_done">
+                <div class = "button-finish" id = "button_done" style = "display: none;">
 
                 </div>
 
