@@ -1,10 +1,8 @@
 define([
-    'backbone',
     'tmpl/game',
     'collections/cards',
     'sweetalert'
 ], function(
-    Backbone1,
     tmpl,
     cardCollection
 ){
@@ -19,6 +17,7 @@ define([
         template: tmpl,
 
         initialize: function () {
+            this.showed = false;
             this.render();
         },
 
@@ -32,7 +31,7 @@ define([
 
             this.socket = new WebSocket("wss://" + window.location.hostname + ":" + window.location.port + "/api/gameplay");
             this.socket.onopen = function () {
-                //alert('Open connection')
+                console.log('Open connection')
             };
             this.socket.onclose = function () {
                 Backbone.history.navigate('', {trigger: true})
@@ -42,7 +41,6 @@ define([
                 var msgData = JSON.parse(msg.data);
                 switch (msgData.command) {
                     case "start":
-                        this.cardsCollection = 0;
                         this.cardsCollection = msgData['cards'];
                         this.initializeGame();
                         $('body').addClass('loaded');

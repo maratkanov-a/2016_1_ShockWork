@@ -25,10 +25,8 @@ require.config({
 });
 
 define([
-    'backbone',
     'router'
 ], function(
-    Backbone,
     router
 ){
     if ('serviceWorker' in navigator) {

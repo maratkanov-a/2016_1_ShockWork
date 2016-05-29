@@ -1,8 +1,7 @@
 define([
-    'backbone',
-    'tmpl/main'
+    'tmpl/main',
+    'backbone'
 ], function(
-    Backbone1,
     tmpl
 ){
 

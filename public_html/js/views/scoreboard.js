@@ -1,9 +1,7 @@
 define([
-    'backbone',
     'tmpl/scoreboard',
     'collections/scores'
 ], function(
-    Backbone1,
     tmpl,
     ScoresCollection
 ){
