@@ -532,7 +532,10 @@ define([
             ui.draggable.position( { of: $(this), my: 'left top', at: 'left top' } );
             ui.draggable.draggable( 'option', 'revert', false );
             ui.draggable.data('this').USER_power += cardPower;
-            $(".score span.my").text(ui.draggable.data('this').USER_power);
+
+            $(".score span").text(ui.draggable.data('this').USER_power);
+
+
         },
         draw: function(stack) {
             this.$el.find('#waiter').remove();

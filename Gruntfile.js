@@ -116,6 +116,8 @@ module.exports = function (grunt) {
 
     grunt.registerTask('test', ['qunit:all']);
     grunt.registerTask('default', ['concurrent']);
-    //grunt.registerTask('default', ['less']);
+    grunt.registerTask('less', ['less']);
+    //grunt.registerTask('requirejs', ['requirejs']);
+
 
 };
