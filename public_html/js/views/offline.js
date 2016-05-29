@@ -242,6 +242,7 @@ define([
         template: tmpl,
         initialize: function () {
             this.render()
+            this.showed = false;
         },
         render: function () {
             this.round = 1;
@@ -484,13 +485,16 @@ define([
             this.draw(this.user1_stack);
         },
         show: function() {
+        	this.showed = true;
             this.$el.show();
             this.trigger("show",this);
             $('body').addClass('loaded');
             $('h1').css('color', '#222222');
         },
         hide: function() {
-            this.$el.find('body').removeClass('loaded');
+        	if (this.showed) {
+            	$('body').removeClass('loaded');
+            }
             this.$el.hide();
         },
         goBack: function() {
