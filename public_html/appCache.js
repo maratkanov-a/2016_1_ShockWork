@@ -4,16 +4,13 @@ self.addEventListener('install', function(event) {
       return cache.addAll([
                   '/',
                   '/js/main.js',
+				  '/js/router.js',
+                  '/js/lib/require.js',
                   '/css/main.css',
                   '/img/la.jpg',
-                  '/js/router.js',
-                  '/js/lib/require.js',
-                  '/js/router.js',
                   'appCache.js',
                   '/js/build/app.js',
                   '/css/main.min.css'
-
-
                  ]);
     })
   );

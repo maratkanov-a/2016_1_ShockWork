@@ -274,10 +274,10 @@ define([
             this.$el.find(".my").text('0');
         },
         hide: function() {
-        	if (this.showed) {
-            	$('body').removeClass('loaded');
+            if (this.showed) {
+                $('body').removeClass('loaded');
             }
-
+            this.showed = false;
             this.$el.hide();
         },
         goBack: function() {

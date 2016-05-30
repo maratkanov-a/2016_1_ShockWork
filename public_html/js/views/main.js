@@ -16,6 +16,7 @@ define([
         show: function() {
             this.$el.show();
             this.trigger("show",this);
+            $('body').addClass('loaded');
         },
         hide: function() {
             this.$el.hide();

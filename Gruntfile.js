@@ -84,12 +84,13 @@ module.exports = function (grunt) {
          requirejs: {
             build: {
                 options: {
-                             almond: true,
-                             baseUrl: "public_html/js",
-                             mainConfigFile: "public_html/config.js",
-                             name: "main",
-                             optimize: "uglify",
-                             out: "public_html/js/build/app.js",
+                          baseUrl: "./public_html/js",
+                          mainConfigFile: "./public_html/config.js",
+                          include: ["../../node_modules/almond/almond.js", "main.js"],
+                          out: "dist/js/build.min.js",
+                          findNestedDependencies: true,
+                          wrap: true,
+                          insertRequire: ["main.js"],
                          }
                      },
          css: {
