@@ -25,6 +25,7 @@ define([
             this.$el.html(this.template());
         },
         show: function() {
+            $('body').removeClass('loaded');
             this.showed = true;
             this.$el.show();
             this.trigger("show",this);
@@ -44,7 +45,6 @@ define([
                         this.cardsCollection = msgData['cards'];
                         this.initializeGame();
                         $('body').addClass('loaded');
-                        $('h1').css('color', '#222222');
                         if (msgData.turn) {
                             this.$el.find('#waiter').hide();
                         }
