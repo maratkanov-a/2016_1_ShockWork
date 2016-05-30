@@ -62,4 +62,33 @@ img{
      cursor: -webkit-grabbing;
 }
 
+.your__score {
+
+    width: 120px;
+    height: 120px;
+    color: #940d13;
+    position: absolute;
+    left: 230px;
+    top: 20px;
+
+}
+.enemy__score{
+    width: 120px;
+    height: 120px;
+    color: #940d13;
+    position: absolute;
+    left: 1011px;
+    top: 20px;
+}
+
+.User__VS__User{
+    width: 199px;
+    height: 25px;
+    color: #940d13;
+    position: absolute;
+    left: 582px;
+    top: 16px;
+    font-family: cursive;
+    font-size: 20px;
+}
 

@@ -14,7 +14,6 @@
         <div class="loader-section section-right"></div>
     </div>
     <!--==============================================-->
-
     <div id = "waiter"
             style = "width:100%;
                     height:100%;
@@ -43,6 +42,10 @@
             <div class = "health__enemy">
                 <span>Health rival:</span><span id = "enemy_health">50</span>
             </div>
+            <div class = "User__VS__User">
+
+            <span id = " ">Хуй VS Пизда</span>
+            </div>
 
             <div id="table">
                 <div class="leftBar fl">
@@ -51,24 +54,17 @@
                     </ul>
                 </div>
 
-                <div class = "score" style = "width: 120px; height:120px; color: #940d13; position: absolute;
-                                  left: 580px; top: 100px; " align = "center">
+                <div class = "your__score">
                     <span class = "my" style = "font: 52pt/40pt sans-serif;">0</span>
-                    <span style = "font: 52pt/40pt sans-serif;">VS</span>
+                </div>
+                    <!--<span style = "font: 52pt/40pt sans-serif;">VS</span>-->
+                <div class = "enemy__score">
                     <span class = "not_my" style = "font: 52pt/40pt sans-serif;">?</span>
                 </div>
 
                 <div class = "button-finish" id = "button_done">
 
                 </div>
-
-                <!--<div class = "health" style = "color: brown;">
-                    <span>HP:</span><span id = "your_health">50</span>
-                    <span>Enemy:</span><span id = "enemy_health">50</span>
-                </div>-->
-
-
-
                 <div id = "restart_button" align = "center" style = "position: absolute;
                                                                             top: 540px;
                                                                             left: 610px;
