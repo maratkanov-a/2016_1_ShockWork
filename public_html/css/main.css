@@ -4,14 +4,14 @@
 .nav-top {
   margin-top: 200px;
 }
-.flame__my{
+.flame__enemy{
   margin-top:10px;
-  margin-left:26%;
+  margin-left:25px;
   position:absolute;
   z-index: 100;
 
 }
-.flame__enemy{
+.flame__my{
   margin-top:10px;
   margin-left:25px;
   position:absolute;
