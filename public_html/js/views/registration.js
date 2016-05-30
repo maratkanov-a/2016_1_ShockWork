@@ -73,10 +73,10 @@ define([
             this.toggleElements();
         },
         toggleElements: function() {
-            $(canvas).toggle();
-            $(video).toggle();
-            $(snap).toggle();
-            $(resnap).toggle();
+            this.$el.find(canvas).toggle();
+            this.$el.find(video).toggle();
+            this.$el.find(snap).toggle();
+            this.$el.find(resnap).toggle();
         },
         canvasToString: function (canvas) {
             return (this.isSnapped) ? canvas.toDataURL("image/png").replace(/^data:image\/(png|jpg);base64,/, "") : "";
