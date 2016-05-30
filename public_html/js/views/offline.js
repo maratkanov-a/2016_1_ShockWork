@@ -489,12 +489,12 @@ define([
             this.$el.show();
             this.trigger("show",this);
             $('body').addClass('loaded');
-            $('h1').css('color', '#222222');
         },
         hide: function() {
         	if (this.showed) {
             	$('body').removeClass('loaded');
             }
+            this.showed = false;
             this.$el.hide();
         },
         goBack: function() {
