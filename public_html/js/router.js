@@ -1,5 +1,4 @@
 define([
-    'backbone',
     'views/main',
     'views/game',
     'views/login',
@@ -9,7 +8,6 @@ define([
     'models/session',
     'views/view_manager'
 ], function(
-    Backbone,
     mainView,
     gameView,
     loginView,

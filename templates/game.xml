@@ -1,93 +1,82 @@
 <fest:template xmlns:fest="http://fest.mail.ru" context_name="json">
-
-    <link rel="stylesheet" href="css/cards/jquery-ui.css" />
-    <link rel="stylesheet" href="css/cards/reset.css" />
-    <link rel="stylesheet" href="css/cards/style.css" />
-    <link rel="stylesheet" href="css/cards/template.css" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
-
-    <!--=======loader=================================-->
-    <div id="loader-wrapper">
-        <div id="loader"></div>
-
-        <div class="loader-section section-left"></div>
-        <div class="loader-section section-right"></div>
-    </div>
-    <!--==============================================-->
-
-    <div id = "waiter"
-            style = "width:100%;
-                    height:100%;
-                    position: fixed;
-                    top: 0px;
-                    left: 0px;
-                    background-color: gray;
-                    z-index:350;
-                    opacity: 0.7;">
-        <span style = "position: fixed; top: 200px; left: 550px;">Ожидание...</span>
-    </div>
-
-    <div id="game" class="row">
-        <div id="wrapper">
-
-    <div class="row">
-        <div class="container">
-            <div id = "user_stack" class="leftBar fl" style="">
+   <link rel="stylesheet" href="css/cards/jquery-ui.css" />
+   <link rel="stylesheet" href="css/cards/style.css" />
+   <link rel="stylesheet" href="css/cards/template.css" />
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
+   <!--=======loader=================================-->
+   <div id="loader-wrapper">
+      <div id="loader"></div>
+      <div class="loader-section section-left"></div>
+      <div class="loader-section section-right"></div>
+   </div>
+   <!--==============================================-->
+   <div id = "waiter"
+      style = "width:100%;
+      height:100%;
+      position: fixed;
+      top: 0px;
+      left: 0px;
+      background-color: gray;
+      z-index:350;
+      opacity: 0.7;">
+      <span style = "position: fixed; top: 200px; left: 550px;">Ожидание...</span>
+   </div>
+   <div id="game" class="row">
+      <div class="col s12 m6 offset-m3">
+         <nav class="nav">
+            <div class="nav-wrapper">
+               <a class="brand-logo center">Игра</a>
+               <ul class="left hide-on-med-and-down">
+                  <li>
+                     <a class="js-go-back waves-effect waves-light btn">Назад</a>
+                  </li>
+               </ul>
             </div>
-            <div class="js-insert-back rightBar fr">
-
+         </nav>
+      </div>
+      <div id="wrapper">
+         <div class="row">
+            <div class="container">
+               <div id = "user_stack" class="leftBar fl" style="">
+               </div>
+               <div class="js-insert-back rightBar fr">
+               </div>
+               <div id="table">
+                  <div class="leftBar fl">
+                     <ul id="sortable2" class="connectedSortable">
+                     </ul>
+                  </div>
+                  <div class = "score" style = "width: 120px; height:120px; color: #940d13; position: absolute;
+                     left: 580px; top: 100px; " align = "center">
+                     <span class = "my" style = "font: 52pt/40pt sans-serif;">0</span>
+                     <span style = "font: 52pt/40pt sans-serif;">VS</span>
+                     <span class = "not_my" style = "font: 52pt/40pt sans-serif;">?</span>
+                  </div>
+                  <div class = "button-finish" id = "button_done">
+                  </div>
+                  <div class = "health" style = "color: brown;">
+                     <span>HP:</span><span id = "your_health">50</span>
+                     <span>Enemy:</span><span id = "enemy_health">50</span>
+                  </div>
+                  <div id = "restart_button" align = "center" style = "position: absolute;
+                     top: 540px;
+                     left: 610px;
+                     display:none;">
+                     <img src="img/cards/button.png" height="60" width="60">
+                     <span style = "position: absolute;
+                        top: 14px;
+                        left: 17px;
+                        font-size: 32px;
+                        color: aqua;"><i class="fa fa-refresh"></i></span>
+                     </img>
+                  </div>
+                  <div class="rightBar fr">
+                     <ul id="sortable3" class="connectedSortable">
+                     </ul>
+                  </div>
+               </div>
             </div>
-
-            <div id="table">
-                <div class="leftBar fl">
-                    <ul id="sortable2" class="connectedSortable">
-
-                    </ul>
-                </div>
-
-                <div class = "score" style = "width: 120px; height:120px; color: #940d13; position: absolute;
-                                  left: 580px; top: 100px; " align = "center">
-                    <span class = "my" style = "font: 52pt/40pt sans-serif;">0</span>
-                    <span style = "font: 52pt/40pt sans-serif;">VS</span>
-                    <span class = "not_my" style = "font: 52pt/40pt sans-serif;">?</span>
-                </div>
-
-                <div class = "button-finish" id = "button_done">
-
-                </div>
-
-                <div class = "health" style = "color: brown;">
-                    <span>HP:</span><span id = "your_health">50</span>
-                    <span>Enemy:</span><span id = "enemy_health">50</span>
-                </div>
-
-
-                <div id = "restart_button" align = "center" style = "position: absolute;
-                                                                            top: 540px;
-                                                                            left: 610px;
-                                                                            display:none;">
-                    <img src="img/cards/button.png" height="60" width="60">
-                        <span style = "position: absolute;
-                                                top: 14px;
-                                                    left: 17px;
-                                                    font-size: 32px;
-                                                    color: aqua;"><i class="fa fa-refresh"></i></span>
-                    </img>
-
-                </div>
-
-
-                <div class="rightBar fr">
-                    <ul id="sortable3" class="connectedSortable">
-
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-    </div>
-
-
-
+         </div>
+      </div>
+   </div>
 </fest:template>

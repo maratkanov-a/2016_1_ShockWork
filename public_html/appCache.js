@@ -2,20 +2,16 @@ self.addEventListener('install', function(event) {
   event.waitUntil(
     caches.open('MMG-v1').then(function(cache) {
       return cache.addAll([
-                    '/',
+                  '/',
                   '/js/main.js',
                   '/css/main.css',
                   '/img/la.jpg',
                   '/js/router.js',
-                  /*'/css/loader.css',
-                   '/css/materialize.min.css',*/
-                    '/js/lib/require.js',
+                  '/js/lib/require.js',
                   '/js/router.js',
-                    /*'/js/lib/jquery.js',
-                    '/js/lib/underscore.js',*/
-                    'appCache.js',
-                    '/js/build/app.js',
-                    '/css/main.min.css'
+                  'appCache.js',
+                  '/js/build/app.js',
+                  '/css/main.min.css'
 
 
                  ]);
