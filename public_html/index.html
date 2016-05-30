@@ -3,18 +3,17 @@
 <head>
     <meta charset="utf-8"/>
     <title>Shock Work</title>
-    <link rel="stylesheet" href="css/loader.css"/>
-    <link rel="stylesheet" href="css/materialize.min.css"/>
+    <link rel="stylesheet" href="css/build.min.css"/>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="css/main.css"/>
-    <link rel="stylesheet" href="css/sweetalert.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
 </head>
 <body>
 	<script>
-	window.addEventListener("load", function() {
-		document.getElementsByTagName('body')[0].className = 'loaded';
-	});
+		window.addEventListener("load", function() {
+			document.getElementsByTagName('body')[0].className = 'loaded';
+		});
 	</script>
+	
 	<div id="loader-wrapper">
 		<div id="loader"></div>
 
@@ -22,9 +21,6 @@
 		<div class="loader-section section-right"></div>
 	</div>
 	<div id="page"></div>
-	<script src="js/lib/require.js" data-main="js/main"></script>
-	<script>
-		document.getElementsByTagName('body')[0].className = '';
-	</script>
+	<script src="js/build.min.js"></script>
 </body>
 </html>

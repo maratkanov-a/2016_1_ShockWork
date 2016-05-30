@@ -1,10 +1,8 @@
 define([
     'tmpl/game',
-    'collections/cards',
     'sweetalert'
 ], function(
-    tmpl,
-    cardCollection
+    tmpl
 ){
 
     var View = Backbone.View.extend({
