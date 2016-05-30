@@ -491,8 +491,8 @@ define([
             $('body').addClass('loaded');
         },
         hide: function() {
-        	if (this.showed) {
-            	$('body').removeClass('loaded');
+            if (this.showed) {
+                $('body').removeClass('loaded');
             }
             this.showed = false;
             this.$el.hide();
