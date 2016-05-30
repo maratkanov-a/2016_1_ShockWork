@@ -293,9 +293,7 @@ define([
             }
         },
         init_table: function() {
-            alert('!');
             this.$el.find(".my").text('0');
-            alert(this.$el.find(".my").text());
             var newThis = this.$el;
             for (var i = 1; i <= 3; i++) {
                 $('<div style = "height: 180px; width: 100%"> </div>').
@@ -383,14 +381,12 @@ define([
                 this.$('#enemy_health').text(this.AI_health);
                 newThis.$el.find('#button_done').hide();
                 newThis.$el.find('.enemy__real__card').prepend('<img class="flame__my" src="img/explosion.gif"/>');
-                alert('You win this round');
             }
             if (user < ai) {
                 newThis.USER_health -= ai - user;
                 newThis.$el.find('#your_health').text(this.USER_health);
                 newThis.$el.find('#button_done').hide();
                 newThis.$el.find('.correct').prepend('<img class="flame__enemy" src="img/explosion.gif"/>');
-               alert("You lost this round");
 
 
             }
@@ -399,7 +395,6 @@ define([
                 this.render();
             }
             if (this.AI_health <= 0) {
-                alert('you win');
                 this.render();
             }
             this.$el.find('#restart_button').show();
