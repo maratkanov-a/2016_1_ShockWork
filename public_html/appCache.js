@@ -1,10 +1,9 @@
 self.addEventListener('install', function(event) {
   event.waitUntil(
-    caches.open('MMG-v1').then(function(cache) {
+    caches.open('MMG-v2').then(function(cache) {
       return cache.addAll([
                   '/',
-                  '/index.html'
-                  '/appCache.js'
+                  '/index.html',
                   '/js/build.min.js',
 				  '/js/app.js',
 				  '/js/router.js',
@@ -32,11 +31,11 @@ self.addEventListener('install', function(event) {
 				  '/img/explosion.gif',
 				  '/img/la.jpg',
 				  '/img/cards/base-bg.png',
-				  '/img/cards/bg.png',
+				  '/img/cards/bg.jpg',
 				  '/img/cards/button.png',
 				  '/img/cards/Button_downed.png',
 				  '/img/cards/Button_not_down.png',
-				  '/img/cards/stol.png',
+				  '/img/cards/stol.jpg',
 				  '/img/cards/bekbulatov_card.png',
 				  '/img/cards/burlak_card.png',
 				  '/img/cards/didikin_card.png',
