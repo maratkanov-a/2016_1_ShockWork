@@ -1,5 +1,4 @@
 require.config({
-    urlArgs: "_=" + (new Date()).getTime(),
     baseUrl: "js",
     paths: {
         jquery: "lib/jquery",
@@ -26,10 +25,8 @@ require.config({
 });
 
 define([
-    'backbone',
     'router'
 ], function(
-    Backbone,
     router
 ){
     if ('serviceWorker' in navigator) {

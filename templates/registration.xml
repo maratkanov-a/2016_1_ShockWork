@@ -2,7 +2,7 @@
    <fest:include src="./input_field_template.xml"/>
    <div id="registraiton" class="row">
       <div class="col s12 m6 offset-m3">
-         <nav class="nav">
+         <nav class="nav nav-top">
             <div class="nav-wrapper">
                <a class="brand-logo center">Регистрация</a>
                <ul class="left hide-on-med-and-down">
@@ -68,7 +68,7 @@
                   Пользователь уже существует
                </div>
                <div>
-                  <input class="js-submit waves-effect waves-light btn" type="submit"></input>
+                  <input class="js-submit waves-effect waves-light btn" type="submit" value="Зарегистрироваться"></input>
                </div>
             </form>
          </div>

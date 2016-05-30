@@ -1,8 +1,7 @@
 define([
-    'backbone',
-    'tmpl/main'
+    'tmpl/main',
+    'backbone'
 ], function(
-    Backbone1,
     tmpl
 ){
 
@@ -17,16 +16,13 @@ define([
         show: function() {
             this.$el.show();
             this.trigger("show",this);
+            $('body').addClass('loaded');
         },
         hide: function() {
             this.$el.hide();
         }
 
     });
-        var music =new Audio();
-        music.src = "media/backgroundmusic.ogg";
-        music.volume = 1;
-        music.play();
 
     return new View();
 });

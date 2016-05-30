@@ -1,8 +1,7 @@
 define([
-    'backbone',
-    'tmpl/game'
+    'tmpl/game',
+    'backbone'
 ], function(
-    Backbone1,
     tmpl
 ){
 
@@ -20,229 +19,11 @@ define([
         AI_health: 50,
         USER_health: 50,
         stack_to_delete: [],
-        user1_stack: [
-            {
-                "id": 1,
-                "img": "bekbulatov_card",
-                "power": 5,
-                "mana": 1
-            },
-            {
-                "id": 2,
-                "img": "burlak_card",
-                "power": 9,
-                "mana": 2
-            },
-            {
-                "id": 3,
-                "img": "didikin_card",
-                "power": 7,
-                "mana": 2
-            },
-            {
-                "id": 4,
-                "img": "dudina_card",
-                "power": 3,
-                "mana": 3
-            },
-            {
-                "id": 5,
-                "img": "frolov_card",
-                "power": 11,
-                "mana": 4
-            },
-            {
-                "id": 6,
-                "img": "isaikin_card",
-                "power": 8,
-                "mana": 5
-            },
-            {
-                "id": 7,
-                "img": "ivanov_card",
-                "power": 4,
-                "mana": 6
-            },
-            {
-                "id": 8,
-                "img": "korepanov_card",
-                "power": 8,
-                "mana": 6
-            },
-            {
-                "id": 9,
-                "img": "mazcevitc_card",
-                "power": 35,
-                "mana": 6
-            },
-            {
-                "id": 10,
-                "img": "meleshenko_card",
-                "power": 4,
-                "mana": 1
-            },
-            {
-                "id": 11,
-                "img": "mezin_card",
-                "power": 6,
-                "mana": 2
-            },
-            {
-                "id": 12,
-                "img": "mogilin_card",
-                "power": 19,
-                "mana": 5
-            },
-            {
-                "id": 13,
-                "img": "petrov_card",
-                "power": 12,
-                "mana": 10
-            },
-            {
-                "id": 14,
-                "img": "sherbinin_card",
-                "power": 61,
-                "mana": 5
-            },
-            {
-                "id": 15,
-                "img": "shubin_card",
-                "power": 45,
-                "mana": 4
-            },
-            {
-                "id": 16,
-                "img": "smal_card",
-                "power": 13,
-                "mana": 1
-            },
-            {
-                "id": 17,
-                "img": "soloviev_card",
-                "power": 9,
-                "mana": 4
-            },
-            {
-                "id": 18,
-                "img": "stupnikov_card",
-                "power": 1,
-                "mana": 5
-            }
-        ],
-        AI_stack : [
-                {
-                    "id": 1,
-                    "img": "bekbulatov_card",
-                    "power": 5,
-                    "mana": 1
-                },
-                {
-                    "id": 2,
-                    "img": "burlak_card",
-                    "power": 9,
-                    "mana": 2
-                },
-                {
-                    "id": 3,
-                    "img": "didikin_card",
-                    "power": 7,
-                    "mana": 2
-                },
-                {
-                    "id": 4,
-                    "img": "dudina_card",
-                    "power": 3,
-                    "mana": 3
-                },
-                {
-                    "id": 5,
-                    "img": "frolov_card",
-                    "power": 11,
-                    "mana": 4
-                },
-                {
-                    "id": 6,
-                    "img": "isaikin_card",
-                    "power": 8,
-                    "mana": 5
-                },
-                {
-                    "id": 7,
-                    "img": "ivanov_card",
-                    "power": 4,
-                    "mana": 6
-                },
-                {
-                    "id": 8,
-                    "img": "korepanov_card",
-                    "power": 8,
-                    "mana": 6
-                },
-                {
-                    "id": 9,
-                    "img": "mazcevitc_card",
-                    "power": 35,
-                    "mana": 6
-                },
-                {
-                    "id": 10,
-                    "img": "meleshenko_card",
-                    "power": 4,
-                    "mana": 1
-                },
-                {
-                    "id": 11,
-                    "img": "mezin_card",
-                    "power": 6,
-                    "mana": 2
-                },
-                {
-                    "id": 12,
-                    "img": "mogilin_card",
-                    "power": 19,
-                    "mana": 5
-                },
-                {
-                    "id": 13,
-                    "img": "petrov_card",
-                    "power": 12,
-                    "mana": 10
-                },
-                {
-                    "id": 14,
-                    "img": "sherbinin_card",
-                    "power": 61,
-                    "mana": 5
-                },
-                {
-                    "id": 15,
-                    "img": "shubin_card",
-                    "power": 45,
-                    "mana": 4
-                },
-                {
-                    "id": 16,
-                    "img": "smal_card",
-                    "power": 13,
-                    "mana": 1
-                },
-                {
-                    "id": 17,
-                    "img": "soloviev_card",
-                    "power": 9,
-                    "mana": 4
-                },
-                {
-                    "id": 18,
-                    "img": "stupnikov_card",
-                    "power": 1,
-                    "mana": 5
-                }
-            ],
+
         template: tmpl,
         initialize: function () {
             this.render()
+            this.showed = false;
         },
         render: function () {
             this.round = 1;
@@ -485,13 +266,18 @@ define([
             this.draw(this.user1_stack);
         },
         show: function() {
+        	this.showed = true;
             this.$el.show();
             this.trigger("show",this);
             $('body').addClass('loaded');
-            $('h1').css('color', '#222222');
+            this.$el.find(".not_my").text('?');
+            this.$el.find(".my").text('0');
         },
         hide: function() {
-            this.$el.find('body').removeClass('loaded');
+            if (this.showed) {
+                $('body').removeClass('loaded');
+            }
+            this.showed = false;
             this.$el.hide();
         },
         goBack: function() {
@@ -507,7 +293,9 @@ define([
             }
         },
         init_table: function() {
-            $(".score span.my").text('0');
+            alert('!');
+            this.$el.find(".my").text('0');
+            alert(this.$el.find(".my").text());
             var newThis = this.$el;
             for (var i = 1; i <= 3; i++) {
                 $('<div style = "height: 180px; width: 100%"> </div>').
@@ -532,17 +320,16 @@ define([
             ui.draggable.position( { of: $(this), my: 'left top', at: 'left top' } );
             ui.draggable.draggable( 'option', 'revert', false );
             ui.draggable.data('this').USER_power += cardPower;
-
-            $(".score span").text(ui.draggable.data('this').USER_power);
+            $(".score span.my").text(ui.draggable.data('this').USER_power);
 
 
         },
         draw: function(stack) {
             this.$el.find('#waiter').remove();
             this.stack_to_delete = [];
-            cards_counter = 0;
-            count = 3;
-            if (stack.length < 3) var count = stack.length;
+            var cards_counter = 0;
+            var count = 3;
+            if (stack.length < 3) count = stack.length;
             var newThis = this.$el;
             for (var i=0; i < count; i++ ){
                 $('<li class="ui-state-default"  style = "list-style: none;"><img src="img/cards/'+stack[i].img+'.png" alt=""> </li>')
@@ -563,8 +350,8 @@ define([
         },
         aiSimulation: function (stack) {
             this.cards_counter = 0;
-            count = 3;
-            if (stack.length < 3) var count = stack.length;
+            var count = 3;
+            if (stack.length < 3) count = stack.length;
             var newThis = this;
             for (var i = 0; i < count; i++) {
                 $('<li class="ui-state-default"><img src="img/cards/' + stack[i].img + '.png" alt=""> </li>')
@@ -572,6 +359,7 @@ define([
                     .data('class', stack[i].mana)
                     .attr('id', 'card_ai_' + stack[i].id)
                     .attr('class', 'playing_card')
+                    .attr('class','enemy__real__card')
                     .appendTo(newThis.$('#sortable3'));
                 newThis.AI_power += stack[i].power;
             }
@@ -594,16 +382,14 @@ define([
                 newThis.AI_health -= user - ai;
                 this.$('#enemy_health').text(this.AI_health);
                 newThis.$el.find('#button_done').hide();
-                newThis.$el.find('#sortable3').prepend('<img id="theImg" src="img/explosion.gif"  style = "margin-top:5px; margin-left:2%; position:absolute;"/>');
-                newThis.$el.find('#sortable3').prepend('<img id="theImg" src="img/explosion.gif"  style = "margin-top:175px; margin-left:2%; position:absolute;"/>');
-                newThis.$el.find('#sortable3').prepend('<img id="theImg" src="img/explosion.gif"  style = "margin-top:340px; margin-left:2%; position:absolute;"/>');
+                newThis.$el.find('.enemy__real__card').prepend('<img class="flame__my" src="img/explosion.gif"/>');
                 alert('You win this round');
             }
             if (user < ai) {
                 newThis.USER_health -= ai - user;
                 newThis.$el.find('#your_health').text(this.USER_health);
                 newThis.$el.find('#button_done').hide();
-                newThis.$el.find('.correct').prepend('<img id="theImg" src="img/explosion.gif"  style = "margin-top:10px; margin-left:26%; position:absolute; z-index: 100;"/>');
+                newThis.$el.find('.correct').prepend('<img class="flame__enemy" src="img/explosion.gif"/>');
                alert("You lost this round");
 
 
@@ -652,6 +438,5 @@ define([
             this.init_table();
     }
     });
-
     return new View();
 });

@@ -1,5 +1,24 @@
 .nav {
+  margin-top: 30px;
+}
+.nav-top {
   margin-top: 200px;
+}
+.flame__enemy{
+  margin-top:10px;
+  margin-left:25px;
+  position:absolute;
+  z-index: 100;
+
+}
+.flame__my{
+  margin-top:10px;
+  margin-left:25px;
+  position:absolute;
+  z-index: 100;
+}
+.button_done{
+  display: none;
 }
 html {
   background: url(../img/la.jpg) no-repeat center center fixed;
@@ -23,10 +42,11 @@ html {
   width: 320px;
   height: 240px;
 }
+
 .form__avatar__video{
   width: 320px;
   height: 240px;
-}
+
 .health__your {
   font-family: monospace;
   font-size: 19px;

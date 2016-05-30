@@ -1,7 +1,7 @@
 <fest:template xmlns:fest="http://fest.mail.ru" context_name="json">
     <div id="main" class="row">
         <div class="col s12 m6 offset-m3">
-            <nav class="nav">
+            <nav class="nav nav-top">
                 <div class="nav-wrapper">
                     <a class="brand-logo center">SHOCK WORK</a>
                 </div>

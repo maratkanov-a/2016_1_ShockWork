@@ -2,7 +2,7 @@ define([
     'backbone',
     'models/score'
 ], function(
-    Backbone,
+    Backbone1,
     Score
 ){
 

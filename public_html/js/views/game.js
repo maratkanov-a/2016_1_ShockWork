@@ -1,10 +1,8 @@
 define([
-    'backbone',
     'tmpl/game',
     'collections/cards',
     'sweetalert'
 ], function(
-    Backbone,
     tmpl,
     cardCollection
 ){
@@ -19,6 +17,7 @@ define([
         template: tmpl,
 
         initialize: function () {
+            this.showed = false;
             this.render();
         },
 
@@ -26,13 +25,14 @@ define([
             this.$el.html(this.template());
         },
         show: function() {
+            $('body').removeClass('loaded');
             this.showed = true;
             this.$el.show();
             this.trigger("show",this);
 
-            this.socket = new WebSocket("wss://" + window.location.hostname + ":" + window.location.port + "/api/gameplay");
+            this.socket = new WebSocket("ws://" + window.location.hostname + ":" + window.location.port + "/api/gameplay");
             this.socket.onopen = function () {
-                //alert('Open connection')
+                console.log('Open connection')
             };
             this.socket.onclose = function () {
                 Backbone.history.navigate('', {trigger: true})
@@ -42,11 +42,9 @@ define([
                 var msgData = JSON.parse(msg.data);
                 switch (msgData.command) {
                     case "start":
-                        this.cardsCollection = 0;
                         this.cardsCollection = msgData['cards'];
-                        this.initializeGame();
+                        this.initializeGame(msgData);
                         $('body').addClass('loaded');
-                        $('h1').css('color', '#222222');
                         if (msgData.turn) {
                             this.$el.find('#waiter').hide();
                         }
@@ -67,7 +65,8 @@ define([
                         break;
                     case "endRound":
                         //show Stats
-                        this.showStats(msgData);
+                        this.showHealth(msgData);
+                        this.showPower(msgData);
                         this.$el.find('#waiter').hide();
                         //draw new cards
                         this.drawEnemyReal(msgData);
@@ -87,26 +86,49 @@ define([
                         break;
                     case "endGame":
                         if (msgData.win) {
-                            swal("Победа!", "Противник уничтожен!", "success")
-                            Backbone.history.navigate('scoreboard', {trigger: true});
-                            this.socket.close();
+                            swal({   title: "Победа",
+                                     text: "Враг повержен",
+                                     type: "success",
+                                     showCancelButton: false,
+                                     confirmButtonColor: "#DD6B55",
+                                     confirmButtonText: "Я крут!",
+                                     closeOnConfirm: false },
+                                     function(){
+                                         swal("Поздравляем!", "Как насчет попробовать еще раз?", "success");
+                                         Backbone.history.navigate('scoreboard', {trigger: true});
+                                         this.socket.close();
+                                     }).bind(this);
                         break;
                         } else {
-                            sweetAlert("Поражение", "Унижено", "error");
-                            Backbone.history.navigate('scoreboard', {trigger: true});
-                            this.socket.close();
+                              swal({  title: "Поражение",
+                                      text: "Вас унизили",
+                                      type: "error",
+                                     showCancelButton: false,
+                                     confirmButtonColor: "#DD6B55",
+                                     confirmButtonText: "Мне просто не повезло",
+                                     closeOnConfirm: false },
+                                     function(){
+                                        swal("Не отчаивайся", "Тебе повезет в следующий раз", "success");
+                                         Backbone.history.navigate('scoreboard', {trigger: true});
+                                         this.socket.close();
+                                     }).bind(this);
                         }
                         break;
                     case "enemyDisconnected":
                         //TODO показать что второй вышел и выйти на главный экран
-                        swal({
-                            title: "Ошибка!",
-                            text: "Противник вышел из игры :(",
-                            type: "error",
-                            confirmButtonText: "Мразь!"
-                        });
-                        Backbone.history.navigate('', {trigger: true});
-                        this.socket.close();
+                        swal({   title: "Ошибка",
+                                    text: "Противник вышел из игры",
+                                     type: "error",
+                                     showCancelButton: false,
+                                     confirmButtonColor: "#DD6B55",
+                                     confirmButtonText: "Мразь!",
+                                     closeOnConfirm: false },
+                                     function(){
+                                        swal("Он хочет избежать наказания", "Давай найдем и накажем гаденыша", "success");
+                                         Backbone.history.navigate('', {trigger: true});
+                                         this.socket.close();
+                                     }).bind(this);
+
                         break;
                 }}.bind(this);
 
@@ -118,6 +140,8 @@ define([
                 this.$('#sortable3').html('');
                 this.$('#sortable2').html('');
                 this.$('.js-insert-back').html('');
+                this.$el.find(".not_my").text('?');
+                this.$el.find(".my").text('0');
                 $('body').removeClass('loaded');
             }
             this.showed = false;
@@ -128,31 +152,29 @@ define([
         },
         makePapauPschhhh: function(msgData){
             if (msgData.enemyPower > msgData.power){
-                this.$el.find('.correct').prepend('<img id="theImg" src="img/explosion.gif"  style = "margin-top:10px; margin-left:26%; position:absolute; z-index: 100;"/>');
+                this.$el.find('.correct').prepend('<img class="flame__my" src="img/explosion.gif"/>');
             }
             else if (msgData.enemyPower < msgData.power) {
-                 this.$el.find('.enemy__real__card').prepend('<img id="theImg" src="img/explosion.gif"  style = "margin-top:10px; margin-left:25px; position:absolute; z-index: 100;"/>');
+                 this.$el.find('.enemy__real__card').prepend('<img class="flame__enemy" src="img/explosion.gif"/>');
                 }
             else {
-                 this.$el.find('.correct').prepend('<img id="theImg" src="img/explosion.gif"  style = "margin-top:10px; margin-left:26%; position:absolute; z-index: 100;"/>');
-                 this.$el.find('.enemy__real__card').prepend('<img id="theImg" src="img/explosion.gif"  style = "margin-top:10px; margin-left:25px; position:absolute; z-index: 100;"/>');
+                 this.$el.find('.correct').prepend('<img class="flame__my" src="img/explosion.gif" />');
+                 this.$el.find('.enemy__real__card').prepend('<img class="flame__enemy" src="img/explosion.gif" />');
 
             }
         },
-        initializeGame: function(){
+        initializeGame: function(msgData){
             this.round = 1;
             this.cards_counter = 0;
             this.mana_stack = [];
             this.AI_power = 0;
             this.USER_power = 0;
-            this.AI_health = 50;
-            this.USER_health =50;
             this.stack_to_delete = [];
             this.user1_stack = this.cardsCollection;
             this.AI_stack = [];
             this.user2_stack_length = 3;
-            this.userStackTable = $(".score span.my");
             this.init_table();
+            this.showHealth(msgData);
             this.draw(this.user1_stack);
             this.draw_enemy(this.user2_stack_length);
             $('#button_done').show();
@@ -188,9 +210,11 @@ define([
                 this.$el.find('#sortable3').append('<img class="card__size__game" src="img/back.png">');
             }
         },
-        showStats: function(msgData){
-            $("#your_health").text(msgData.health);
-            $("#enemy_health").text(msgData.enemyHealth);
+        showHealth: function(msgData){
+            $(".not_my").text(msgData.enemyPower);
+            $(".my").text(msgData.power);
+        },
+        showPower: function(msgData){
             $(".not_my").text(msgData.enemyPower);
             $(".my").text(msgData.power);
         },
@@ -249,18 +273,17 @@ define([
         },
 
         done: function () {
-            //this.result(this.USER_power, this.aiSimulation(this.AI_stack));
             this.$el.find('#button_done').hide();
             console.log(this.stack_to_delete);
             this.socket.send(JSON.stringify({
                 command: 'nextTurn',
                 cards: this.stack_to_delete
-            })); //????
+            }));
         },
 
         restartButton: function(){
             this.socket.send(JSON.stringify({
-                command: 'nextRound',
+                command: 'nextRound'
             }));
     }
     });

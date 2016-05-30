@@ -1,10 +1,8 @@
 define([
-    'backbone',
     'tmpl/registration',
     'models/session',
     'materialize'
 ], function (
-    Backbone1,
     tmpl,
     session
 ) {
