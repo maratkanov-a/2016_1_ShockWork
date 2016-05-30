@@ -27,6 +27,27 @@ html {
   width: 320px;
   height: 240px;
 }
+.health__your {
+  font-family: monospace;
+  font-size: 19px;
+  color: azure;
+  float: left;
+  padding-top: 35px;
+  padding-left: 100px;
+  width: 263px;
+  height: 67px;
+}
+
+.health__enemy {
+  font-family: monospace;
+  font-size: 18px;
+  color: azure;
+  float: right;
+  padding-top: 35px;
+  padding-right: 100px;
+  width: 263px;
+  height: 67px;
+}
 
 
 

@@ -37,6 +37,12 @@
             <div class="js-insert-back rightBar fr">
 
             </div>
+            <div class = "health__your">
+                <span>Your health:</span><span id = "your_health">50</span>
+            </div>
+            <div class = "health__enemy">
+                <span>Health rival:</span><span id = "enemy_health">50</span>
+            </div>
 
             <div id="table">
                 <div class="leftBar fl">
@@ -56,10 +62,11 @@
 
                 </div>
 
-                <div class = "health" style = "color: brown;">
+                <!--<div class = "health" style = "color: brown;">
                     <span>HP:</span><span id = "your_health">50</span>
                     <span>Enemy:</span><span id = "enemy_health">50</span>
-                </div>
+                </div>-->
+
 
 
                 <div id = "restart_button" align = "center" style = "position: absolute;

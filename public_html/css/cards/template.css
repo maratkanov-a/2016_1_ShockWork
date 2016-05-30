@@ -21,7 +21,7 @@
     width: 210px;
     height: 100%;
     box-sizing: border-box;
-    padding: 5px 41px 19px 36px;
+    padding: 40px 41px 19px 36px;
 }
 .rightBar {
     width: 210px;
@@ -55,7 +55,8 @@
 
 .playing_card{
     z-index: 10;
-    width:120px;
+    width:155px;
+    padding-bottom: 13px;
 }
 img{
      cursor: -webkit-grabbing;
