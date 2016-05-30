@@ -54,7 +54,7 @@
                   </div>
                   <div class = "button-finish" id = "button_done">
                   </div>
-                  <div class = "health" style = "color: brown;">
+                  <div class = "my_health" style = "color: brown;">
                      <span>HP:</span><span id = "your_health">50</span>
                      <span>Enemy:</span><span id = "enemy_health">50</span>
                   </div>
