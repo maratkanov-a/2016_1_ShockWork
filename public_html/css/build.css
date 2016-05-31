@@ -1363,20 +1363,23 @@ body.stop-scrolling {
 .nav-top {
   margin-top: 200px;
 }
-.restart__button__span{
-  position: absolute;
-  top: 14px;
-  left: 17px;
-  font-size: 32px;
-  color: aqua;
-}
-
 #restart_button{
-  position: absolute;
-  top: 540px;
-  left: 610px;
-  display:none;
-}
+   position: absolute;
+   top: 540px;
+   left: 610px;
+   display:none;
+   height: 70px;
+   width: 60px;
+   background-image: url(../../img/cards/button.png);
+   background-size: cover;
+ }
+ #restart_button:hover{
+   background-image: url(../../img/cards/button1.png);
+   top: 540px;
+   left: 600px;
+   height: 60px;
+   width: 70px;
+ }
 
 .my_health{
   color: brown;
@@ -1412,6 +1415,7 @@ body.stop-scrolling {
   margin-left:25px;
   position:absolute;
   z-index: 100;
+  display: none;
 
 }
 .flame__my{
@@ -1419,6 +1423,7 @@ body.stop-scrolling {
   margin-left:25px;
   position:absolute;
   z-index: 100;
+  display: none;
 }
 .button_done{
   display: none;
