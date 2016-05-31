@@ -13114,7 +13114,7 @@ define('views/main',[
 
     return new View();
 });
-define('tmpl/game',[],function () { return function (__fest_context){"use strict";var __fest_self=this,__fest_buf="",__fest_chunks=[],__fest_chunk,__fest_attrs=[],__fest_select,__fest_if,__fest_iterator,__fest_to,__fest_fn,__fest_html="",__fest_blocks={},__fest_params,__fest_element,__fest_debug_file="",__fest_debug_line="",__fest_debug_block="",__fest_htmlchars=/[&<>"]/g,__fest_htmlchars_test=/[&<>"]/,__fest_short_tags = {"area":true,"base":true,"br":true,"col":true,"command":true,"embed":true,"hr":true,"img":true,"input":true,"keygen":true,"link":true,"meta":true,"param":true,"source":true,"wbr":true},__fest_element_stack = [],__fest_htmlhash={"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"},__fest_jschars=/[\\'"\/\n\r\t\b\f<>]/g,__fest_jschars_test=/[\\'"\/\n\r\t\b\f<>]/,__fest_jshash={"\"":"\\\"","\\":"\\\\","/":"\\/","\n":"\\n","\r":"\\r","\t":"\\t","\b":"\\b","\f":"\\f","'":"\\'","<":"\\u003C",">":"\\u003E"},___fest_log_error;if(typeof __fest_error === "undefined"){___fest_log_error = (typeof console !== "undefined" && console.error) ? function(){return Function.prototype.apply.call(console.error, console, arguments)} : function(){};}else{___fest_log_error=__fest_error};function __fest_log_error(msg){___fest_log_error(msg+"\nin block \""+__fest_debug_block+"\" at line: "+__fest_debug_line+"\nfile: "+__fest_debug_file)}function __fest_replaceHTML(chr){return __fest_htmlhash[chr]}function __fest_replaceJS(chr){return __fest_jshash[chr]}function __fest_extend(dest, src){for(var i in src)if(src.hasOwnProperty(i))dest[i]=src[i];}function __fest_param(fn){fn.param=true;return fn}function __fest_call(fn, params,cp){if(cp)for(var i in params)if(typeof params[i]=="function"&&params[i].param)params[i]=params[i]();return fn.call(__fest_self,params)}function __fest_escapeJS(s){if (typeof s==="string") {if (__fest_jschars_test.test(s))return s.replace(__fest_jschars,__fest_replaceJS);} else if (typeof s==="undefined")return "";return s;}function __fest_escapeHTML(s){if (typeof s==="string") {if (__fest_htmlchars_test.test(s))return s.replace(__fest_htmlchars,__fest_replaceHTML);} else if (typeof s==="undefined")return "";return s;}var json=__fest_context;__fest_buf+=("<div id=\"loader-wrapper\"><div id=\"loader\"></div><div class=\"loader-section section-left\"></div><div class=\"loader-section section-right\"></div></div><div id=\"waiter\" style=\"width:100%;\n      height:100%;\n      position: fixed;\n      top: 0px;\n      left: 0px;\n      background-color: gray;\n      z-index:350;\n      opacity: 0.7;\"><span style=\"position: fixed; top: 200px; left: 550px;\">Ожидание...</span></div><div id=\"game\" class=\"row\"><div class=\"col s12 m6 offset-m3\"><nav class=\"nav\"><div class=\"nav-wrapper\"><a class=\"brand-logo center\">Игра</a><ul class=\"left hide-on-med-and-down\"><li><a class=\"js-go-back waves-effect waves-light btn\">Назад</a></li></ul></div></nav></div><div id=\"wrapper\"><div class=\"row\"><div class=\"container\"><div id=\"user_stack\" class=\"leftBar fl\" style=\"\"></div><div class=\"js-insert-back rightBar fr\"></div><div id=\"table\"><div class=\"leftBar fl\"><ul id=\"sortable2\" class=\"connectedSortable\"></ul></div><div class=\"score\" style=\"width: 120px; height:120px; color: #940d13; position: absolute;\n                     left: 580px; top: 100px; \" align=\"center\"><span class=\"my\" style=\"font: 52pt\/40pt sans-serif;\">0</span><span style=\"font: 52pt\/40pt sans-serif;\">VS</span><span class=\"not_my\" style=\"font: 52pt\/40pt sans-serif;\">?</span></div><div class=\"button-finish\" id=\"button_done\"></div><div class=\"my_health\" style=\"color: brown;\"><span>HP:</span><span id=\"your_health\">50</span><span>Enemy:</span><span id=\"enemy_health\">50</span></div><div id=\"restart_button\" align=\"center\" style=\"position: absolute;\n                     top: 540px;\n                     left: 610px;\n                     display:none;\"><img src=\"img\/cards\/button.png\" height=\"60\" width=\"60\"/><span style=\"position: absolute;\n                        top: 14px;\n                        left: 17px;\n                        font-size: 32px;\n                        color: aqua;\"><i class=\"fa fa-refresh\"></i></span></div><div class=\"rightBar fr\"><ul id=\"sortable3\" class=\"connectedSortable\"></ul></div></div></div></div></div></div>");__fest_to=__fest_chunks.length;if (__fest_to) {__fest_iterator = 0;for (;__fest_iterator<__fest_to;__fest_iterator++) {__fest_chunk=__fest_chunks[__fest_iterator];if (typeof __fest_chunk==="string") {__fest_html+=__fest_chunk;} else {__fest_fn=__fest_blocks[__fest_chunk.name];if (__fest_fn) __fest_html+=__fest_call(__fest_fn,__fest_chunk.params,__fest_chunk.cp);}}return __fest_html+__fest_buf;} else {return __fest_buf;}} ; });
+define('tmpl/game',[],function () { return function (__fest_context){"use strict";var __fest_self=this,__fest_buf="",__fest_chunks=[],__fest_chunk,__fest_attrs=[],__fest_select,__fest_if,__fest_iterator,__fest_to,__fest_fn,__fest_html="",__fest_blocks={},__fest_params,__fest_element,__fest_debug_file="",__fest_debug_line="",__fest_debug_block="",__fest_htmlchars=/[&<>"]/g,__fest_htmlchars_test=/[&<>"]/,__fest_short_tags = {"area":true,"base":true,"br":true,"col":true,"command":true,"embed":true,"hr":true,"img":true,"input":true,"keygen":true,"link":true,"meta":true,"param":true,"source":true,"wbr":true},__fest_element_stack = [],__fest_htmlhash={"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"},__fest_jschars=/[\\'"\/\n\r\t\b\f<>]/g,__fest_jschars_test=/[\\'"\/\n\r\t\b\f<>]/,__fest_jshash={"\"":"\\\"","\\":"\\\\","/":"\\/","\n":"\\n","\r":"\\r","\t":"\\t","\b":"\\b","\f":"\\f","'":"\\'","<":"\\u003C",">":"\\u003E"},___fest_log_error;if(typeof __fest_error === "undefined"){___fest_log_error = (typeof console !== "undefined" && console.error) ? function(){return Function.prototype.apply.call(console.error, console, arguments)} : function(){};}else{___fest_log_error=__fest_error};function __fest_log_error(msg){___fest_log_error(msg+"\nin block \""+__fest_debug_block+"\" at line: "+__fest_debug_line+"\nfile: "+__fest_debug_file)}function __fest_replaceHTML(chr){return __fest_htmlhash[chr]}function __fest_replaceJS(chr){return __fest_jshash[chr]}function __fest_extend(dest, src){for(var i in src)if(src.hasOwnProperty(i))dest[i]=src[i];}function __fest_param(fn){fn.param=true;return fn}function __fest_call(fn, params,cp){if(cp)for(var i in params)if(typeof params[i]=="function"&&params[i].param)params[i]=params[i]();return fn.call(__fest_self,params)}function __fest_escapeJS(s){if (typeof s==="string") {if (__fest_jschars_test.test(s))return s.replace(__fest_jschars,__fest_replaceJS);} else if (typeof s==="undefined")return "";return s;}function __fest_escapeHTML(s){if (typeof s==="string") {if (__fest_htmlchars_test.test(s))return s.replace(__fest_htmlchars,__fest_replaceHTML);} else if (typeof s==="undefined")return "";return s;}var json=__fest_context;__fest_buf+=("<div id=\"loader-wrapper\"><div id=\"loader\"></div><div class=\"loader-section section-left\"></div><div class=\"loader-section section-right\"></div></div><div id=\"waiter\"><span class=\".waiter__span\">Ожидание...</span></div><div id=\"game\" class=\"row\"><div class=\"col s12 m6 offset-m3\"><nav class=\"nav\"><div class=\"nav-wrapper\"><a class=\"brand-logo center\">Игра</a><ul class=\"left hide-on-med-and-down\"><li><a class=\"js-go-back waves-effect waves-light btn\">Назад</a></li></ul></div></nav></div><div id=\"wrapper\"><div class=\"row\"><div class=\"container\"><div id=\"user_stack\" class=\"leftBar fl\" style=\"\"></div><div class=\"js-insert-back rightBar fr\"></div><div id=\"table\"><div class=\"leftBar fl\"><ul id=\"sortable2\" class=\"connectedSortable\"></ul></div><div class=\"score\" align=\"center\"><span class=\"my\">0</span><span class=\"score__span__vs\">VS</span><span class=\"not_my\">?</span></div><div class=\"button-finish\" id=\"button_done\"></div><div class=\"my_health\"><span>HP:</span><span id=\"your_health\">50</span><span>Enemy:</span><span id=\"enemy_health\">50</span></div><div id=\"restart_button\" align=\"center\"></div><div class=\"rightBar fr\"><ul id=\"sortable3\" class=\"connectedSortable\"></ul></div><img class=\"flame__my\" src=\"img\/explosion.gif\"/><img class=\"flame__enemy\" src=\"img\/explosion.gif\"/></div></div></div></div></div>");__fest_to=__fest_chunks.length;if (__fest_to) {__fest_iterator = 0;for (;__fest_iterator<__fest_to;__fest_iterator++) {__fest_chunk=__fest_chunks[__fest_iterator];if (typeof __fest_chunk==="string") {__fest_html+=__fest_chunk;} else {__fest_fn=__fest_blocks[__fest_chunk.name];if (__fest_fn) __fest_html+=__fest_call(__fest_fn,__fest_chunk.params,__fest_chunk.cp);}}return __fest_html+__fest_buf;} else {return __fest_buf;}} ; });
 ;(function(window, document, undefined) {
   "use strict";
   
@@ -31133,7 +31133,6 @@ define('views/game',[
                         }
                         break;
                     case "enemyDisconnected":
-                        //TODO показать что второй вышел и выйти на главный экран
                         swal({   title: "Ошибка",
                                     text: "Противник вышел из игры",
                                      type: "error",
@@ -31170,14 +31169,14 @@ define('views/game',[
         },
         makePapauPschhhh: function(msgData){
             if (msgData.enemyPower > msgData.power){
-                this.$el.find('.correct').prepend('<img class="flame__my" src="img/explosion.gif"/>');
+                this.$el.find('.flame__my').clone().prependTo(this.$el.find('.correct')).show();
             }
             else if (msgData.enemyPower < msgData.power) {
-                 this.$el.find('.enemy__real__card').prepend('<img class="flame__enemy" src="img/explosion.gif"/>');
+                 this.$el.find('.flame__enemy').clone().prependTo(this.$el.find('.enemy__real__card')).show();
                 }
             else {
-                 this.$el.find('.correct').prepend('<img class="flame__my" src="img/explosion.gif" />');
-                 this.$el.find('.enemy__real__card').prepend('<img class="flame__enemy" src="img/explosion.gif" />');
+                 this.$el.find('.flame__my').clone().prependTo(this.$el.find('.correct')).show();
+                 this.$el.find('.flame__enemy').clone().prependTo(this.$el.find('.enemy__real__card')).show();
 
             }
         },
@@ -31195,7 +31194,7 @@ define('views/game',[
             this.showHealth(msgData);
             this.draw(this.user1_stack);
             this.draw_enemy(this.user2_stack_length);
-            $('#button_done').show();
+            this.$el.find('#button_done').show();
         },
         refreshTable: function(msgData){
             this.$el.find('#user_stack').html('');
@@ -31229,15 +31228,15 @@ define('views/game',[
             }
         },
         showHealth: function(msgData){
-            $(".not_my").text(msgData.enemyPower);
-            $(".my").text(msgData.power);
+            this.$el.find("#enemy_health").text(msgData.enemyHealth);
+            this.$el.find("#your_health").text(msgData.health);
         },
         showPower: function(msgData){
-            $(".not_my").text(msgData.enemyPower);
-            $(".my").text(msgData.power);
+            this.$el.find(".not_my").text(msgData.enemyPower);
+            this.$el.find(".my").text(msgData.power);
         },
         init_table: function() {
-            $(".score span.my").text('0');
+            this.$el.find(".score span.my").text('0');
             var newThis = this.$el;
             for (var i = 1; i <= 3; i++) {
                 $('<div style = "height: 180px; width: 100%"> </div>')
@@ -31262,7 +31261,7 @@ define('views/game',[
             ui.draggable.position( { of: $(this), my: 'left top', at: 'left top' } );
             ui.draggable.draggable( 'option', 'revert', false );
             ui.draggable.data('this').USER_power += cardPower;
-            $(".score span.my").text(ui.draggable.data('this').USER_power);
+            ui.draggable.data('this').$el.find(".score span.my").text(ui.draggable.data('this').USER_power);
         },
         draw: function(stack) {
             var count = stack.length;
@@ -42881,24 +42880,26 @@ define('views/offline',[
                 newThis.AI_health -= user - ai;
                 this.$('#enemy_health').text(this.AI_health);
                 newThis.$el.find('#button_done').hide();
-                newThis.$el.find('.enemy__real__card').prepend('<img class="flame__my" src="img/explosion.gif"/>');
+                newThis.$el.find('.flame__enemy').clone().prependTo(newThis.$el.find('.enemy__real__card')).show();
+                newThis.$el.find('#restart_button').show();
             }
             if (user < ai) {
                 newThis.USER_health -= ai - user;
                 newThis.$el.find('#your_health').text(this.USER_health);
                 newThis.$el.find('#button_done').hide();
-                newThis.$el.find('.correct').prepend('<img class="flame__enemy" src="img/explosion.gif"/>');
-
+                newThis.$el.find('.flame__my').clone().prependTo(newThis.$el.find('.correct')).show();
+                newThis.$el.find('#restart_button').show();
 
             }
             if (this.USER_health <= 0) {
                 alert('you loose');
+                this.$el.find('#restart_button').hide();
                 this.render();
             }
             if (this.AI_health <= 0) {
+                this.$el.find('#restart_button').hide();
                 this.render();
             }
-            this.$el.find('#restart_button').show();
         },
         restartButton: function(){
             this.round++;

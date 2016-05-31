@@ -114,7 +114,6 @@ define([
                         }
                         break;
                     case "enemyDisconnected":
-                        //TODO показать что второй вышел и выйти на главный экран
                         swal({   title: "Ошибка",
                                     text: "Противник вышел из игры",
                                      type: "error",
@@ -151,14 +150,14 @@ define([
         },
         makePapauPschhhh: function(msgData){
             if (msgData.enemyPower > msgData.power){
-                this.$el.find('.correct').prepend('<img class="flame__my" src="img/explosion.gif"/>');
+                this.$el.find('.flame__my').clone().prependTo(this.$el.find('.correct')).show();
             }
             else if (msgData.enemyPower < msgData.power) {
-                 this.$el.find('.enemy__real__card').prepend('<img class="flame__enemy" src="img/explosion.gif"/>');
+                 this.$el.find('.flame__enemy').clone().prependTo(this.$el.find('.enemy__real__card')).show();
                 }
             else {
-                 this.$el.find('.correct').prepend('<img class="flame__my" src="img/explosion.gif" />');
-                 this.$el.find('.enemy__real__card').prepend('<img class="flame__enemy" src="img/explosion.gif" />');
+                 this.$el.find('.flame__my').clone().prependTo(this.$el.find('.correct')).show();
+                 this.$el.find('.flame__enemy').clone().prependTo(this.$el.find('.enemy__real__card')).show();
 
             }
         },
@@ -176,7 +175,7 @@ define([
             this.showHealth(msgData);
             this.draw(this.user1_stack);
             this.draw_enemy(this.user2_stack_length);
-            $('#button_done').show();
+            this.$el.find('#button_done').show();
         },
         refreshTable: function(msgData){
             this.$el.find('#user_stack').html('');
@@ -210,15 +209,15 @@ define([
             }
         },
         showHealth: function(msgData){
-            $(".not_my").text(msgData.enemyPower);
-            $(".my").text(msgData.power);
+            this.$el.find("#enemy_health").text(msgData.enemyHealth);
+            this.$el.find("#your_health").text(msgData.health);
         },
         showPower: function(msgData){
-            $(".not_my").text(msgData.enemyPower);
-            $(".my").text(msgData.power);
+            this.$el.find(".not_my").text(msgData.enemyPower);
+            this.$el.find(".my").text(msgData.power);
         },
         init_table: function() {
-            $(".score span.my").text('0');
+            this.$el.find(".score span.my").text('0');
             var newThis = this.$el;
             for (var i = 1; i <= 3; i++) {
                 $('<div style = "height: 180px; width: 100%"> </div>')
@@ -243,7 +242,7 @@ define([
             ui.draggable.position( { of: $(this), my: 'left top', at: 'left top' } );
             ui.draggable.draggable( 'option', 'revert', false );
             ui.draggable.data('this').USER_power += cardPower;
-            $(".score span.my").text(ui.draggable.data('this').USER_power);
+            ui.draggable.data('this').$el.find(".score span.my").text(ui.draggable.data('this').USER_power);
         },
         draw: function(stack) {
             var count = stack.length;
