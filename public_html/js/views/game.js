@@ -197,7 +197,7 @@ define([
             this.$el.find('#sortable3').html('');
             var newThis = this.$el;
             for (var i=0; i < msgData.enemyCards.length; i++ ){
-                $('<li class="ui-state-default" style = "list-style: none;"><img src="img/cards/'+msgData.enemyCards[i].img+'.png" alt=""> </li>')
+                $('<li class="ui-state-default"><img src="img/cards/'+msgData.enemyCards[i].img+'.png" alt=""> </li>')
                 .data('power', msgData.enemyCards[i].id)
                 .attr('class', 'enemy__real__card').appendTo(newThis.find('#sortable3'));
             }
@@ -220,8 +220,9 @@ define([
             this.$el.find(".score span.my").text('0');
             var newThis = this.$el;
             for (var i = 1; i <= 3; i++) {
-                $('<div style = "height: 180px; width: 100%"> </div>')
+                $('<div> </div>')
                     .data('user', 1)
+                    .attr('class','card__place')
                     .appendTo(newThis.find('#sortable2')).droppable({
                         accept: '.playing_card',
                         hoverClass: 'hovered',
@@ -248,7 +249,7 @@ define([
             var count = stack.length;
             var newThis = this.$el;
             for (var i=0; i < count; i++ ){
-                $('<li class="ui-state-default" style = "list-style: none;"><img src="img/cards/'+stack[i].img+'.png" alt=""> </li>')
+                $('<li class="ui-state-default"><img src="img/cards/'+stack[i].img+'.png" alt=""> </li>')
                 .data('power', stack[i].power)
                 .data('class', stack[i].mana)
                     .data('this',this)

@@ -43,7 +43,9 @@
                   </div>
                   <div class = "my_health">
                      <span>HP:</span><span id = "your_health">50</span>
-                     <span>Enemy:</span><span id = "enemy_health">50</span>
+                  </div>
+                  <div class = "his_health">
+                     <span>HP:</span><span id = "enemy_health">50</span>
                   </div>
                   <div id = "restart_button" align = "center">
                   </div>
