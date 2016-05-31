@@ -293,9 +293,7 @@ define([
             }
         },
         init_table: function() {
-            alert('!');
             this.$el.find(".my").text('0');
-            alert(this.$el.find(".my").text());
             var newThis = this.$el;
             for (var i = 1; i <= 3; i++) {
                 $('<div style = "height: 180px; width: 100%"> </div>').

@@ -211,8 +211,8 @@ define([
             }
         },
         showHealth: function(msgData){
-            $(".not_my").text(msgData.enemyPower);
-            $(".my").text(msgData.power);
+            $("#enemy_health").text(msgData.enemyPower);
+            $("#your_health").text(msgData.power);
         },
         showPower: function(msgData){
             $(".not_my").text(msgData.enemyPower);
