@@ -1363,6 +1363,23 @@ body.stop-scrolling {
 .nav-top {
   margin-top: 200px;
 }
+.enemy__real__card{
+  list-style: none;
+}
+.card__place{
+  height: 180px;
+  width: 100%
+}
+.playing_card{
+  z-index: 10;
+  width: 120px;
+  margin-left: 15px;
+  margin-bottom: 20px;
+  list-style: none;
+}
+#user_stack{
+  margin-top:45px;
+}
 #restart_button{
    position: absolute;
    top: 540px;
@@ -1382,18 +1399,39 @@ body.stop-scrolling {
  }
 
 .my_health{
+  color: #26A69A;
+  position: absolute;
+  top: 35px;
+  left: 340px;
+  font-size: 20px;
+}
+.his_health{
   color: brown;
+  position: absolute;
+  top: 35px;
+  left: 840px;
+  font-size: 20px;
 }
 .score{
-  width: 120px;
-  height:120px;
-  color: #940d13;
+  width: 240px;
+  height: 90px;
   position: absolute;
-  left: 580px;
+  left: 520px;
   top: 100px;
+}
+.score__span__vs{
+  font-size: 44px !important;
+  color: #ada695;
+  margin: 10px;
 }
 .score span{
   font: 52pt/40pt sans-serif;
+}
+.my{
+  color: #26A69A;
+}
+.not_my{
+  color: #940d13;
 }
 #waiter{
   width:100%;
