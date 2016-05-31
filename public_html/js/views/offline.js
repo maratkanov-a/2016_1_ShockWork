@@ -380,24 +380,26 @@ define([
                 newThis.AI_health -= user - ai;
                 this.$('#enemy_health').text(this.AI_health);
                 newThis.$el.find('#button_done').hide();
-                newThis.$el.find('.enemy__real__card').prepend('<img class="flame__my" src="img/explosion.gif"/>');
+                newThis.$el.find('.flame__enemy').clone().prependTo(newThis.$el.find('.enemy__real__card')).show();
+                newThis.$el.find('#restart_button').show();
             }
             if (user < ai) {
                 newThis.USER_health -= ai - user;
                 newThis.$el.find('#your_health').text(this.USER_health);
                 newThis.$el.find('#button_done').hide();
-                newThis.$el.find('.correct').prepend('<img class="flame__enemy" src="img/explosion.gif"/>');
-
+                newThis.$el.find('.flame__my').clone().prependTo(newThis.$el.find('.correct')).show();
+                newThis.$el.find('#restart_button').show();
 
             }
             if (this.USER_health <= 0) {
                 alert('you loose');
+                this.$el.find('#restart_button').hide();
                 this.render();
             }
             if (this.AI_health <= 0) {
+                this.$el.find('#restart_button').hide();
                 this.render();
             }
-            this.$el.find('#restart_button').show();
         },
         restartButton: function(){
             this.round++;
