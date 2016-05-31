@@ -112,17 +112,19 @@ module.exports = function (grunt) {
             }
         },
         concat_css: {
-            files: {
-                'public_html/css/build.css': [
-                    'public_html/css/loader.css',
-                    'public_html/css/materialize.min.css',
-                    'public_html/css/sweetalert.css',
-                    'public_html/css/main.css',
-                    'public_html/css/cards/jquery-ui.css',
-                    'public_html/css/cards/style.css',
-                    'public_html/css/cards/template.css'
-                ],
-            }
+        	build : {
+	            files: {
+	                'public_html/css/build.css': [
+	                    'public_html/css/loader.css',
+	                    'public_html/css/materialize.min.css',
+	                    'public_html/css/sweetalert.css',
+	                    'public_html/css/main.css',
+	                    'public_html/css/cards/jquery-ui.css',
+	                    'public_html/css/cards/style.css',
+	                    'public_html/css/cards/template.css'
+	                ],
+	            }
+        	}
         },
         cssmin: {
             target: {
@@ -156,5 +158,5 @@ module.exports = function (grunt) {
     grunt.registerTask('test', ['qunit:all']);
     grunt.registerTask('default', ['concurrent']);
     grunt.registerTask('less', ['less']);
-    grunt.registerTask('build', ['fest', 'requirejs:build', 'concat:build', 'uglify:build', 'concat_css', 'cssmin']);
+    grunt.registerTask('build', ['fest', 'requirejs:build', 'concat:build', 'uglify:build', 'concat_css:build', 'cssmin']);
 };
