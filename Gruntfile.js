@@ -117,11 +117,12 @@ module.exports = function (grunt) {
 	                'public_html/css/build.css': [
 	                    'public_html/css/loader.css',
 	                    'public_html/css/materialize.min.css',
+                        'public_html/css/material-icon.css',
 	                    'public_html/css/sweetalert.css',
 	                    'public_html/css/main.css',
-	                    'public_html/css/cards/jquery-ui.css',
-	                    'public_html/css/cards/style.css',
-	                    'public_html/css/cards/template.css'
+	                    'public_html/css/jquery-ui.css',
+	                    'public_html/css/style.css',
+	                    'public_html/css/template.css'
 	                ],
 	            }
         	}
