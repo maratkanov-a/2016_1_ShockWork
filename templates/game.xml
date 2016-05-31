@@ -6,16 +6,8 @@
       <div class="loader-section section-right"></div>
    </div>
    <!--==============================================-->
-   <div id = "waiter"
-      style = "width:100%;
-      height:100%;
-      position: fixed;
-      top: 0px;
-      left: 0px;
-      background-color: gray;
-      z-index:350;
-      opacity: 0.7;">
-      <span style = "position: fixed; top: 200px; left: 550px;">Ожидание...</span>
+   <div id = "waiter">
+      <span class = ".waiter__span">Ожидание...</span>
    </div>
    <div id="game" class="row">
       <div class="col s12 m6 offset-m3">
@@ -42,34 +34,25 @@
                      <ul id="sortable2" class="connectedSortable">
                      </ul>
                   </div>
-                  <div class = "score" style = "width: 120px; height:120px; color: #940d13; position: absolute;
-                     left: 580px; top: 100px; " align = "center">
-                     <span class = "my" style = "font: 52pt/40pt sans-serif;">0</span>
-                     <span style = "font: 52pt/40pt sans-serif;">VS</span>
-                     <span class = "not_my" style = "font: 52pt/40pt sans-serif;">?</span>
+                  <div class = "score" align = "center">
+                     <span class = "my">0</span>
+                     <span class = "score__span__vs">VS</span>
+                     <span class = "not_my">?</span>
                   </div>
                   <div class = "button-finish" id = "button_done">
                   </div>
-                  <div class = "my_health" style = "color: brown;">
+                  <div class = "my_health">
                      <span>HP:</span><span id = "your_health">50</span>
                      <span>Enemy:</span><span id = "enemy_health">50</span>
                   </div>
-                  <div id = "restart_button" align = "center" style = "position: absolute;
-                     top: 540px;
-                     left: 610px;
-                     display:none;">
-                     <img src="img/cards/button.png" height="60" width="60">
-                     <span style = "position: absolute;
-                        top: 14px;
-                        left: 17px;
-                        font-size: 32px;
-                        color: aqua;"><i class="fa fa-refresh"></i></span>
-                     </img>
+                  <div id = "restart_button" align = "center">
                   </div>
                   <div class="rightBar fr">
                      <ul id="sortable3" class="connectedSortable">
                      </ul>
                   </div>
+                  <img class="flame__my" src="img/explosion.gif"/>
+                  <img class="flame__enemy" src="img/explosion.gif"/>
                </div>
             </div>
          </div>
