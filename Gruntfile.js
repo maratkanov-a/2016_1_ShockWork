@@ -1,25 +1,25 @@
-module.exports = function (grunt) {
+module.exports = function(grunt) {
 
     grunt.initConfig({
 
-    //add less
+        //add less
 
         less: {
-              development: {
+            development: {
                 options: {
-                  paths: ['less'],
-                  plugins: [
-                    new(require('less-plugin-autoprefix'))({
-                      browsers: ["last 2 versions"]
-                    })
-                  ],
+                    paths: ['less'],
+                    plugins: [
+                        new(require('less-plugin-autoprefix'))({
+                            browsers: ["last 2 versions"]
+                        })
+                    ],
                 },
                 files: {
-                  'public_html/css/main.css': 'less/main.less',
-                  'public_html/css/cards/template.css': 'less/less_for_template/main.less'
+                    'public_html/css/main.css': 'less/main.less',
+                    'public_html/css/cards/template.css': 'less/less_for_template/main.less'
                 }
-              }
-            },
+            }
+        },
 
         shell: {
             options: {
@@ -39,10 +39,11 @@ module.exports = function (grunt) {
                     dest: 'public_html/js/tmpl'
                 }],
                 options: {
-                    template: function (data) {
+                    template: function(data) {
                         return grunt.template.process(
-                            'define(function () { return <%= contents %> ; });',
-                            {data: data}
+                            'define(function () { return <%= contents %> ; });', {
+                                data: data
+                            }
                         );
                     }
                 }
@@ -67,8 +68,6 @@ module.exports = function (grunt) {
                 }
             }
 
-
-
         },
         concurrent: {
             target: ['watch', 'shell'],
@@ -82,16 +81,16 @@ module.exports = function (grunt) {
         requirejs: {
             build: {
                 options: {
-                            almond: true,
-                            baseUrl: "public_html/js",
-                            mainConfigFile: "public_html/js/config.js",
-                            name: "main",
-                            optimize: "none",
-                            out: "public_html/js/build/main.js",
-                            include: ['main'],
-                            insertRequire: ["main"]
-                         }
-                     }
+                    almond: true,
+                    baseUrl: "public_html/js",
+                    mainConfigFile: "public_html/js/config.js",
+                    name: "main",
+                    optimize: "none",
+                    out: "public_html/js/build/main.js",
+                    include: ['main'],
+                    insertRequire: ["main"]
+                }
+            }
         },
         concat: {
             build: {
@@ -106,26 +105,25 @@ module.exports = function (grunt) {
         uglify: {
             build: {
                 files: {
-                    'public_html/js/build.min.js':
-                        ['public_html/js/build.js']
+                    'public_html/js/build.min.js': ['public_html/js/build.js']
                 }
             }
         },
         concat_css: {
-        	build : {
-	            files: {
-	                'public_html/css/build.css': [
-	                    'public_html/css/loader.css',
-	                    'public_html/css/materialize.min.css',
+            build: {
+                files: {
+                    'public_html/css/build.css': [
+                        'public_html/css/loader.css',
+                        'public_html/css/materialize.min.css',
                         'public_html/css/material-icon.css',
-	                    'public_html/css/sweetalert.css',
-	                    'public_html/css/main.css',
-	                    'public_html/css/jquery-ui.css',
-	                    'public_html/css/style.css',
-	                    'public_html/css/template.css'
-	                ],
-	            }
-        	}
+                        'public_html/css/sweetalert.css',
+                        'public_html/css/main.css',
+                        'public_html/css/jquery-ui.css',
+                        'public_html/css/style.css',
+                        'public_html/css/template.css'
+                    ],
+                }
+            }
         },
         cssmin: {
             target: {
@@ -140,7 +138,7 @@ module.exports = function (grunt) {
                     ext: '.min.css'
                 }]
             }
-        }        
+        }
     });
 
 
