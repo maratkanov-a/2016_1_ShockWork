@@ -5,10 +5,10 @@ require.config({
         jquery: "lib/jquery",
         underscore: "lib/underscore",
         backbone: "lib/backbone",
-        materialize: 'lib/materialize.min',
+        materialize: 'lib/materialize',
         hammerjs: 'lib/hammerjs',
         jquery_ui: 'lib/cards/jquery-ui',
-        sweetalert: 'lib/sweetalert.min'
+        sweetalert: 'lib/sweetalert-dev'
 
     },
     shim: {

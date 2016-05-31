@@ -1,8 +1,4 @@
 <fest:template xmlns:fest="http://fest.mail.ru" context_name="json">
-   <link rel="stylesheet" href="css/cards/jquery-ui.css" />
-   <link rel="stylesheet" href="css/cards/style.css" />
-   <link rel="stylesheet" href="css/cards/template.css" />
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
    <!--=======loader=================================-->
    <div id="loader-wrapper">
       <div id="loader"></div>

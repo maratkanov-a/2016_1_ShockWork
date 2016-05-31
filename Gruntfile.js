@@ -79,31 +79,65 @@ module.exports = function (grunt) {
         qunit: {
             all: ['./public_html/tests/index.html']
         },
-        
-        //addReqJS
-         requirejs: {
+        requirejs: {
             build: {
                 options: {
-                          baseUrl: "./public_html/js",
-                          mainConfigFile: "./public_html/config.js",
-                          include: ["../../node_modules/almond/almond.js", "main.js"],
-                          out: "dist/js/build.min.js",
-                          findNestedDependencies: true,
-                          wrap: true,
-                          insertRequire: ["main.js"],
+                            almond: true,
+                            baseUrl: "public_html/js",
+                            mainConfigFile: "public_html/config.js",
+                            name: "main",
+                            optimize: "none",
+                            out: "public_html/js/build/main.js",
+                            include: ['app'],
+                            insertRequire: ["app"]
                          }
-                     },
-         css: {
-            options: {
-                        optimizeCss: "standard",
-                        cssImportIgnore: null,
-                        cssIn: "public_html/css/main.css",
-                        out: "public_html/css/main.min.css",
-                    }
-                }      
-                     }           
-
-
+                     }
+        },
+        concat: {
+            build: {
+                separator: ';\n',
+                src: [
+                    'public_html/js/lib/almond.js',
+                    'public_html/js/build/main.js',
+                ],
+                dest: 'public_html/js/build.js'
+            }
+        },
+        uglify: {
+            build: {
+                files: {
+                    'public_html/js/build.min.js':
+                        ['public_html/js/build.js']
+                }
+            }
+        },
+        concat_css: {
+            files: {
+                'public_html/css/build.css': [
+                    'public_html/css/loader.css',
+                    'public_html/css/materialize.min.css',
+                    'public_html/css/sweetalert.css',
+                    'public_html/css/main.css',
+                    'public_html/css/cards/jquery-ui.css',
+                    'public_html/css/cards/style.css',
+                    'public_html/css/cards/template.css'
+                ],
+            }
+        },
+        cssmin: {
+            target: {
+                options: {
+                    keepSpecialComments: 0
+                },
+                files: [{
+                    expand: true,
+                    cwd: 'public_html/css',
+                    src: ['build.css'],
+                    dest: 'public_html/css',
+                    ext: '.min.css'
+                }]
+            }
+        }        
     });
 
 
@@ -114,11 +148,13 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-fest');
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-requirejs');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.loadNpmTasks('grunt-concat-css');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
 
     grunt.registerTask('test', ['qunit:all']);
     grunt.registerTask('default', ['concurrent']);
     grunt.registerTask('less', ['less']);
-    //grunt.registerTask('requirejs', ['requirejs']);
-
-
+    grunt.registerTask('build', ['fest', 'requirejs:build', 'concat:build', 'uglify:build', 'concat_css', 'cssmin']);
 };
