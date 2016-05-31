@@ -1,8 +1,7 @@
 define([
-    'backbone',
-    'models/score'
+    'models/score',
+    'backbone'
 ], function(
-    Backbone1,
     Score
 ){
 

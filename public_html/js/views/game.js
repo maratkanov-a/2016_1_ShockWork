@@ -1,10 +1,8 @@
 define([
     'tmpl/game',
-    'collections/cards',
     'sweetalert'
 ], function(
-    tmpl,
-    cardCollection
+    tmpl
 ){
 
     var View = Backbone.View.extend({
@@ -30,7 +28,7 @@ define([
             this.$el.show();
             this.trigger("show",this);
 
-            this.socket = new WebSocket("ws://" + window.location.hostname + ":" + window.location.port + "/api/gameplay");
+            this.socket = new WebSocket("wss://" + window.location.hostname + ":" + window.location.port + "/api/gameplay");
             this.socket.onopen = function () {
                 console.log('Open connection')
             };

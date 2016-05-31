@@ -73,10 +73,10 @@ define([
             this.toggleElements();
         },
         toggleElements: function() {
-            $(canvas).toggle();
-            $(video).toggle();
-            $(snap).toggle();
-            $(resnap).toggle();
+            this.$el.find(canvas).toggle();
+            this.$el.find(video).toggle();
+            this.$el.find(snap).toggle();
+            this.$el.find(resnap).toggle();
         },
         canvasToString: function (canvas) {
             return (this.isSnapped) ? canvas.toDataURL("image/png").replace(/^data:image\/(png|jpg);base64,/, "") : "";
@@ -108,24 +108,24 @@ define([
             } else if ( Array.isArray(valid) ) {
                 this.$el.find('.form__error').hide();
                 valid.forEach(function (item) {
-                    $('.form__'+ item +'__error').text("Required").show()
+                    $('.form__'+ item +'__error').text("Обязательное поле").show()
                 });
             } else if (valid === 'passwords') {
 
                 this.$el.find('.form__error').hide();
-                this.$el.find('.form__password1__error, .form__password2__error').text('Passwords dont match').show();
+                this.$el.find('.form__password1__error, .form__password2__error').text('Пароли не совпадают').show();
 
             } else if (valid === 'bad_email') {
 
                 this.$el.find('.form__error').hide();
-                this.$el.find('.form__email__error').text('Example lala@mail.ru').show();
+                this.$el.find('.form__email__error').text('Пример: lala@mail.ru').show();
 
             } else if (valid === 'all') {
 
                 this.$el.find('.form__error').hide();
                 $.each(this.$el.find('.js-validate'), function () {
                     if ($(this).val() === '') {
-                        $(this).parent().find('.form__error').text("Required").show()
+                        $(this).parent().find('.form__error').text("Обязательное поле").show()
                     }
                 });
 
