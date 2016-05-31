@@ -1,28 +1,10 @@
 self.addEventListener('install', function(event) {
   event.waitUntil(
-    caches.open('MMG-v2').then(function(cache) {
+    caches.open('MMG-v3').then(function(cache) {
       return cache.addAll([
-                  '/',
-                  '/index.html',
-                  '/js/build.min.js',
-				  '/js/app.js',
-				  '/js/router.js',
-				  '/js/collections/scores.js',
-				  '/js/models/score.js',
-				  '/js/models/session.js',
-				  '/js/tmpl/game.js',
-				  '/js/tmpl/input_field_template.js',
-				  '/js/tmpl/login.js',
-				  '/js/tmpl/main.js',
-				  '/js/tmpl/registration.js',
-				  '/js/tmpl/scoreboard.js',
-				  '/js/views/game.js',
-				  '/js/views/login.js',
-				  '/js/views/main.js',
-				  '/js/views/offline.js',
-				  '/js/views/registration.js',
-				  '/js/views/scoreboard.js',
-				  '/js/views/view_manager.js',
+				  '/',
+				  '/index.html',
+				  '/js/build.min.js',
 				  '/font/roboto/Roboto-Regular.ttf',
 				  '/font/roboto/Roboto-Regular.woff',
 				  '/font/roboto/Roboto-Regular.woff2',
