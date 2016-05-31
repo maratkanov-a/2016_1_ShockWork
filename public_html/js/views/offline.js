@@ -1,6 +1,7 @@
 define([
     'tmpl/game',
-    'backbone'
+    'backbone',
+    'jquery_ui'
 ], function(
     tmpl
 ){

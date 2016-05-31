@@ -84,12 +84,12 @@ module.exports = function (grunt) {
                 options: {
                             almond: true,
                             baseUrl: "public_html/js",
-                            mainConfigFile: "public_html/config.js",
+                            mainConfigFile: "public_html/js/config.js",
                             name: "main",
                             optimize: "none",
                             out: "public_html/js/build/main.js",
-                            include: ['app'],
-                            insertRequire: ["app"]
+                            include: ['main'],
+                            insertRequire: ["main"]
                          }
                      }
         },

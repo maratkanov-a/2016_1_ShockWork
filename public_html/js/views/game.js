@@ -1,6 +1,7 @@
 define([
     'tmpl/game',
-    'sweetalert'
+    'sweetalert',
+    'jquery_ui'
 ], function(
     tmpl
 ){
