@@ -42500,7 +42500,8 @@ define('views/registration',[
 define('views/offline',[
     'tmpl/game',
     'backbone',
-    'jquery_ui'
+    'jquery_ui',
+    'sweetalert'
 ], function(
     tmpl
 ){
@@ -42892,13 +42893,32 @@ define('views/offline',[
 
             }
             if (this.USER_health <= 0) {
-                alert('you loose');
-                this.$el.find('#restart_button').hide();
-                this.render();
+                swal({   title: "Поражение",
+                                     text: "Тебя победил бот, играющий на рандоме",
+                                     type: "error",
+                                     showCancelButton: false,
+                                     confirmButtonColor: "#DD6B55",
+                                     confirmButtonText: "Я не тупой!",
+                                     closeOnConfirm: true },
+                                     function(){
+                                         newThis.$el.find('#restart_button').hide();
+                                         newThis.render();
+                });
             }
             if (this.AI_health <= 0) {
-                this.$el.find('#restart_button').hide();
-                this.render();
+                swal({   title: "Победа",
+                                     text: "Ты победил бездушную машину!",
+                                     type: "success",
+                                     showCancelButton: false,
+                                     confirmButtonColor: "#DD6B55",
+                                     confirmButtonText: "Я лучший!",
+                                     closeOnConfirm: true },
+                                     function(){
+                                         newThis.$el.find('#restart_button').hide();
+                                         newThis.render();
+                });
+
+
             }
         },
         restartButton: function(){
