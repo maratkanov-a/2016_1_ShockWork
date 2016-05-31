@@ -12687,7 +12687,7 @@ define('views/main',[
 
     return new View();
 });
-define('tmpl/game',[],function () { return function (__fest_context){"use strict";var __fest_self=this,__fest_buf="",__fest_chunks=[],__fest_chunk,__fest_attrs=[],__fest_select,__fest_if,__fest_iterator,__fest_to,__fest_fn,__fest_html="",__fest_blocks={},__fest_params,__fest_element,__fest_debug_file="",__fest_debug_line="",__fest_debug_block="",__fest_htmlchars=/[&<>"]/g,__fest_htmlchars_test=/[&<>"]/,__fest_short_tags = {"area":true,"base":true,"br":true,"col":true,"command":true,"embed":true,"hr":true,"img":true,"input":true,"keygen":true,"link":true,"meta":true,"param":true,"source":true,"wbr":true},__fest_element_stack = [],__fest_htmlhash={"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"},__fest_jschars=/[\\'"\/\n\r\t\b\f<>]/g,__fest_jschars_test=/[\\'"\/\n\r\t\b\f<>]/,__fest_jshash={"\"":"\\\"","\\":"\\\\","/":"\\/","\n":"\\n","\r":"\\r","\t":"\\t","\b":"\\b","\f":"\\f","'":"\\'","<":"\\u003C",">":"\\u003E"},___fest_log_error;if(typeof __fest_error === "undefined"){___fest_log_error = (typeof console !== "undefined" && console.error) ? function(){return Function.prototype.apply.call(console.error, console, arguments)} : function(){};}else{___fest_log_error=__fest_error};function __fest_log_error(msg){___fest_log_error(msg+"\nin block \""+__fest_debug_block+"\" at line: "+__fest_debug_line+"\nfile: "+__fest_debug_file)}function __fest_replaceHTML(chr){return __fest_htmlhash[chr]}function __fest_replaceJS(chr){return __fest_jshash[chr]}function __fest_extend(dest, src){for(var i in src)if(src.hasOwnProperty(i))dest[i]=src[i];}function __fest_param(fn){fn.param=true;return fn}function __fest_call(fn, params,cp){if(cp)for(var i in params)if(typeof params[i]=="function"&&params[i].param)params[i]=params[i]();return fn.call(__fest_self,params)}function __fest_escapeJS(s){if (typeof s==="string") {if (__fest_jschars_test.test(s))return s.replace(__fest_jschars,__fest_replaceJS);} else if (typeof s==="undefined")return "";return s;}function __fest_escapeHTML(s){if (typeof s==="string") {if (__fest_htmlchars_test.test(s))return s.replace(__fest_htmlchars,__fest_replaceHTML);} else if (typeof s==="undefined")return "";return s;}var json=__fest_context;__fest_buf+=("<div id=\"loader-wrapper\"><div id=\"loader\"></div><div class=\"loader-section section-left\"></div><div class=\"loader-section section-right\"></div></div><div id=\"waiter\"><span class=\".waiter__span\">Ожидание...</span></div><div id=\"game\" class=\"row\"><div class=\"col s12 m6 offset-m3\"><nav class=\"nav\"><div class=\"nav-wrapper\"><a class=\"brand-logo center\">Игра</a><ul class=\"left hide-on-med-and-down\"><li><a class=\"js-go-back waves-effect waves-light btn\">Назад</a></li></ul></div></nav></div><div id=\"wrapper\"><div class=\"row\"><div class=\"container\"><div id=\"user_stack\" class=\"leftBar fl\" style=\"\"></div><div class=\"js-insert-back rightBar fr\"></div><div id=\"table\"><div class=\"leftBar fl\"><ul id=\"sortable2\" class=\"connectedSortable\"></ul></div><div class=\"score\" align=\"center\"><span class=\"my\">0</span><span class=\"score__span__vs\">VS</span><span class=\"not_my\">?</span></div><div class=\"button-finish\" id=\"button_done\"></div><div class=\"my_health\"><span>HP:</span><span id=\"your_health\">50</span><span>Enemy:</span><span id=\"enemy_health\">50</span></div><div id=\"restart_button\" align=\"center\"></div><div class=\"rightBar fr\"><ul id=\"sortable3\" class=\"connectedSortable\"></ul></div><img class=\"flame__my\" src=\"img\/explosion.gif\"/><img class=\"flame__enemy\" src=\"img\/explosion.gif\"/></div></div></div></div></div>");__fest_to=__fest_chunks.length;if (__fest_to) {__fest_iterator = 0;for (;__fest_iterator<__fest_to;__fest_iterator++) {__fest_chunk=__fest_chunks[__fest_iterator];if (typeof __fest_chunk==="string") {__fest_html+=__fest_chunk;} else {__fest_fn=__fest_blocks[__fest_chunk.name];if (__fest_fn) __fest_html+=__fest_call(__fest_fn,__fest_chunk.params,__fest_chunk.cp);}}return __fest_html+__fest_buf;} else {return __fest_buf;}} ; });
+define('tmpl/game',[],function () { return function (__fest_context){"use strict";var __fest_self=this,__fest_buf="",__fest_chunks=[],__fest_chunk,__fest_attrs=[],__fest_select,__fest_if,__fest_iterator,__fest_to,__fest_fn,__fest_html="",__fest_blocks={},__fest_params,__fest_element,__fest_debug_file="",__fest_debug_line="",__fest_debug_block="",__fest_htmlchars=/[&<>"]/g,__fest_htmlchars_test=/[&<>"]/,__fest_short_tags = {"area":true,"base":true,"br":true,"col":true,"command":true,"embed":true,"hr":true,"img":true,"input":true,"keygen":true,"link":true,"meta":true,"param":true,"source":true,"wbr":true},__fest_element_stack = [],__fest_htmlhash={"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"},__fest_jschars=/[\\'"\/\n\r\t\b\f<>]/g,__fest_jschars_test=/[\\'"\/\n\r\t\b\f<>]/,__fest_jshash={"\"":"\\\"","\\":"\\\\","/":"\\/","\n":"\\n","\r":"\\r","\t":"\\t","\b":"\\b","\f":"\\f","'":"\\'","<":"\\u003C",">":"\\u003E"},___fest_log_error;if(typeof __fest_error === "undefined"){___fest_log_error = (typeof console !== "undefined" && console.error) ? function(){return Function.prototype.apply.call(console.error, console, arguments)} : function(){};}else{___fest_log_error=__fest_error};function __fest_log_error(msg){___fest_log_error(msg+"\nin block \""+__fest_debug_block+"\" at line: "+__fest_debug_line+"\nfile: "+__fest_debug_file)}function __fest_replaceHTML(chr){return __fest_htmlhash[chr]}function __fest_replaceJS(chr){return __fest_jshash[chr]}function __fest_extend(dest, src){for(var i in src)if(src.hasOwnProperty(i))dest[i]=src[i];}function __fest_param(fn){fn.param=true;return fn}function __fest_call(fn, params,cp){if(cp)for(var i in params)if(typeof params[i]=="function"&&params[i].param)params[i]=params[i]();return fn.call(__fest_self,params)}function __fest_escapeJS(s){if (typeof s==="string") {if (__fest_jschars_test.test(s))return s.replace(__fest_jschars,__fest_replaceJS);} else if (typeof s==="undefined")return "";return s;}function __fest_escapeHTML(s){if (typeof s==="string") {if (__fest_htmlchars_test.test(s))return s.replace(__fest_htmlchars,__fest_replaceHTML);} else if (typeof s==="undefined")return "";return s;}var json=__fest_context;__fest_buf+=("<div id=\"loader-wrapper\"><div id=\"loader\"></div><div class=\"loader-section section-left\"></div><div class=\"loader-section section-right\"></div></div><div id=\"waiter\"><span class=\".waiter__span\">Ожидание...</span></div><div id=\"game\" class=\"row\"><div class=\"col s12 m6 offset-m3\"><nav class=\"nav\"><div class=\"nav-wrapper\"><a class=\"brand-logo center\">Игра</a><ul class=\"left hide-on-med-and-down\"><li><a class=\"js-go-back waves-effect waves-light btn\">Назад</a></li></ul></div></nav></div><div id=\"wrapper\"><div class=\"row\"><div class=\"container\"><div id=\"user_stack\" class=\"leftBar fl\" style=\"\"></div><div class=\"js-insert-back rightBar fr\"></div><div id=\"table\"><div class=\"leftBar fl\"><ul id=\"sortable2\" class=\"connectedSortable\"></ul></div><div class=\"score\" align=\"center\"><span class=\"my\">0</span><span class=\"score__span__vs\">VS</span><span class=\"not_my\">?</span></div><div class=\"button-finish\" id=\"button_done\"></div><div class=\"my_health\"><span>HP:</span><span id=\"your_health\">50</span></div><div class=\"his_health\"><span>HP:</span><span id=\"enemy_health\">50</span></div><div id=\"restart_button\" align=\"center\"></div><div class=\"rightBar fr\"><ul id=\"sortable3\" class=\"connectedSortable\"></ul></div><img class=\"flame__my\" src=\"img\/explosion.gif\"/><img class=\"flame__enemy\" src=\"img\/explosion.gif\"/></div></div></div></div></div>");__fest_to=__fest_chunks.length;if (__fest_to) {__fest_iterator = 0;for (;__fest_iterator<__fest_to;__fest_iterator++) {__fest_chunk=__fest_chunks[__fest_iterator];if (typeof __fest_chunk==="string") {__fest_html+=__fest_chunk;} else {__fest_fn=__fest_blocks[__fest_chunk.name];if (__fest_fn) __fest_html+=__fest_call(__fest_fn,__fest_chunk.params,__fest_chunk.cp);}}return __fest_html+__fest_buf;} else {return __fest_buf;}} ; });
 ;(function(window, document, undefined) {
   "use strict";
   
@@ -30789,7 +30789,7 @@ define('views/game',[
             this.$el.find('#sortable3').html('');
             var newThis = this.$el;
             for (var i=0; i < msgData.enemyCards.length; i++ ){
-                $('<li class="ui-state-default" style = "list-style: none;"><img src="img/cards/'+msgData.enemyCards[i].img+'.png" alt=""> </li>')
+                $('<li class="ui-state-default"><img src="img/cards/'+msgData.enemyCards[i].img+'.png" alt=""> </li>')
                 .data('power', msgData.enemyCards[i].id)
                 .attr('class', 'enemy__real__card').appendTo(newThis.find('#sortable3'));
             }
@@ -30812,8 +30812,9 @@ define('views/game',[
             this.$el.find(".score span.my").text('0');
             var newThis = this.$el;
             for (var i = 1; i <= 3; i++) {
-                $('<div style = "height: 180px; width: 100%"> </div>')
+                $('<div> </div>')
                     .data('user', 1)
+                    .attr('class','card__place')
                     .appendTo(newThis.find('#sortable2')).droppable({
                         accept: '.playing_card',
                         hoverClass: 'hovered',
@@ -30840,7 +30841,7 @@ define('views/game',[
             var count = stack.length;
             var newThis = this.$el;
             for (var i=0; i < count; i++ ){
-                $('<li class="ui-state-default" style = "list-style: none;"><img src="img/cards/'+stack[i].img+'.png" alt=""> </li>')
+                $('<li class="ui-state-default"><img src="img/cards/'+stack[i].img+'.png" alt=""> </li>')
                 .data('power', stack[i].power)
                 .data('class', stack[i].mana)
                     .data('this',this)
@@ -42073,7 +42074,8 @@ define('views/registration',[
 define('views/offline',[
     'tmpl/game',
     'backbone',
-    'jquery_ui'
+    'jquery_ui',
+    'sweetalert'
 ], function(
     tmpl
 ){
@@ -42369,8 +42371,9 @@ define('views/offline',[
             this.$el.find(".my").text('0');
             var newThis = this.$el;
             for (var i = 1; i <= 3; i++) {
-                $('<div style = "height: 180px; width: 100%"> </div>').
+                $('<div> </div>').
                     data('user', 1)
+                    .attr('class','card__place')
                     .appendTo(newThis.find('#sortable2')).droppable({
                         accept: '.playing_card',
                         hoverClass: 'hovered',
@@ -42403,7 +42406,7 @@ define('views/offline',[
             if (stack.length < 3) count = stack.length;
             var newThis = this.$el;
             for (var i=0; i < count; i++ ){
-                $('<li class="ui-state-default"  style = "list-style: none;"><img src="img/cards/'+stack[i].img+'.png" alt=""> </li>')
+                $('<li class="ui-state-default"><img src="img/cards/'+stack[i].img+'.png" alt=""> </li>')
                 .data('power', stack[i].power)
                 .data('class', stack[i].mana)
                     .data('this',this)
@@ -42447,7 +42450,17 @@ define('views/offline',[
             this.$el.find('.score span.not_my').text(ai);
             var newThis = this;
             if (this.mana_stack[0] == this.mana_stack[1] && this.mana_stack[1] == this.mana_stack[2]) {
-                alert("Mana win");
+                swal({   title: "Победа",
+                                     text: "Ты собрал вместе команду мечты",
+                                     type: "success",
+                                     showCancelButton: false,
+                                     confirmButtonColor: "#DD6B55",
+                                     confirmButtonText: "Ура!",
+                                     closeOnConfirm: true },
+                                     function(){
+                                         newThis.$el.find('#restart_button').hide();
+                                         newThis.render();
+                });
             }
             if (user > ai) {
                 newThis.AI_health -= user - ai;
@@ -42465,18 +42478,47 @@ define('views/offline',[
 
             }
             if (this.USER_health <= 0) {
-                alert('you loose');
-                this.$el.find('#restart_button').hide();
-                this.render();
+                swal({   title: "Поражение",
+                                     text: "Тебя победил бот, играющий на рандоме",
+                                     type: "error",
+                                     showCancelButton: false,
+                                     confirmButtonColor: "#DD6B55",
+                                     confirmButtonText: "Я не тупой!",
+                                     closeOnConfirm: true },
+                                     function(){
+                                         newThis.$el.find('#restart_button').hide();
+                                         newThis.render();
+                });
             }
             if (this.AI_health <= 0) {
-                this.$el.find('#restart_button').hide();
-                this.render();
+                swal({   title: "Победа",
+                                     text: "Ты победил бездушную машину!",
+                                     type: "success",
+                                     showCancelButton: false,
+                                     confirmButtonColor: "#DD6B55",
+                                     confirmButtonText: "Я лучший!",
+                                     closeOnConfirm: true },
+                                     function(){
+                                         newThis.$el.find('#restart_button').hide();
+                                         newThis.render();
+                });
+
+
             }
         },
         restartButton: function(){
             this.round++;
-            if (this.round > 5) alert ('game over!');
+            if (this.round > 5) swal({   title: "Раунды подошли к концу",
+                                     text: "Может попробуешь еще разок?",
+                                     type: "success",
+                                     showCancelButton: false,
+                                     confirmButtonColor: "#DD6B55",
+                                     confirmButtonText: "Конечно!",
+                                     closeOnConfirm: true },
+                                     function(){
+                                         newThis.$el.find('#restart_button').hide();
+                                         newThis.render();
+                });
             this.stack_to_delete.sort();
             this.stack_to_delete.reverse();
 

@@ -1,7 +1,8 @@
 define([
     'tmpl/game',
     'backbone',
-    'jquery_ui'
+    'jquery_ui',
+    'sweetalert'
 ], function(
     tmpl
 ){
@@ -297,8 +298,9 @@ define([
             this.$el.find(".my").text('0');
             var newThis = this.$el;
             for (var i = 1; i <= 3; i++) {
-                $('<div style = "height: 180px; width: 100%"> </div>').
+                $('<div> </div>').
                     data('user', 1)
+                    .attr('class','card__place')
                     .appendTo(newThis.find('#sortable2')).droppable({
                         accept: '.playing_card',
                         hoverClass: 'hovered',
@@ -331,7 +333,7 @@ define([
             if (stack.length < 3) count = stack.length;
             var newThis = this.$el;
             for (var i=0; i < count; i++ ){
-                $('<li class="ui-state-default"  style = "list-style: none;"><img src="img/cards/'+stack[i].img+'.png" alt=""> </li>')
+                $('<li class="ui-state-default"><img src="img/cards/'+stack[i].img+'.png" alt=""> </li>')
                 .data('power', stack[i].power)
                 .data('class', stack[i].mana)
                     .data('this',this)
@@ -375,7 +377,17 @@ define([
             this.$el.find('.score span.not_my').text(ai);
             var newThis = this;
             if (this.mana_stack[0] == this.mana_stack[1] && this.mana_stack[1] == this.mana_stack[2]) {
-                alert("Mana win");
+                swal({   title: "Победа",
+                                     text: "Ты собрал вместе команду мечты",
+                                     type: "success",
+                                     showCancelButton: false,
+                                     confirmButtonColor: "#DD6B55",
+                                     confirmButtonText: "Ура!",
+                                     closeOnConfirm: true },
+                                     function(){
+                                         newThis.$el.find('#restart_button').hide();
+                                         newThis.render();
+                });
             }
             if (user > ai) {
                 newThis.AI_health -= user - ai;
@@ -393,18 +405,47 @@ define([
 
             }
             if (this.USER_health <= 0) {
-                alert('you loose');
-                this.$el.find('#restart_button').hide();
-                this.render();
+                swal({   title: "Поражение",
+                                     text: "Тебя победил бот, играющий на рандоме",
+                                     type: "error",
+                                     showCancelButton: false,
+                                     confirmButtonColor: "#DD6B55",
+                                     confirmButtonText: "Я не тупой!",
+                                     closeOnConfirm: true },
+                                     function(){
+                                         newThis.$el.find('#restart_button').hide();
+                                         newThis.render();
+                });
             }
             if (this.AI_health <= 0) {
-                this.$el.find('#restart_button').hide();
-                this.render();
+                swal({   title: "Победа",
+                                     text: "Ты победил бездушную машину!",
+                                     type: "success",
+                                     showCancelButton: false,
+                                     confirmButtonColor: "#DD6B55",
+                                     confirmButtonText: "Я лучший!",
+                                     closeOnConfirm: true },
+                                     function(){
+                                         newThis.$el.find('#restart_button').hide();
+                                         newThis.render();
+                });
+
+
             }
         },
         restartButton: function(){
             this.round++;
-            if (this.round > 5) alert ('game over!');
+            if (this.round > 5) swal({   title: "Раунды подошли к концу",
+                                     text: "Может попробуешь еще разок?",
+                                     type: "success",
+                                     showCancelButton: false,
+                                     confirmButtonColor: "#DD6B55",
+                                     confirmButtonText: "Конечно!",
+                                     closeOnConfirm: true },
+                                     function(){
+                                         newThis.$el.find('#restart_button').hide();
+                                         newThis.render();
+                });
             this.stack_to_delete.sort();
             this.stack_to_delete.reverse();
 
