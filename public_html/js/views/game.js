@@ -185,7 +185,6 @@ define([
             this.$('#sortable3').html('');
             this.$('#sortable2').html('');
             this.init_table();
-            this.$el.find('#button_done').show();
             this.$el.find('#restart_button').hide();
             $(".not_my").text('?');
             this.draw(newStack);
@@ -280,13 +279,13 @@ define([
             }));
         },
 
-        restartButton: function(){
+        restartButton: function() {
             this.$el.find('#restart_button').hide();
             this.$el.find('#waiter').show();
             this.socket.send(JSON.stringify({
                 command: 'nextRound'
             }));
-    }
+        }
     });
 
     return new View();
