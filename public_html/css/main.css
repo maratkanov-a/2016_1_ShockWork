@@ -104,7 +104,7 @@
   z-index: 100;
   display: none;
 }
-.button_done{
+#button_done{
   display: none;
 }
 html {

@@ -29,7 +29,7 @@ define([
             this.$el.show();
             this.trigger("show",this);
 
-            this.socket = new WebSocket("wss://" + window.location.hostname + ":" + window.location.port + "/api/gameplay");
+            this.socket = new WebSocket("ws://" + window.location.hostname + ":" + window.location.port + "/api/gameplay");
             this.socket.onopen = function () {
                 console.log('Open connection')
             };
@@ -175,7 +175,6 @@ define([
             this.showHealth(msgData);
             this.draw(this.user1_stack);
             this.draw_enemy(this.user2_stack_length);
-            this.$el.find('#button_done').show();
         },
         refreshTable: function(msgData){
             this.$el.find('#user_stack').html('');
@@ -244,6 +243,7 @@ define([
             ui.draggable.draggable( 'option', 'revert', false );
             ui.draggable.data('this').USER_power += cardPower;
             ui.draggable.data('this').$el.find(".score span.my").text(ui.draggable.data('this').USER_power);
+            ui.draggable.data('this').$el.find('#button_done').show();
         },
         draw: function(stack) {
             var count = stack.length;
@@ -281,6 +281,7 @@ define([
         },
 
         restartButton: function(){
+            this.$el.find('#waiter').show();
             this.socket.send(JSON.stringify({
                 command: 'nextRound'
             }));

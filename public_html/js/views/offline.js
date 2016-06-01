@@ -322,7 +322,7 @@ define([
             ui.draggable.draggable( 'option', 'revert', false );
             ui.draggable.data('this').USER_power += cardPower;
             $(".score span.my").text(ui.draggable.data('this').USER_power);
-
+            ui.draggable.data('this').$el.find('#button_done').show();
 
         },
         draw: function(stack) {
