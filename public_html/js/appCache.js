@@ -8,6 +8,7 @@ self.addEventListener('install', function(event) {
                 '/font/roboto/Roboto-Regular.ttf',
                 '/font/roboto/Roboto-Regular.woff',
                 '/font/roboto/Roboto-Regular.woff2',
+                '/font/material.woff2',
                 '/css/build.min.css',
                 '/img/back.png',
                 '/img/explosion.gif',
