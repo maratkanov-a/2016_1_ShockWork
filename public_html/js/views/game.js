@@ -281,6 +281,7 @@ define([
         },
 
         restartButton: function(){
+            this.$el.find('#restart_button').hide();
             this.$el.find('#waiter').show();
             this.socket.send(JSON.stringify({
                 command: 'nextRound'
