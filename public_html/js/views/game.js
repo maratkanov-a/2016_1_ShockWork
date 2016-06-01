@@ -44,7 +44,7 @@ define([
                         this.cardsCollection = msgData['cards'];
                         this.initializeGame(msgData);
                         $('body').addClass('loaded');
-
+                        toogleWaiter(msgData.turn);
                         break;
                     case "nextTurn":
                         if (msgData.cards > 0) {
