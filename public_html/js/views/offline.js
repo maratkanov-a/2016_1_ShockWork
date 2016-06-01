@@ -307,6 +307,9 @@ define([
                         drop: this.handleDrop
                     });
             }
+            for (var i=0; i< 3; i++) {
+                this.$el.find('.js-insert-back').append('<img class="card__size" src="img/back.png">')
+            }
         },
         manaPush: function(mana){
             this.mana_stack.push(mana);
@@ -322,7 +325,7 @@ define([
             ui.draggable.draggable( 'option', 'revert', false );
             ui.draggable.data('this').USER_power += cardPower;
             $(".score span.my").text(ui.draggable.data('this').USER_power);
-
+            ui.draggable.data('this').$el.find('#button_done').show();
 
         },
         draw: function(stack) {
