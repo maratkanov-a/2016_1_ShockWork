@@ -58,7 +58,7 @@ define([
 
                 this.$el.find('.form__error').hide();
                 valid.forEach(function (item) {
-                    $('.form__'+ item +'__error').text("Обязательное поле").show()
+                    $this.$el.find('.form__'+ item +'__error').text("Обязательное поле").show();
                 });
 
             }

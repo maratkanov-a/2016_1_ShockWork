@@ -41825,7 +41825,7 @@ define('views/login',[
 
                 this.$el.find('.form__error').hide();
                 valid.forEach(function (item) {
-                    $('.form__'+ item +'__error').text("Обязательное поле").show()
+                    $this.$el.find('.form__'+ item +'__error').text("Обязательное поле").show();
                 });
 
             }
@@ -41887,20 +41887,16 @@ define('views/scoreboard',[
             this.render();
         },
         render: function () {
-            var newThis = this;
-            ScoresCollection.fetch({remove: false})
-                .done( function(){
-                    newThis.$el.html(newThis.template( { scores : ScoresCollection.toJSON() } ));
-                });
-
+        	this.$el.html(this.template( { scores : ScoresCollection.toJSON() } ));
         },
         show: function() {
             this.$el.show();
             this.trigger("show",this);
-            ScoresCollection.fetch({remove: false})
-                .done( function(){
-                    newThis.$el.html(newThis.template( { scores : ScoresCollection.toJSON() } ));
-                });
+            ScoresCollection.reset();
+            ScoresCollection.fetch({remove: false}).done(
+            	function() {
+                    this.render();
+                }.bind(this));
         },
         hide: function() {
             this.$el.hide();
