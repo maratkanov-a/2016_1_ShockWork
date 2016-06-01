@@ -30636,19 +30636,19 @@ define('views/game',[
                         this.cardsCollection = msgData['cards'];
                         this.initializeGame(msgData);
                         $('body').addClass('loaded');
-                        toogleWaiter(msgData.turn);
+                        this.toogleWaiter(msgData.turn);
                         break;
                     case "nextTurn":
                         if (msgData.cards > 0) {
                             this.transferCards(msgData.cards);
                         }
-                        toogleWaiter(msgData.turn);
+                        this.toogleWaiter(msgData.turn);
                         break;
                     case "endRound":
                         //show Stats
                         this.showHealth(msgData);
                         this.showPower(msgData);
-                        toogleWaiter(true);
+                        this.toogleWaiter(true);
                         //draw new cards
                         this.drawEnemyReal(msgData);
                         this.makePapauPschhhh(msgData);
@@ -30657,7 +30657,7 @@ define('views/game',[
                         this.$el.find('#restart_button').show();
                         break;
                     case "nextRound":
-                        toogleWaiter(msgData.turn);
+                        this.toogleWaiter(msgData.turn);
                         this.refreshTable(msgData);
                         break;
                     case "endGame":
@@ -30865,7 +30865,7 @@ define('views/game',[
 
         restartButton: function() {
             this.$el.find('#restart_button').hide();
-            toogleWaiter(false);
+            this.toogleWaiter(false);
             this.socket.send(JSON.stringify({
                 command: 'nextRound'
             }));
