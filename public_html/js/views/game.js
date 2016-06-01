@@ -44,29 +44,19 @@ define([
                         this.cardsCollection = msgData['cards'];
                         this.initializeGame(msgData);
                         $('body').addClass('loaded');
-                        if (msgData.turn) {
-                            this.$el.find('#waiter').hide();
-                        }
-                        else {
-                            this.$el.find('#waiter').show();
-                        }
+                        this.toogleWaiter(msgData.turn);
                         break;
                     case "nextTurn":
                         if (msgData.cards > 0) {
                             this.transferCards(msgData.cards);
                         }
-                         if (msgData.turn) {
-                            this.$el.find('#waiter').hide();
-                        }
-                        else {
-                            this.$el.find('#waiter').show();
-                        }
+                        this.toogleWaiter(msgData.turn);
                         break;
                     case "endRound":
                         //show Stats
                         this.showHealth(msgData);
                         this.showPower(msgData);
-                        this.$el.find('#waiter').hide();
+                        this.toogleWaiter(true);
                         //draw new cards
                         this.drawEnemyReal(msgData);
                         this.makePapauPschhhh(msgData);
@@ -75,12 +65,7 @@ define([
                         this.$el.find('#restart_button').show();
                         break;
                     case "nextRound":
-                        if (msgData.turn) {
-                            this.$el.find('#waiter').hide();
-                        }
-                        else {
-                            this.$el.find('#waiter').show();
-                        }
+                        this.toogleWaiter(msgData.turn);
                         this.refreshTable(msgData);
                         break;
                     case "endGame":
@@ -147,6 +132,13 @@ define([
         },
         goBack: function() {
             Backbone.history.navigate('', { trigger: true });
+        },
+        toogleWaiter: function(turn) {
+	        if (turn) {
+	            this.$el.find('#waiter').hide();
+	        } else {
+	            this.$el.find('#waiter').show();
+	        }
         },
         makePapauPschhhh: function(msgData){
             if (msgData.enemyPower > msgData.power){
@@ -281,7 +273,7 @@ define([
 
         restartButton: function() {
             this.$el.find('#restart_button').hide();
-            this.$el.find('#waiter').show();
+            this.toogleWaiter(false);
             this.socket.send(JSON.stringify({
                 command: 'nextRound'
             }));
