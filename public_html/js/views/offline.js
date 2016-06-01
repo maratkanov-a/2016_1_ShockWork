@@ -307,6 +307,7 @@ define([
                         drop: this.handleDrop
                     });
             }
+            this.$el.find('.js-insert-back').html('');
             for (var i=0; i< 3; i++) {
                 this.$el.find('.js-insert-back').append('<img class="card__size" src="img/back.png">')
             }
@@ -474,7 +475,6 @@ define([
             this.$('#sortable2').html('');
             this.$('#sortable3').html('');
             this.$('#user_stack').html('');
-            this.$('#button_done').show();
             this.$('#restart_button').hide();
             this.draw(this.user1_stack);
             this.init_table();
