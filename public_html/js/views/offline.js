@@ -307,6 +307,9 @@ define([
                         drop: this.handleDrop
                     });
             }
+            for (var i=0; i< 3; i++) {
+                this.$el.find('.js-insert-back').append('<img class="card__size" src="img/back.png">')
+            }
         },
         manaPush: function(mana){
             this.mana_stack.push(mana);
