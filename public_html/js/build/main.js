@@ -30710,7 +30710,7 @@ define('views/game',[
                 this.$el.find('#user_stack').html('');
                 this.$('#sortable3').html('');
                 this.$('#sortable2').html('');
-                this.$('.js-insert-back').html('');
+                this.$('.mmg-insert-back').html('');
                 this.$el.find(".not_my").text('?');
                 this.$el.find(".my").text('0');
                 $('body').removeClass('loaded');
@@ -30767,7 +30767,7 @@ define('views/game',[
             this.$el.find('#restart_button').hide();
             $(".not_my").text('?');
             this.draw(newStack);
-            this.$('.js-insert-back').html('');
+            this.$('.mmg-insert-back').html('');
             this.draw_enemy(3);
         },
         drawEnemyReal: function(msgData){
@@ -30848,7 +30848,7 @@ define('views/game',[
         },
         draw_enemy: function(number) {
             for (var i=0; i< number; i++) {
-                this.$el.find("#one_back_card").clone().removeClass('hidden-card').removeAttr('id').addClass('card__size').appendTo(this.$el.find('.js-insert-back'));
+                this.$el.find("#one_back_card").clone().removeClass('hidden-card').removeAttr('id').addClass('card__size').appendTo(this.$el.find('.mmg-insert-back'));
             }
         },
 
@@ -42375,9 +42375,9 @@ define('views/offline',[
                         drop: this.handleDrop
                     });
             }
-            this.$el.find('.js-insert-back').html('');
+            this.$el.find('.mmg-insert-back').html('');
             for (var i=0; i< 3; i++) {
-                this.$el.find("#one_back_card").clone().removeClass('hidden-card').removeAttr('id').addClass('card__size').appendTo(this.$el.find('.js-insert-back'));
+                this.$el.find("#one_back_card").clone().removeClass('hidden-card').removeAttr('id').addClass('card__size').appendTo(this.$el.find('.mmg-insert-back'));
             }
         },
         manaPush: function(mana){

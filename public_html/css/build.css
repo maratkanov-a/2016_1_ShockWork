@@ -1363,10 +1363,10 @@ body.stop-scrolling {
 .nav-top {
   margin-top: 200px;
 }
-.js-insert-back{
+.mmg-insert-back{
   margin-top: 50px;
 }
-.js-insert-back img{
+.mmg-insert-back img{
   margin-bottom: 15px;
 }
 .enemy__real__card{
@@ -1520,18 +1520,9 @@ html {
   color: #666;
   font-size: 1.5em;
 }
-#cardSlots,
-#cardSlots2 {
+#cardSlots{
   margin: 50px auto 50px auto;
   background: #ddf;
-}
-#cardPile,
-#cardPile2 {
-  margin: 0 auto;
-  background: #ffd;
-}
-#cardSlots,
-#cardSlots2 {
   width: 270px;
   height: 120px;
   padding: 10px 40px;
@@ -1539,114 +1530,31 @@ html {
   border-radius: 10px;
   box-shadow: 0 0 0.3em rgba(0, 0, 0, 0.8);
 }
-#cardPile,
-#cardPile2 {
+
+#cardSlots2 {
+  margin: 50px auto 50px auto;
+  background: #ddf;
   height: 110px;
   padding: 15px;
   border: 2px solid #333;
   border-radius: 10px;
   box-shadow: 0 0 0.3em rgba(0, 0, 0, 0.8);
 }
-#cardSlots div,
-#cardPile div,
-#cardSlots2 div,
-#cardPile2 div {
-  float: left;
-  width: 58px;
-  height: 60px;
-  padding: 10px;
-  padding-top: 40px;
-  padding-bottom: 0;
+#cardPile{
+  margin: 0 auto;
+  background: #ffd;
+  height: 110px;
+  padding: 15px;
   border: 2px solid #333;
   border-radius: 10px;
-  margin: 0 0 0 10px;
-  background: #fff;
+  box-shadow: 0 0 0.3em rgba(0, 0, 0, 0.8);
 }
-#cardSlots div:first-child,
-#cardPile div:first-child,
-#cardSlots2 div:first-child,
-#cardPile2 div:first-child {
-  margin-left: 0;
+
+#cardPile2 {
+  margin: 0 auto;
+  background: #ffd;
 }
-#cardSlots div.hovered,
-#cardSlots2 div.hovered {
-  background: #aaa;
-}
-#cardSlots div,
-#cardSlots2 div {
-  border-style: dashed;
-}
-#cardPile div,
-#cardPile2 div {
-  background: #666;
-  color: #fff;
-  font-size: 50px;
-  text-shadow: 0 0 3px #000;
-}
-#cardPile div.ui-draggable-dragging,
-#cardPile2 div.ui-draggable-dragging {
-  box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.8);
-}
-#card1.correct {
-  background: red;
-}
-#card2.correct {
-  background: brown;
-}
-#card3.correct {
-  background: orange;
-}
-#card4.correct {
-  background: yellow;
-}
-#card5.correct {
-  background: green;
-}
-#card6.correct {
-  background: cyan;
-}
-#card7.correct {
-  background: blue;
-}
-#card8.correct {
-  background: indigo;
-}
-#card9.correct {
-  background: purple;
-}
-#card10.correct {
-  background: violet;
-}
-#card11.correct {
-  background: red;
-}
-#card12.correct {
-  background: brown;
-}
-#card13.correct {
-  background: orange;
-}
-#card14.correct {
-  background: yellow;
-}
-#card15.correct {
-  background: green;
-}
-#card16.correct {
-  background: cyan;
-}
-#card17.correct {
-  background: blue;
-}
-#card18.correct {
-  background: indigo;
-}
-#card19.correct {
-  background: purple;
-}
-#card20.correct {
-  background: violet;
-}
+
 #successMessage {
   position: absolute;
   left: 580px;
