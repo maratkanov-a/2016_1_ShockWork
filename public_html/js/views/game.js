@@ -4,22 +4,22 @@ define([
     'jquery_ui'
 ], function(
     tmpl
-){
+) {
 
     var View = Backbone.View.extend({
         events: {
-            "click .js-go-back":   "goBack",
-            "click #restart_button" : "restartButton",
-            "click #button_done":"done"
+            "click .js-go-back": "goBack",
+            "click #restart_button": "restartButton",
+            "click #button_done": "done"
         },
 
         template: tmpl,
 
-        initialize: function () {
+        initialize: function() {
             this.showed = false;
         },
 
-        render: function () {
+        render: function() {
             this.$el.html(this.template());
         },
         show: function() {
@@ -27,13 +27,15 @@ define([
             $('body').removeClass('loaded');
             this.showed = true;
             this.$el.show();
-            this.trigger("show",this);
+            this.trigger("show", this);
 
             this.socket = new WebSocket("wss://" + window.location.hostname + ":" + window.location.port + "/api/gameplay");
-            this.socket.onclose = function () {
-                Backbone.history.navigate('', {trigger: true})
+            this.socket.onclose = function() {
+                Backbone.history.navigate('', {
+                    trigger: true
+                })
             };
-            this.socket.onmessage = function (msg) {
+            this.socket.onmessage = function(msg) {
                 var msgData = JSON.parse(msg.data);
                 switch (msgData.command) {
                     case "start":
@@ -66,50 +68,62 @@ define([
                         break;
                     case "endGame":
                         if (msgData.win) {
-                            swal({   title: "Победа",
-                                     text: "Враг повержен",
-                                     type: "success",
-                                     showCancelButton: false,
-                                     confirmButtonColor: "#DD6B55",
-                                     confirmButtonText: "Я крут!",
-                                     closeOnConfirm: false },
-                                     function(){
-                                         swal("Поздравляем!", "Как насчет попробовать еще раз?", "success");
-                                         Backbone.history.navigate('scoreboard', {trigger: true});
-                                         this.socket.close();
-                                     }).bind(this);
-                        break;
+                            swal({
+                                    title: "Победа",
+                                    text: "Враг повержен",
+                                    type: "success",
+                                    showCancelButton: false,
+                                    confirmButtonColor: "#DD6B55",
+                                    confirmButtonText: "Я крут!",
+                                    closeOnConfirm: false
+                                },
+                                function() {
+                                    swal("Поздравляем!", "Как насчет попробовать еще раз?", "success");
+                                    Backbone.history.navigate('scoreboard', {
+                                        trigger: true
+                                    });
+                                    this.socket.close();
+                                }).bind(this);
+                            break;
                         } else {
-                              swal({  title: "Поражение",
-                                      text: "Вас унизили",
-                                      type: "error",
-                                     showCancelButton: false,
-                                     confirmButtonColor: "#DD6B55",
-                                     confirmButtonText: "Мне просто не повезло",
-                                     closeOnConfirm: false },
-                                     function(){
-                                        swal("Не отчаивайся", "Тебе повезет в следующий раз", "success");
-                                         Backbone.history.navigate('scoreboard', {trigger: true});
-                                         this.socket.close();
-                                     }).bind(this);
+                            swal({
+                                    title: "Поражение",
+                                    text: "Вас унизили",
+                                    type: "error",
+                                    showCancelButton: false,
+                                    confirmButtonColor: "#DD6B55",
+                                    confirmButtonText: "Мне просто не повезло",
+                                    closeOnConfirm: false
+                                },
+                                function() {
+                                    swal("Не отчаивайся", "Тебе повезет в следующий раз", "success");
+                                    Backbone.history.navigate('scoreboard', {
+                                        trigger: true
+                                    });
+                                    this.socket.close();
+                                }).bind(this);
                         }
                         break;
                     case "enemyDisconnected":
-                        swal({   title: "Ошибка",
-                                    text: "Противник вышел из игры",
-                                     type: "error",
-                                     showCancelButton: false,
-                                     confirmButtonColor: "#DD6B55",
-                                     confirmButtonText: "Мразь!",
-                                     closeOnConfirm: false },
-                                     function(){
-                                        swal("Он хочет избежать наказания", "Давай найдем и накажем гаденыша", "success");
-                                         Backbone.history.navigate('', {trigger: true});
-                                         this.socket.close();
-                                     }).bind(this);
+                        swal({
+                                title: "Ошибка",
+                                text: "Противник вышел из игры",
+                                type: "error",
+                                showCancelButton: false,
+                                confirmButtonColor: "#DD6B55",
+                                confirmButtonText: "Мразь!",
+                                closeOnConfirm: false
+                            },
+                            function() {
+                                Backbone.history.navigate('', {
+                                    trigger: true
+                                });
+                                this.socket.close();
+                            }).bind(this);
 
                         break;
-                }}.bind(this);
+                }
+            }.bind(this);
 
         },
         hide: function() {
@@ -127,29 +141,29 @@ define([
             this.$el.hide();
         },
         goBack: function() {
-            Backbone.history.navigate('', { trigger: true });
+            Backbone.history.navigate('', {
+                trigger: true
+            });
         },
         toogleWaiter: function(turn) {
-	        if (turn) {
-	            this.$el.find('#waiter').hide();
-	        } else {
-	            this.$el.find('#waiter').show();
-	        }
-        },
-        makePapauPschhhh: function(msgData){
-            if (msgData.enemyPower > msgData.power){
-                this.$el.find('.flame__my').clone().insertBefore(this.$el.find('.correct')).show();
+            if (turn) {
+                this.$el.find('#waiter').hide();
+            } else {
+                this.$el.find('#waiter').show();
             }
-            else if (msgData.enemyPower < msgData.power) {
-                 this.$el.find('.flame__enemy').clone().insertBefore(this.$el.find('.enemy__real__card')).show();
-                }
-            else {
-                 this.$el.find('.flame__my').clone().insertBefore(this.$el.find('.correct')).show();
-                 this.$el.find('.flame__enemy').clone().insertBefore(this.$el.find('.enemy__real__card')).show();
+        },
+        makePapauPschhhh: function(msgData) {
+            if (msgData.enemyPower > msgData.power) {
+                this.$el.find('.flame__my').clone().insertBefore(this.$el.find('.correct')).show();
+            } else if (msgData.enemyPower < msgData.power) {
+                this.$el.find('.flame__enemy').clone().insertBefore(this.$el.find('.enemy__real__card')).show();
+            } else {
+                this.$el.find('.flame__my').clone().insertBefore(this.$el.find('.correct')).show();
+                this.$el.find('.flame__enemy').clone().insertBefore(this.$el.find('.enemy__real__card')).show();
 
             }
         },
-        initializeGame: function(msgData){
+        initializeGame: function(msgData) {
             this.round = 1;
             this.cards_counter = 0;
             this.mana_stack = [];
@@ -164,7 +178,7 @@ define([
             this.draw(this.user1_stack);
             this.draw_enemy(this.user2_stack_length);
         },
-        refreshTable: function(msgData){
+        refreshTable: function(msgData) {
             this.$el.find('#user_stack').html('');
             var newStack = msgData.newCards;
             this.stack_to_delete = [];
@@ -178,27 +192,27 @@ define([
             this.$('.js-insert-back').html('');
             this.draw_enemy(3);
         },
-        drawEnemyReal: function(msgData){
+        drawEnemyReal: function(msgData) {
             this.$el.find('#sortable3').html('');
             var newThis = this.$el;
-            for (var i=0; i < msgData.enemyCards.length; i++ ){
+            for (var i = 0; i < msgData.enemyCards.length; i++) {
                 var cardPath = "img/cards/" + msgData.enemyCards[i].img + ".png";
                 this.$el.find('#one_card').clone().removeClass('.hidden-card').removeAttr('id').find('img').attr("src", cardPath)
-                .data('power', msgData.enemyCards[i].id)
-                .attr('class', 'enemy__real__card').appendTo(newThis.find('#sortable3'));
+                    .data('power', msgData.enemyCards[i].id)
+                    .attr('class', 'enemy__real__card').appendTo(newThis.find('#sortable3'));
             }
         },
-        transferCards: function(number){
-            for (var i=0; i< number; i++) {
+        transferCards: function(number) {
+            for (var i = 0; i < number; i++) {
                 this.$el.find('.card__size').last().remove();
                 this.$el.find("#one_back_card").clone().removeClass('hidden-card').removeAttr('id').addClass('card__size__game').appendTo(this.$el.find('#sortable3'));
             }
         },
-        showHealth: function(msgData){
+        showHealth: function(msgData) {
             this.$el.find("#enemy_health").text(msgData.enemyHealth);
             this.$el.find("#your_health").text(msgData.health);
         },
-        showPower: function(msgData){
+        showPower: function(msgData) {
             this.$el.find(".not_my").text(msgData.enemyPower);
             this.$el.find(".my").text(msgData.power);
         },
@@ -208,7 +222,7 @@ define([
             for (var i = 1; i <= 3; i++) {
                 $('<div> </div>')
                     .data('user', 1)
-                    .attr('class','card__place')
+                    .attr('class', 'card__place')
                     .appendTo(newThis.find('#sortable2')).droppable({
                         accept: '.playing_card',
                         hoverClass: 'hovered',
@@ -216,19 +230,23 @@ define([
                     });
             }
         },
-        manaPush: function(mana){
+        manaPush: function(mana) {
             this.mana_stack.push(mana);
         },
         handleDrop: function(event, ui) {
-            $(ui.draggable).appendTo($( this ));
+            $(ui.draggable).appendTo($(this));
             ui.draggable.data('this').manaPush(ui.draggable.data('class'));
             var cardPower = ui.draggable.data('power');
             ui.draggable.data('this').stack_to_delete.push(ui.draggable.data('number'));
-            ui.draggable.addClass( 'correct' );
-            ui.draggable.draggable( 'disable' );
-            $(this).droppable( 'disable' );
-            ui.draggable.position( { of: $(this), my: 'left top', at: 'left top' } );
-            ui.draggable.draggable( 'option', 'revert', false );
+            ui.draggable.addClass('correct');
+            ui.draggable.draggable('disable');
+            $(this).droppable('disable');
+            ui.draggable.position({
+                of: $(this),
+                my: 'left top',
+                at: 'left top'
+            });
+            ui.draggable.draggable('option', 'revert', false);
             ui.draggable.data('this').USER_power += cardPower;
             ui.draggable.data('this').$el.find(".score span.my").text(ui.draggable.data('this').USER_power);
             ui.draggable.data('this').$el.find('#button_done').show();
@@ -236,31 +254,31 @@ define([
         draw: function(stack) {
             var count = stack.length;
             var newThis = this.$el;
-            for (var i=0; i < count; i++ ){
+            for (var i = 0; i < count; i++) {
                 var cardPath = "img/cards/" + stack[i].img + ".png";
                 this.$el.find('#one_card').clone().removeClass('.hidden-card').find('img').attr("src", cardPath)
-                .data('power', stack[i].power)
-                .data('class', stack[i].mana)
-                .data('this',this)
-                .data('number', stack[i].id)
-                .attr('id', 'card_user1_' + stack[i].id)
-                .attr('class', 'playing_card').appendTo(newThis.find('#user_stack'))
-                .draggable({
-                    containment: '#content',
-                    stack: '#sortable1',
-                    cursor: '-webkit-grabbing',
-                    revert: true,
-                    scroll: false
-                });
+                    .data('power', stack[i].power)
+                    .data('class', stack[i].mana)
+                    .data('this', this)
+                    .data('number', stack[i].id)
+                    .attr('id', 'card_user1_' + stack[i].id)
+                    .attr('class', 'playing_card').appendTo(newThis.find('#user_stack'))
+                    .draggable({
+                        containment: '#content',
+                        stack: '#sortable1',
+                        cursor: '-webkit-grabbing',
+                        revert: true,
+                        scroll: false
+                    });
             }
         },
         draw_enemy: function(number) {
-            for (var i=0; i< number; i++) {
+            for (var i = 0; i < number; i++) {
                 this.$el.find("#one_back_card").clone().removeClass('hidden-card').removeAttr('id').addClass('card__size').appendTo(this.$el.find('.js-insert-back'));
             }
         },
 
-        done: function () {
+        done: function() {
             this.$el.find('.playing_card').draggable('disable');
             this.$el.find('#button_done').hide();
             this.socket.send(JSON.stringify({

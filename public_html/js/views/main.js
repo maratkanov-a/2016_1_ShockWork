@@ -3,19 +3,19 @@ define([
     'backbone'
 ], function(
     tmpl
-){
+) {
 
     var View = Backbone.View.extend({
         template: tmpl,
-        initialize: function () {
+        initialize: function() {
             this.render();
         },
-        render: function () {
+        render: function() {
             this.$el.html(this.template());
         },
         show: function() {
             this.$el.show();
-            this.trigger("show",this);
+            this.trigger("show", this);
             $('body').addClass('loaded');
         },
         hide: function() {

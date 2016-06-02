@@ -20,9 +20,13 @@ self.addEventListener('install', function(event) {
                 '/img/cards/Button_downed.png',
                 '/img/cards/Button_not_down.png',
                 '/img/cards/stol.jpg',
+                '/img/cards/anonymus.png',
                 '/img/cards/bekbulatov_card.png',
                 '/img/cards/burlak_card.png',
+                '/img/cards/chaskin_card.png',
+                '/img/cards/chernega_card.png',
                 '/img/cards/didikin_card.png',
+                '/img/cards/dorofeev_card.png',
                 '/img/cards/dudina_card.png',
                 '/img/cards/frolov_card.png',
                 '/img/cards/isaikin_card.png',
@@ -31,13 +35,16 @@ self.addEventListener('install', function(event) {
                 '/img/cards/mazcevitc_card.png',
                 '/img/cards/meleshenko_card.png',
                 '/img/cards/mezin_card.png',
+                '/img/cards/mitya_card.png',
                 '/img/cards/mogilin_card.png',
+                '/img/cards/olya_card.png',
                 '/img/cards/petrov_card.png',
                 '/img/cards/sherbinin_card.png',
                 '/img/cards/shubin_card.png',
                 '/img/cards/smal_card.png',
                 '/img/cards/soloviev_card.png',
                 '/img/cards/stupnikov_card.png',
+                '/img/cards/voloshin_card.png'
             ]);
         })
     );
