@@ -42650,7 +42650,7 @@ define('main',[
 ){
     if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register(
-           '/js/appCache.js'
+           '/appCache.js'
         ).then(function(registration) {
             console.log('ServiceWorker registration');
         }).catch(function(err) {
