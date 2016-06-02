@@ -30609,13 +30609,13 @@ define('views/game',[
 
         initialize: function () {
             this.showed = false;
-            this.render();
         },
 
         render: function () {
             this.$el.html(this.template());
         },
         show: function() {
+            this.render();
             $('body').removeClass('loaded');
             this.showed = true;
             this.$el.show();
@@ -41922,7 +41922,8 @@ define('tmpl/registration',[],function () { return function (__fest_context){"us
 define('views/registration',[
     'tmpl/registration',
     'models/session',
-    'materialize'
+    'materialize',
+    'sweetalert'
 ], function (
     tmpl,
     session
@@ -42019,7 +42020,14 @@ define('views/registration',[
             if (valid === 'None') {
 
                 session.registration(username, password1, email, imgData).done(function() {
-                    Backbone.history.navigate('game', {trigger: true});
+                    Backbone.history.navigate('', {trigger: true});
+                    swal({   title: "Успешно",
+                             text: "Вы успешно зарегистрировались! Теперь можете войти в онлайн игру.",
+                             type: "success",
+                             showCancelButton: false,
+                             confirmButtonColor: "#DD6B55",
+                             confirmButtonText: "Поехали!",
+                             closeOnConfirm: false }).bind(this);
                 })
                 .fail(function(){
                     $this.$el.find('.form__error').hide();
@@ -42084,7 +42092,6 @@ define('views/offline',[
 
         template: tmpl,
         initialize: function () {
-            this.render()
             this.showed = false;
         },
         render: function () {
@@ -42328,6 +42335,7 @@ define('views/offline',[
             this.draw(this.user1_stack);
         },
         show: function() {
+            this.render();
         	this.showed = true;
             this.$el.show();
             this.trigger("show",this);

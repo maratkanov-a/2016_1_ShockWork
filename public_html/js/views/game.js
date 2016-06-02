@@ -17,13 +17,13 @@ define([
 
         initialize: function () {
             this.showed = false;
-            this.render();
         },
 
         render: function () {
             this.$el.html(this.template());
         },
         show: function() {
+            this.render();
             $('body').removeClass('loaded');
             this.showed = true;
             this.$el.show();

@@ -1,7 +1,8 @@
 define([
     'tmpl/registration',
     'models/session',
-    'materialize'
+    'materialize',
+    'sweetalert'
 ], function (
     tmpl,
     session
@@ -98,7 +99,14 @@ define([
             if (valid === 'None') {
 
                 session.registration(username, password1, email, imgData).done(function() {
-                    Backbone.history.navigate('game', {trigger: true});
+                    Backbone.history.navigate('', {trigger: true});
+                    swal({   title: "Успешно",
+                             text: "Вы успешно зарегистрировались! Теперь можете войти в онлайн игру.",
+                             type: "success",
+                             showCancelButton: false,
+                             confirmButtonColor: "#DD6B55",
+                             confirmButtonText: "Поехали!",
+                             closeOnConfirm: false }).bind(this);
                 })
                 .fail(function(){
                     $this.$el.find('.form__error').hide();
