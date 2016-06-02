@@ -24,7 +24,6 @@ define([
 
         template: tmpl,
         initialize: function () {
-            this.render()
             this.showed = false;
         },
         render: function () {
@@ -268,6 +267,7 @@ define([
             this.draw(this.user1_stack);
         },
         show: function() {
+            this.render();
         	this.showed = true;
             this.$el.show();
             this.trigger("show",this);

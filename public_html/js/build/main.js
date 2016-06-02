@@ -30609,13 +30609,13 @@ define('views/game',[
 
         initialize: function () {
             this.showed = false;
-            this.render();
         },
 
         render: function () {
             this.$el.html(this.template());
         },
         show: function() {
+            this.render();
             $('body').removeClass('loaded');
             this.showed = true;
             this.$el.show();
@@ -42084,7 +42084,6 @@ define('views/offline',[
 
         template: tmpl,
         initialize: function () {
-            this.render()
             this.showed = false;
         },
         render: function () {
@@ -42328,6 +42327,7 @@ define('views/offline',[
             this.draw(this.user1_stack);
         },
         show: function() {
+            this.render();
         	this.showed = true;
             this.$el.show();
             this.trigger("show",this);
