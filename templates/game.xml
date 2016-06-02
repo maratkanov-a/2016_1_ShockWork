@@ -47,9 +47,10 @@
                   </div>
                   <img class="flame__my" src="img/explosion.gif"/>
                   <img class="flame__enemy" src="img/explosion.gif"/>
-                  <li class="ui-state-default hidden-card">
+                  <li class="ui-state-default hidden-card" id="one_card">
                      <img/>
                   </li>
+                  <img class="hidden-card" src="img/back.png" id="one_back_card"/>
                </div>
             </div>
 

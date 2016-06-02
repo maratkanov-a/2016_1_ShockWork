@@ -309,7 +309,7 @@ define([
             }
             this.$el.find('.js-insert-back').html('');
             for (var i=0; i< 3; i++) {
-                this.$el.find('.js-insert-back').append('<img class="card__size" src="img/back.png">')
+                this.$el.find("#one_back_card").clone().removeClass('hidden-card').removeAttr('id').addClass('card__size').appendTo(this.$el.find('.js-insert-back'));
             }
         },
         manaPush: function(mana){
@@ -339,7 +339,7 @@ define([
             var newThis = this.$el;
             for (var i=0; i < count; i++ ){
                 var cardPath = "/img/cards/" +stack[i].img+ ".png";
-                this.$el.find('.hidden-card').clone().removeClass('.hidden-card').find('img').attr("src", cardPath)
+                newThis.find('#one_card').clone().removeClass('hidden-card').find('img').attr("src", cardPath)
                 .data('power', stack[i].power)
                 .data('class', stack[i].mana)
                 .data('this',this)
@@ -362,7 +362,7 @@ define([
             var newThis = this;
             for (var i = 0; i < count; i++) {
                 var cardPath = "/img/cards/" +stack[i].img+ ".png";
-                this.$el.find('.hidden-card').clone().removeClass('.hidden-card').find('img').attr("src", cardPath)
+                this.$el.find('#one_card').clone().removeClass('hidden-card').find('img').attr("src", cardPath)
                     .data('power', stack[i].power)
                     .data('class', stack[i].mana)
                     .attr('id', 'card_ai_' + stack[i].id)
@@ -460,7 +460,7 @@ define([
             this.stack_to_delete.forEach(function(item, i, stack){
                 newThis.user1_stack.splice(item,1);
             });
-            
+
             this.AI_power = 0;
             this.USER_power = 0;
             this.mana_stack = [];
