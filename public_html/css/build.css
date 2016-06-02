@@ -1363,16 +1363,15 @@ body.stop-scrolling {
 .nav-top {
   margin-top: 200px;
 }
-.js-insert-back{
+mmg-insert-back{
   margin-top: 50px;
 }
-.js-insert-back img{
+mmg-insert-back img{
   margin-bottom: 15px;
 }
 .enemy__real__card{
   list-style: none;
 }
-
 .card__place{
   height: 180px;
   width: 100%
@@ -1477,6 +1476,7 @@ html {
   background: url(../img/la.jpg) no-repeat center center fixed;
   background-size: cover;
 }
+
 .form__error {
   display: none;
   color: white;
@@ -1495,7 +1495,7 @@ html {
   height: 240px;
 }
 
-.form__avatar__video {
+.form__avatar__video{
   width: 320px;
   height: 240px;
 }
@@ -1521,18 +1521,35 @@ html {
   color: #666;
   font-size: 1.5em;
 }
-#cardSlots,
+
+
+#cardSlots {
+  margin: 50px auto 50px auto;
+  background: #ddf;
+}
 #cardSlots2 {
   margin: 50px auto 50px auto;
   background: #ddf;
 }
-#cardPile,
+#cardPile {
+  margin: 0 auto;
+  background: #ffd;
+  height: 110px;
+  padding: 15px;
+  border: 2px solid #333;
+  border-radius: 10px;
+  box-shadow: 0 0 0.3em rgba(0, 0, 0, 0.8);
+}
 #cardPile2 {
   margin: 0 auto;
   background: #ffd;
+  height: 110px;
+  padding: 15px;
+  border: 2px solid #333;
+  border-radius: 10px;
+  box-shadow: 0 0 0.3em rgba(0, 0, 0, 0.8);
 }
-#cardSlots,
-#cardSlots2 {
+#cardSlots{
   width: 270px;
   height: 120px;
   padding: 10px 40px;
@@ -1540,113 +1557,13 @@ html {
   border-radius: 10px;
   box-shadow: 0 0 0.3em rgba(0, 0, 0, 0.8);
 }
-#cardPile,
-#cardPile2 {
-  height: 110px;
-  padding: 15px;
+#cardSlots2 {
+  width: 270px;
+  height: 120px;
+  padding: 10px 40px;
   border: 2px solid #333;
   border-radius: 10px;
   box-shadow: 0 0 0.3em rgba(0, 0, 0, 0.8);
-}
-#cardSlots div,
-#cardPile div,
-#cardSlots2 div,
-#cardPile2 div {
-  float: left;
-  width: 58px;
-  height: 60px;
-  padding: 10px;
-  padding-top: 40px;
-  padding-bottom: 0;
-  border: 2px solid #333;
-  border-radius: 10px;
-  margin: 0 0 0 10px;
-  background: #fff;
-}
-#cardSlots div:first-child,
-#cardPile div:first-child,
-#cardSlots2 div:first-child,
-#cardPile2 div:first-child {
-  margin-left: 0;
-}
-#cardSlots div.hovered,
-#cardSlots2 div.hovered {
-  background: #aaa;
-}
-#cardSlots div,
-#cardSlots2 div {
-  border-style: dashed;
-}
-#cardPile div,
-#cardPile2 div {
-  background: #666;
-  color: #fff;
-  font-size: 50px;
-  text-shadow: 0 0 3px #000;
-}
-#cardPile div.ui-draggable-dragging,
-#cardPile2 div.ui-draggable-dragging {
-  box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.8);
-}
-#card1.correct {
-  background: red;
-}
-#card2.correct {
-  background: brown;
-}
-#card3.correct {
-  background: orange;
-}
-#card4.correct {
-  background: yellow;
-}
-#card5.correct {
-  background: green;
-}
-#card6.correct {
-  background: cyan;
-}
-#card7.correct {
-  background: blue;
-}
-#card8.correct {
-  background: indigo;
-}
-#card9.correct {
-  background: purple;
-}
-#card10.correct {
-  background: violet;
-}
-#card11.correct {
-  background: red;
-}
-#card12.correct {
-  background: brown;
-}
-#card13.correct {
-  background: orange;
-}
-#card14.correct {
-  background: yellow;
-}
-#card15.correct {
-  background: green;
-}
-#card16.correct {
-  background: cyan;
-}
-#card17.correct {
-  background: blue;
-}
-#card18.correct {
-  background: indigo;
-}
-#card19.correct {
-  background: purple;
-}
-#card20.correct {
-  background: violet;
 }
 #successMessage {
   position: absolute;
@@ -1661,10 +1578,16 @@ html {
   box-shadow: 0.3em 0.3em 0.5em rgba(0, 0, 0, 0.8);
   padding: 20px;
 
-}
 
-.hidden-card {
-  display: none;
+.health__your {
+  font-family: monospace;
+  font-size: 19px;
+  color: azure;
+  float: left;
+  padding-top: 35px;
+  padding-left: 100px;
+  width: 263px;
+  height: 67px;
 }
 /*! jQuery UI - v1.11.4 - 2015-03-11
 * http://jqueryui.com
@@ -3084,7 +3007,7 @@ button {
     width: 210px;
     height: 100%;
     box-sizing: border-box;
-    padding: 5px 41px 19px 36px;
+    padding: 40px 41px 19px 36px;
 }
 .rightBar {
     width: 210px;
@@ -3118,8 +3041,39 @@ button {
 
 .playing_card{
     z-index: 10;
-    width:120px;
+    width:155px;
+    padding-bottom: 13px;
 }
 img{
      cursor: -webkit-grabbing;
+}
+
+.your__score {
+
+    width: 120px;
+    height: 120px;
+    color: #940d13;
+    position: absolute;
+    left: 230px;
+    top: 20px;
+
+}
+.enemy__score{
+    width: 120px;
+    height: 120px;
+    color: #940d13;
+    position: absolute;
+    left: 1011px;
+    top: 20px;
+}
+
+.User__VS__User{
+    width: 199px;
+    height: 25px;
+    color: #940d13;
+    position: absolute;
+    left: 582px;
+    top: 16px;
+    font-family: cursive;
+    font-size: 20px;
 }
