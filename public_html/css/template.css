@@ -21,7 +21,7 @@
     width: 210px;
     height: 100%;
     box-sizing: border-box;
-    padding: 40px 41px 19px 36px;
+    padding: 5px 41px 19px 36px;
 }
 .rightBar {
     width: 210px;
@@ -55,40 +55,10 @@
 
 .playing_card{
     z-index: 10;
-    width:155px;
-    padding-bottom: 13px;
+    width:120px;
 }
 img{
      cursor: -webkit-grabbing;
 }
 
-.your__score {
-
-    width: 120px;
-    height: 120px;
-    color: #940d13;
-    position: absolute;
-    left: 230px;
-    top: 20px;
-
-}
-.enemy__score{
-    width: 120px;
-    height: 120px;
-    color: #940d13;
-    position: absolute;
-    left: 1011px;
-    top: 20px;
-}
-
-.User__VS__User{
-    width: 199px;
-    height: 25px;
-    color: #940d13;
-    position: absolute;
-    left: 582px;
-    top: 16px;
-    font-family: cursive;
-    font-size: 20px;
-}
 
