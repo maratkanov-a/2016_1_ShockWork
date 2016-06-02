@@ -13114,7 +13114,7 @@ define('views/main',[
 
     return new View();
 });
-define('tmpl/game',[],function () { return function (__fest_context){"use strict";var __fest_self=this,__fest_buf="",__fest_chunks=[],__fest_chunk,__fest_attrs=[],__fest_select,__fest_if,__fest_iterator,__fest_to,__fest_fn,__fest_html="",__fest_blocks={},__fest_params,__fest_element,__fest_debug_file="",__fest_debug_line="",__fest_debug_block="",__fest_htmlchars=/[&<>"]/g,__fest_htmlchars_test=/[&<>"]/,__fest_short_tags = {"area":true,"base":true,"br":true,"col":true,"command":true,"embed":true,"hr":true,"img":true,"input":true,"keygen":true,"link":true,"meta":true,"param":true,"source":true,"wbr":true},__fest_element_stack = [],__fest_htmlhash={"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"},__fest_jschars=/[\\'"\/\n\r\t\b\f<>]/g,__fest_jschars_test=/[\\'"\/\n\r\t\b\f<>]/,__fest_jshash={"\"":"\\\"","\\":"\\\\","/":"\\/","\n":"\\n","\r":"\\r","\t":"\\t","\b":"\\b","\f":"\\f","'":"\\'","<":"\\u003C",">":"\\u003E"},___fest_log_error;if(typeof __fest_error === "undefined"){___fest_log_error = (typeof console !== "undefined" && console.error) ? function(){return Function.prototype.apply.call(console.error, console, arguments)} : function(){};}else{___fest_log_error=__fest_error};function __fest_log_error(msg){___fest_log_error(msg+"\nin block \""+__fest_debug_block+"\" at line: "+__fest_debug_line+"\nfile: "+__fest_debug_file)}function __fest_replaceHTML(chr){return __fest_htmlhash[chr]}function __fest_replaceJS(chr){return __fest_jshash[chr]}function __fest_extend(dest, src){for(var i in src)if(src.hasOwnProperty(i))dest[i]=src[i];}function __fest_param(fn){fn.param=true;return fn}function __fest_call(fn, params,cp){if(cp)for(var i in params)if(typeof params[i]=="function"&&params[i].param)params[i]=params[i]();return fn.call(__fest_self,params)}function __fest_escapeJS(s){if (typeof s==="string") {if (__fest_jschars_test.test(s))return s.replace(__fest_jschars,__fest_replaceJS);} else if (typeof s==="undefined")return "";return s;}function __fest_escapeHTML(s){if (typeof s==="string") {if (__fest_htmlchars_test.test(s))return s.replace(__fest_htmlchars,__fest_replaceHTML);} else if (typeof s==="undefined")return "";return s;}var json=__fest_context;__fest_buf+=("<div id=\"waiter\"></div><div id=\"game\" class=\"row\"><div class=\"col s12 m6 offset-m3\"><nav class=\"nav\"><div class=\"nav-wrapper\"><a class=\"brand-logo center\">Игра</a><ul class=\"left hide-on-med-and-down\"><li><a class=\"js-go-back waves-effect waves-light btn\">Назад</a></li></ul></div></nav></div><div id=\"wrapper\"><div class=\"row\"><div class=\"container\"><div id=\"user_stack\" class=\"leftBar fl\" style=\"\"></div><div class=\"js-insert-back rightBar fr\"></div><div id=\"table\"><div class=\"leftBar fl\"><ul id=\"sortable2\" class=\"connectedSortable\"></ul></div><div class=\"score\" align=\"center\"><span class=\"my\">0</span><span class=\"score__span__vs\">VS</span><span class=\"not_my\">?</span></div><div class=\"button-finish\" id=\"button_done\"></div><div class=\"my_health\"><span>HP:</span><span id=\"your_health\">50</span></div><div class=\"his_health\"><span>HP:</span><span id=\"enemy_health\">50</span></div><div id=\"restart_button\" align=\"center\"></div><div class=\"rightBar fr\"><ul id=\"sortable3\" class=\"connectedSortable\"></ul></div><img class=\"flame__my\" src=\"img\/explosion.gif\"/><img class=\"flame__enemy\" src=\"img\/explosion.gif\"/><li class=\"ui-state-default hidden-card\"><img src=\"\"/></li></div></div></div></div></div>");__fest_to=__fest_chunks.length;if (__fest_to) {__fest_iterator = 0;for (;__fest_iterator<__fest_to;__fest_iterator++) {__fest_chunk=__fest_chunks[__fest_iterator];if (typeof __fest_chunk==="string") {__fest_html+=__fest_chunk;} else {__fest_fn=__fest_blocks[__fest_chunk.name];if (__fest_fn) __fest_html+=__fest_call(__fest_fn,__fest_chunk.params,__fest_chunk.cp);}}return __fest_html+__fest_buf;} else {return __fest_buf;}} ; });
+define('tmpl/game',[],function () { return function (__fest_context){"use strict";var __fest_self=this,__fest_buf="",__fest_chunks=[],__fest_chunk,__fest_attrs=[],__fest_select,__fest_if,__fest_iterator,__fest_to,__fest_fn,__fest_html="",__fest_blocks={},__fest_params,__fest_element,__fest_debug_file="",__fest_debug_line="",__fest_debug_block="",__fest_htmlchars=/[&<>"]/g,__fest_htmlchars_test=/[&<>"]/,__fest_short_tags = {"area":true,"base":true,"br":true,"col":true,"command":true,"embed":true,"hr":true,"img":true,"input":true,"keygen":true,"link":true,"meta":true,"param":true,"source":true,"wbr":true},__fest_element_stack = [],__fest_htmlhash={"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"},__fest_jschars=/[\\'"\/\n\r\t\b\f<>]/g,__fest_jschars_test=/[\\'"\/\n\r\t\b\f<>]/,__fest_jshash={"\"":"\\\"","\\":"\\\\","/":"\\/","\n":"\\n","\r":"\\r","\t":"\\t","\b":"\\b","\f":"\\f","'":"\\'","<":"\\u003C",">":"\\u003E"},___fest_log_error;if(typeof __fest_error === "undefined"){___fest_log_error = (typeof console !== "undefined" && console.error) ? function(){return Function.prototype.apply.call(console.error, console, arguments)} : function(){};}else{___fest_log_error=__fest_error};function __fest_log_error(msg){___fest_log_error(msg+"\nin block \""+__fest_debug_block+"\" at line: "+__fest_debug_line+"\nfile: "+__fest_debug_file)}function __fest_replaceHTML(chr){return __fest_htmlhash[chr]}function __fest_replaceJS(chr){return __fest_jshash[chr]}function __fest_extend(dest, src){for(var i in src)if(src.hasOwnProperty(i))dest[i]=src[i];}function __fest_param(fn){fn.param=true;return fn}function __fest_call(fn, params,cp){if(cp)for(var i in params)if(typeof params[i]=="function"&&params[i].param)params[i]=params[i]();return fn.call(__fest_self,params)}function __fest_escapeJS(s){if (typeof s==="string") {if (__fest_jschars_test.test(s))return s.replace(__fest_jschars,__fest_replaceJS);} else if (typeof s==="undefined")return "";return s;}function __fest_escapeHTML(s){if (typeof s==="string") {if (__fest_htmlchars_test.test(s))return s.replace(__fest_htmlchars,__fest_replaceHTML);} else if (typeof s==="undefined")return "";return s;}var json=__fest_context;__fest_buf+=("<div id=\"waiter\"></div><div id=\"game\" class=\"row\"><div class=\"col s12 m6 offset-m3\"><nav class=\"nav\"><div class=\"nav-wrapper\"><a class=\"brand-logo center\">Игра</a><ul class=\"left hide-on-med-and-down\"><li><a class=\"js-go-back waves-effect waves-light btn\">Назад</a></li></ul></div></nav></div><div id=\"wrapper\"><div class=\"row\"><div class=\"container\"><div id=\"user_stack\" class=\"leftBar fl\" style=\"\"></div><div class=\"js-insert-back rightBar fr\"></div><div id=\"table\"><div class=\"leftBar fl\"><ul id=\"sortable2\" class=\"connectedSortable\"></ul></div><div class=\"score\" align=\"center\"><span class=\"my\">0</span><span class=\"score__span__vs\">VS</span><span class=\"not_my\">?</span></div><div class=\"button-finish\" id=\"button_done\"></div><div class=\"my_health\"><span>HP:</span><span id=\"your_health\">50</span></div><div class=\"his_health\"><span>HP:</span><span id=\"enemy_health\">50</span></div><div id=\"restart_button\" align=\"center\"></div><div class=\"rightBar fr\"><ul id=\"sortable3\" class=\"connectedSortable\"></ul></div><img class=\"flame__my\" src=\"img\/explosion.gif\"/><img class=\"flame__enemy\" src=\"img\/explosion.gif\"/><li class=\"ui-state-default hidden-card\"><img/></li></div></div></div></div></div>");__fest_to=__fest_chunks.length;if (__fest_to) {__fest_iterator = 0;for (;__fest_iterator<__fest_to;__fest_iterator++) {__fest_chunk=__fest_chunks[__fest_iterator];if (typeof __fest_chunk==="string") {__fest_html+=__fest_chunk;} else {__fest_fn=__fest_blocks[__fest_chunk.name];if (__fest_fn) __fest_html+=__fest_call(__fest_fn,__fest_chunk.params,__fest_chunk.cp);}}return __fest_html+__fest_buf;} else {return __fest_buf;}} ; });
 ;(function(window, document, undefined) {
   "use strict";
   
@@ -31049,14 +31049,10 @@ define('views/game',[
             this.trigger("show",this);
 
             this.socket = new WebSocket("wss://" + window.location.hostname + ":" + window.location.port + "/api/gameplay");
-            this.socket.onopen = function () {
-                console.log('Open connection')
-            };
             this.socket.onclose = function () {
                 Backbone.history.navigate('', {trigger: true})
             };
             this.socket.onmessage = function (msg) {
-                console.log(msg.data);
                 var msgData = JSON.parse(msg.data);
                 switch (msgData.command) {
                     case "start":
@@ -31161,14 +31157,14 @@ define('views/game',[
         },
         makePapauPschhhh: function(msgData){
             if (msgData.enemyPower > msgData.power){
-                this.$el.find('.flame__my').clone().prependTo(this.$el.find('.correct')).show();
+                this.$el.find('.flame__my').clone().insertBefore(this.$el.find('.correct')).show();
             }
             else if (msgData.enemyPower < msgData.power) {
-                 this.$el.find('.flame__enemy').clone().prependTo(this.$el.find('.enemy__real__card')).show();
+                 this.$el.find('.flame__enemy').clone().insertBefore(this.$el.find('.enemy__real__card')).show();
                 }
             else {
-                 this.$el.find('.flame__my').clone().prependTo(this.$el.find('.correct')).show();
-                 this.$el.find('.flame__enemy').clone().prependTo(this.$el.find('.enemy__real__card')).show();
+                 this.$el.find('.flame__my').clone().insertBefore(this.$el.find('.correct')).show();
+                 this.$el.find('.flame__enemy').clone().insertBefore(this.$el.find('.enemy__real__card')).show();
 
             }
         },
@@ -31190,7 +31186,6 @@ define('views/game',[
         refreshTable: function(msgData){
             this.$el.find('#user_stack').html('');
             var newStack = msgData.newCards;
-            console.log(newStack);
             this.stack_to_delete = [];
             this.USER_power = 0;
             this.$('#sortable3').html('');
@@ -31207,7 +31202,7 @@ define('views/game',[
             var newThis = this.$el;
             for (var i=0; i < msgData.enemyCards.length; i++ ){
                 var cardPath = "img/cards/" + msgData.enemyCards[i].img + ".png";
-                this.$el.find().prependTo(this.$el.find('.hidden-card').clone().removeClass('.hidden-card').show().find('img').attr("scr", cardPath))
+                this.$el.find('.hidden-card').clone().removeClass('.hidden-card').find('img').attr("src", cardPath)
                 .data('power', msgData.enemyCards[i].id)
                 .attr('class', 'enemy__real__card').appendTo(newThis.find('#sortable3'));
             }
@@ -31243,7 +31238,8 @@ define('views/game',[
         manaPush: function(mana){
             this.mana_stack.push(mana);
         },
-        handleDrop: function(event, ui){
+        handleDrop: function(event, ui) {
+            $(ui.draggable).appendTo($( this ));
             ui.draggable.data('this').manaPush(ui.draggable.data('class'));
             var cardPower = ui.draggable.data('power');
             ui.draggable.data('this').stack_to_delete.push(ui.draggable.data('number'));
@@ -31261,10 +31257,10 @@ define('views/game',[
             var newThis = this.$el;
             for (var i=0; i < count; i++ ){
                 var cardPath = "img/cards/" + stack[i].img + ".png";
-                this.$el.find().prependTo(this.$el.find('.hidden-card').removeClass('.hidden-card').clone().show().find('img').attr("scr", cardPath))
+                this.$el.find('.hidden-card').clone().removeClass('.hidden-card').find('img').attr("src", cardPath)
                 .data('power', stack[i].power)
                 .data('class', stack[i].mana)
-                    .data('this',this)
+                .data('this',this)
                 .data('number', stack[i].id)
                 .attr('id', 'card_user1_' + stack[i].id)
                 .attr('class', 'playing_card').appendTo(newThis.find('#user_stack'))
@@ -31284,8 +31280,8 @@ define('views/game',[
         },
 
         done: function () {
+            this.$el.find('.playing_card').draggable('disable');
             this.$el.find('#button_done').hide();
-            console.log(this.stack_to_delete);
             this.socket.send(JSON.stringify({
                 command: 'nextTurn',
                 cards: this.stack_to_delete
@@ -42806,7 +42802,8 @@ define('views/offline',[
         manaPush: function(mana){
             this.mana_stack.push(mana);
         },
-        handleDrop: function(event, ui){
+        handleDrop: function(event, ui) {
+            $(ui.draggable).appendTo($( this ));
             ui.draggable.data('this').manaPush(ui.draggable.data('class'));
             var cardPower = ui.draggable.data('power');
             ui.draggable.data('this').stack_to_delete.push(ui.draggable.data('number'));
@@ -42828,11 +42825,11 @@ define('views/offline',[
             if (stack.length < 3) count = stack.length;
             var newThis = this.$el;
             for (var i=0; i < count; i++ ){
-                var cardPath = "img/cards/" +stack[i].img+ ".png";
-                this.$el.find().prependTo(this.$el.find('.hidden-card').removeClass('.hidden-card').clone().show().find('img').attr("scr", cardPath))
+                var cardPath = "/img/cards/" +stack[i].img+ ".png";
+                this.$el.find('.hidden-card').clone().removeClass('.hidden-card').find('img').attr("src", cardPath)
                 .data('power', stack[i].power)
                 .data('class', stack[i].mana)
-                    .data('this',this)
+                .data('this',this)
                 .data('number', i)
                 .attr('id', 'card_user1_' + stack[i].id)
                 .attr('class', 'playing_card').appendTo(newThis.find('#user_stack'))
@@ -42851,8 +42848,8 @@ define('views/offline',[
             if (stack.length < 3) count = stack.length;
             var newThis = this;
             for (var i = 0; i < count; i++) {
-                var cardPath = "img/cards/" +stack[i].img+ ".png";
-                this.$el.find().prependTo(this.$el.find('.hidden-card').removeClass('.hidden-card').clone().show().find('img').attr("scr", cardPath))
+                var cardPath = "/img/cards/" +stack[i].img+ ".png";
+                this.$el.find('.hidden-card').clone().removeClass('.hidden-card').find('img').attr("src", cardPath)
                     .data('power', stack[i].power)
                     .data('class', stack[i].mana)
                     .attr('id', 'card_ai_' + stack[i].id)
@@ -42890,14 +42887,14 @@ define('views/offline',[
                 newThis.AI_health -= user - ai;
                 this.$('#enemy_health').text(this.AI_health);
                 newThis.$el.find('#button_done').hide();
-                newThis.$el.find('.flame__enemy').clone().prependTo(newThis.$el.find('.enemy__real__card')).show();
+                newThis.$el.find('.flame__enemy').clone().insertBefore(newThis.$el.find('.enemy__real__card')).show();
                 newThis.$el.find('#restart_button').show();
             }
             if (user < ai) {
                 newThis.USER_health -= ai - user;
                 newThis.$el.find('#your_health').text(this.USER_health);
                 newThis.$el.find('#button_done').hide();
-                newThis.$el.find('.flame__my').clone().prependTo(newThis.$el.find('.correct')).show();
+                newThis.$el.find('.flame__my').clone().insertBefore(newThis.$el.find('.correct')).show();
                 newThis.$el.find('#restart_button').show();
 
             }
@@ -42946,20 +42943,11 @@ define('views/offline',[
             this.stack_to_delete.sort();
             this.stack_to_delete.reverse();
 
-            console.log('USER 1 before STACK:');
-            console.log(this.user1_stack);
-
-            console.log('STACK TO DELETE');
-            console.log(this.stack_to_delete);
-
             var newThis = this;
             this.stack_to_delete.forEach(function(item, i, stack){
                 newThis.user1_stack.splice(item,1);
             });
-
-            console.log('USER 1 after STACK:');
-            console.log(this.user1_stack);
-
+            
             this.AI_power = 0;
             this.USER_power = 0;
             this.mana_stack = [];

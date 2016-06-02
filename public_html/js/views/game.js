@@ -30,14 +30,10 @@ define([
             this.trigger("show",this);
 
             this.socket = new WebSocket("wss://" + window.location.hostname + ":" + window.location.port + "/api/gameplay");
-            this.socket.onopen = function () {
-                console.log('Open connection')
-            };
             this.socket.onclose = function () {
                 Backbone.history.navigate('', {trigger: true})
             };
             this.socket.onmessage = function (msg) {
-                console.log(msg.data);
                 var msgData = JSON.parse(msg.data);
                 switch (msgData.command) {
                     case "start":
@@ -142,14 +138,14 @@ define([
         },
         makePapauPschhhh: function(msgData){
             if (msgData.enemyPower > msgData.power){
-                this.$el.find('.flame__my').clone().prependTo(this.$el.find('.correct')).show();
+                this.$el.find('.flame__my').clone().insertBefore(this.$el.find('.correct')).show();
             }
             else if (msgData.enemyPower < msgData.power) {
-                 this.$el.find('.flame__enemy').clone().prependTo(this.$el.find('.enemy__real__card')).show();
+                 this.$el.find('.flame__enemy').clone().insertBefore(this.$el.find('.enemy__real__card')).show();
                 }
             else {
-                 this.$el.find('.flame__my').clone().prependTo(this.$el.find('.correct')).show();
-                 this.$el.find('.flame__enemy').clone().prependTo(this.$el.find('.enemy__real__card')).show();
+                 this.$el.find('.flame__my').clone().insertBefore(this.$el.find('.correct')).show();
+                 this.$el.find('.flame__enemy').clone().insertBefore(this.$el.find('.enemy__real__card')).show();
 
             }
         },
@@ -171,7 +167,6 @@ define([
         refreshTable: function(msgData){
             this.$el.find('#user_stack').html('');
             var newStack = msgData.newCards;
-            console.log(newStack);
             this.stack_to_delete = [];
             this.USER_power = 0;
             this.$('#sortable3').html('');
@@ -188,7 +183,7 @@ define([
             var newThis = this.$el;
             for (var i=0; i < msgData.enemyCards.length; i++ ){
                 var cardPath = "img/cards/" + msgData.enemyCards[i].img + ".png";
-                this.$el.find('.hidden-card').clone().removeClass('.hidden-card').show().find('img').attr("scr", cardPath)
+                this.$el.find('.hidden-card').clone().removeClass('.hidden-card').find('img').attr("src", cardPath)
                 .data('power', msgData.enemyCards[i].id)
                 .attr('class', 'enemy__real__card').appendTo(newThis.find('#sortable3'));
             }
@@ -224,7 +219,8 @@ define([
         manaPush: function(mana){
             this.mana_stack.push(mana);
         },
-        handleDrop: function(event, ui){
+        handleDrop: function(event, ui) {
+            $(ui.draggable).appendTo($( this ));
             ui.draggable.data('this').manaPush(ui.draggable.data('class'));
             var cardPower = ui.draggable.data('power');
             ui.draggable.data('this').stack_to_delete.push(ui.draggable.data('number'));
@@ -242,10 +238,10 @@ define([
             var newThis = this.$el;
             for (var i=0; i < count; i++ ){
                 var cardPath = "img/cards/" + stack[i].img + ".png";
-                this.$el.find().prependTo(this.$el.find('.hidden-card').removeClass('.hidden-card').clone().show().find('img').attr("scr", cardPath))
+                this.$el.find('.hidden-card').clone().removeClass('.hidden-card').find('img').attr("src", cardPath)
                 .data('power', stack[i].power)
                 .data('class', stack[i].mana)
-                    .data('this',this)
+                .data('this',this)
                 .data('number', stack[i].id)
                 .attr('id', 'card_user1_' + stack[i].id)
                 .attr('class', 'playing_card').appendTo(newThis.find('#user_stack'))
@@ -265,8 +261,8 @@ define([
         },
 
         done: function () {
+            this.$el.find('.playing_card').draggable('disable');
             this.$el.find('#button_done').hide();
-            console.log(this.stack_to_delete);
             this.socket.send(JSON.stringify({
                 command: 'nextTurn',
                 cards: this.stack_to_delete

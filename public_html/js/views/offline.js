@@ -315,7 +315,8 @@ define([
         manaPush: function(mana){
             this.mana_stack.push(mana);
         },
-        handleDrop: function(event, ui){
+        handleDrop: function(event, ui) {
+            $(ui.draggable).appendTo($( this ));
             ui.draggable.data('this').manaPush(ui.draggable.data('class'));
             var cardPower = ui.draggable.data('power');
             ui.draggable.data('this').stack_to_delete.push(ui.draggable.data('number'));
@@ -337,11 +338,11 @@ define([
             if (stack.length < 3) count = stack.length;
             var newThis = this.$el;
             for (var i=0; i < count; i++ ){
-                var cardPath = "img/cards/" +stack[i].img+ ".png";
-                this.$el.find().prependTo(this.$el.find('.hidden-card').removeClass('.hidden-card').clone().show().find('img').attr("scr", cardPath))
+                var cardPath = "/img/cards/" +stack[i].img+ ".png";
+                this.$el.find('.hidden-card').clone().removeClass('.hidden-card').find('img').attr("src", cardPath)
                 .data('power', stack[i].power)
                 .data('class', stack[i].mana)
-                    .data('this',this)
+                .data('this',this)
                 .data('number', i)
                 .attr('id', 'card_user1_' + stack[i].id)
                 .attr('class', 'playing_card').appendTo(newThis.find('#user_stack'))
@@ -360,8 +361,8 @@ define([
             if (stack.length < 3) count = stack.length;
             var newThis = this;
             for (var i = 0; i < count; i++) {
-                var cardPath = "img/cards/" +stack[i].img+ ".png";
-                this.$el.find().prependTo(this.$el.find('.hidden-card').removeClass('.hidden-card').clone().show().find('img').attr("scr", cardPath))
+                var cardPath = "/img/cards/" +stack[i].img+ ".png";
+                this.$el.find('.hidden-card').clone().removeClass('.hidden-card').find('img').attr("src", cardPath)
                     .data('power', stack[i].power)
                     .data('class', stack[i].mana)
                     .attr('id', 'card_ai_' + stack[i].id)
@@ -399,14 +400,14 @@ define([
                 newThis.AI_health -= user - ai;
                 this.$('#enemy_health').text(this.AI_health);
                 newThis.$el.find('#button_done').hide();
-                newThis.$el.find('.flame__enemy').clone().prependTo(newThis.$el.find('.enemy__real__card')).show();
+                newThis.$el.find('.flame__enemy').clone().insertBefore(newThis.$el.find('.enemy__real__card')).show();
                 newThis.$el.find('#restart_button').show();
             }
             if (user < ai) {
                 newThis.USER_health -= ai - user;
                 newThis.$el.find('#your_health').text(this.USER_health);
                 newThis.$el.find('#button_done').hide();
-                newThis.$el.find('.flame__my').clone().prependTo(newThis.$el.find('.correct')).show();
+                newThis.$el.find('.flame__my').clone().insertBefore(newThis.$el.find('.correct')).show();
                 newThis.$el.find('#restart_button').show();
 
             }
@@ -455,20 +456,11 @@ define([
             this.stack_to_delete.sort();
             this.stack_to_delete.reverse();
 
-            console.log('USER 1 before STACK:');
-            console.log(this.user1_stack);
-
-            console.log('STACK TO DELETE');
-            console.log(this.stack_to_delete);
-
             var newThis = this;
             this.stack_to_delete.forEach(function(item, i, stack){
                 newThis.user1_stack.splice(item,1);
             });
-
-            console.log('USER 1 after STACK:');
-            console.log(this.user1_stack);
-
+            
             this.AI_power = 0;
             this.USER_power = 0;
             this.mana_stack = [];
