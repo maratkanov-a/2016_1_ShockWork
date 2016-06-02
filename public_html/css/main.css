@@ -117,6 +117,7 @@ html {
   background: url(../img/la.jpg) no-repeat center center fixed;
   background-size: cover;
 }
+
 .form__error {
   display: none;
   color: white;
@@ -135,7 +136,7 @@ html {
   height: 240px;
 }
 
-.form__avatar__video {
+.form__avatar__video{
   width: 320px;
   height: 240px;
 }
@@ -218,12 +219,17 @@ html {
   box-shadow: 0.3em 0.3em 0.5em rgba(0, 0, 0, 0.8);
   padding: 20px;
 
-}
 
-.hidden-card {
-  display: none;
+.health__your {
+  font-family: monospace;
+  font-size: 19px;
+  color: azure;
+  float: left;
+  padding-top: 35px;
+  padding-left: 100px;
+  width: 263px;
+  height: 67px;
 }
-
 
 
 
