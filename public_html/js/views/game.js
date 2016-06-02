@@ -118,7 +118,7 @@ define([
                 this.$el.find('#user_stack').html('');
                 this.$('#sortable3').html('');
                 this.$('#sortable2').html('');
-                this.$('.mmg-insert-back').html('');
+                this.$('.js-insert-back').html('');
                 this.$el.find(".not_my").text('?');
                 this.$el.find(".my").text('0');
                 $('body').removeClass('loaded');
@@ -175,7 +175,7 @@ define([
             this.$el.find('#restart_button').hide();
             $(".not_my").text('?');
             this.draw(newStack);
-            this.$('.mmg-insert-back').html('');
+            this.$('.js-insert-back').html('');
             this.draw_enemy(3);
         },
         drawEnemyReal: function(msgData){
@@ -256,7 +256,7 @@ define([
         },
         draw_enemy: function(number) {
             for (var i=0; i< number; i++) {
-                this.$el.find("#one_back_card").clone().removeClass('hidden-card').removeAttr('id').addClass('card__size').appendTo(this.$el.find('.mmg-insert-back'));
+                this.$el.find("#one_back_card").clone().removeClass('hidden-card').removeAttr('id').addClass('card__size').appendTo(this.$el.find('.js-insert-back'));
             }
         },
 
