@@ -183,7 +183,7 @@ define([
             var newThis = this.$el;
             for (var i=0; i < msgData.enemyCards.length; i++ ){
                 var cardPath = "img/cards/" + msgData.enemyCards[i].img + ".png";
-                this.$el.find('.hidden-card').clone().removeClass('.hidden-card').find('img').attr("src", cardPath)
+                this.$el.find('#one_card').clone().removeClass('.hidden-card').removeAttr('id').find('img').attr("src", cardPath)
                 .data('power', msgData.enemyCards[i].id)
                 .attr('class', 'enemy__real__card').appendTo(newThis.find('#sortable3'));
             }
@@ -191,7 +191,7 @@ define([
         transferCards: function(number){
             for (var i=0; i< number; i++) {
                 this.$el.find('.card__size').last().remove();
-                this.$el.find('#sortable3').append('<img class="card__size__game" src="img/back.png">');
+                this.$el.find("#one_back_card").clone().removeClass('hidden-card').removeAttr('id').addClass('card__size__game').appendTo(this.$el.find('#sortable3'));
             }
         },
         showHealth: function(msgData){
@@ -238,7 +238,7 @@ define([
             var newThis = this.$el;
             for (var i=0; i < count; i++ ){
                 var cardPath = "img/cards/" + stack[i].img + ".png";
-                this.$el.find('.hidden-card').clone().removeClass('.hidden-card').find('img').attr("src", cardPath)
+                this.$el.find('#one_card').clone().removeClass('.hidden-card').find('img').attr("src", cardPath)
                 .data('power', stack[i].power)
                 .data('class', stack[i].mana)
                 .data('this',this)
@@ -256,7 +256,7 @@ define([
         },
         draw_enemy: function(number) {
             for (var i=0; i< number; i++) {
-                this.$el.find('.js-insert-back').append('<img class="card__size" src="img/back.png">')
+                this.$el.find("#one_back_card").clone().removeClass('hidden-card').removeAttr('id').addClass('card__size').appendTo(this.$el.find('.js-insert-back'));
             }
         },
 
