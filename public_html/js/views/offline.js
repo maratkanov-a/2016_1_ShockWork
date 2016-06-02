@@ -337,7 +337,8 @@ define([
             if (stack.length < 3) count = stack.length;
             var newThis = this.$el;
             for (var i=0; i < count; i++ ){
-                $('<li class="ui-state-default"><img src="img/cards/'+stack[i].img+'.png" alt=""> </li>')
+                var cardPath = "img/cards/" +stack[i].img+ ".png";
+                this.$el.find().prependTo(this.$el.find('.hidden-card').removeClass('.hidden-card').clone().show().find('img').attr("scr", cardPath))
                 .data('power', stack[i].power)
                 .data('class', stack[i].mana)
                     .data('this',this)
@@ -359,7 +360,8 @@ define([
             if (stack.length < 3) count = stack.length;
             var newThis = this;
             for (var i = 0; i < count; i++) {
-                $('<li class="ui-state-default"><img src="img/cards/' + stack[i].img + '.png" alt=""> </li>')
+                var cardPath = "img/cards/" +stack[i].img+ ".png";
+                this.$el.find().prependTo(this.$el.find('.hidden-card').removeClass('.hidden-card').clone().show().find('img').attr("scr", cardPath))
                     .data('power', stack[i].power)
                     .data('class', stack[i].mana)
                     .attr('id', 'card_ai_' + stack[i].id)

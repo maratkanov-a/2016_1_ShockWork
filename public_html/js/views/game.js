@@ -187,7 +187,8 @@ define([
             this.$el.find('#sortable3').html('');
             var newThis = this.$el;
             for (var i=0; i < msgData.enemyCards.length; i++ ){
-                $('<li class="ui-state-default"><img src="img/cards/'+msgData.enemyCards[i].img+'.png" alt=""> </li>')
+                var cardPath = "img/cards/" + msgData.enemyCards[i].img + ".png";
+                this.$el.find('.hidden-card').clone().removeClass('.hidden-card').show().find('img').attr("scr", cardPath)
                 .data('power', msgData.enemyCards[i].id)
                 .attr('class', 'enemy__real__card').appendTo(newThis.find('#sortable3'));
             }
@@ -240,7 +241,8 @@ define([
             var count = stack.length;
             var newThis = this.$el;
             for (var i=0; i < count; i++ ){
-                $('<li class="ui-state-default"><img src="img/cards/'+stack[i].img+'.png" alt=""> </li>')
+                var cardPath = "img/cards/" + stack[i].img + ".png";
+                this.$el.find().prependTo(this.$el.find('.hidden-card').removeClass('.hidden-card').clone().show().find('img').attr("scr", cardPath))
                 .data('power', stack[i].power)
                 .data('class', stack[i].mana)
                     .data('this',this)

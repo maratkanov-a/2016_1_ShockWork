@@ -46,6 +46,9 @@
                   </div>
                   <img class="flame__my" src="img/explosion.gif"/>
                   <img class="flame__enemy" src="img/explosion.gif"/>
+                  <li class="ui-state-default hidden-card">
+                     <img src=""/>
+                  </li>
                </div>
             </div>
          </div>
