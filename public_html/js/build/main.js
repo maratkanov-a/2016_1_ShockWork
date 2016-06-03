@@ -42571,7 +42571,7 @@ define('views/offline',[
                 newThis.$el.find('.flame__enemy').clone().insertBefore(newThis.$el.find('.enemy__real__card')).show();
                 newThis.$el.find('#restart_button').show();
             }
-            if (user < ai) {
+            else if (user < ai) {
                 newThis.USER_health -= ai - user;
                 newThis.$el.find('#your_health').text(this.USER_health);
                 newThis.$el.find('#button_done').hide();
@@ -42579,6 +42579,13 @@ define('views/offline',[
                 newThis.$el.find('#restart_button').show();
 
             }
+            else {
+                newThis.$el.find('#button_done').hide();
+                newThis.$el.find('.flame__enemy').clone().insertBefore(newThis.$el.find('.enemy__real__card')).show();
+                newThis.$el.find('.flame__my').clone().insertBefore(newThis.$el.find('.correct')).show();
+                newThis.$el.find('#restart_button').show();
+            }
+
             if (this.USER_health <= 0) {
                 swal({
                         title: "Поражение",
