@@ -299,13 +299,14 @@ define([
             this.draw(this.user1_stack);
         },
         show: function() {
+            $('body').removeClass('loaded');
             this.render();
             this.showed = true;
             this.$el.show();
             this.trigger("show", this);
-            $('body').addClass('loaded');
             this.$el.find(".not_my").text('?');
             this.$el.find(".my").text('0');
+            $('body').addClass('loaded');
         },
         hide: function() {
             if (this.showed) {
@@ -409,6 +410,7 @@ define([
                     .appendTo(newThis.$('#sortable3'));
                 newThis.AI_power += stack[i].power;
             }
+            this.$el.find('.js-insert-back').html('');
             this.AI_stack.splice(0, 3);
             return this.AI_power
         },

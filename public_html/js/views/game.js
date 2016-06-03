@@ -17,6 +17,8 @@ define([
 
         initialize: function() {
             this.showed = false;
+            this.CLOSE_NORMAL = 1000;
+            this.CLOSE_ABNORMAL = 1006;
         },
 
         render: function() {
@@ -30,105 +32,12 @@ define([
             this.trigger("show", this);
 
             this.socket = new WebSocket("wss://" + window.location.hostname + ":" + window.location.port + "/api/gameplay");
-            this.socket.onclose = function() {
-                Backbone.history.navigate('', {
-                    trigger: true
-                })
-            };
-            this.socket.onmessage = function(msg) {
-                var msgData = JSON.parse(msg.data);
-                switch (msgData.command) {
-                    case "start":
-                        this.cardsCollection = msgData['cards'];
-                        this.initializeGame(msgData);
-                        $('body').addClass('loaded');
-                        this.toogleWaiter(msgData.turn);
-                        break;
-                    case "nextTurn":
-                        if (msgData.cards > 0) {
-                            this.transferCards(msgData.cards);
-                        }
-                        this.toogleWaiter(msgData.turn);
-                        break;
-                    case "endRound":
-                        //show Stats
-                        this.showHealth(msgData);
-                        this.showPower(msgData);
-                        this.toogleWaiter(true);
-                        //draw new cards
-                        this.drawEnemyReal(msgData);
-                        this.makePapauPschhhh(msgData);
-                        //show restartButton
-                        //make able to clats-clats it
-                        this.$el.find('#restart_button').show();
-                        break;
-                    case "nextRound":
-                        this.toogleWaiter(msgData.turn);
-                        this.refreshTable(msgData);
-                        break;
-                    case "endGame":
-                        if (msgData.win) {
-                            swal({
-                                    title: "Победа",
-                                    text: "Враг повержен",
-                                    type: "success",
-                                    showCancelButton: false,
-                                    confirmButtonColor: "#DD6B55",
-                                    confirmButtonText: "Я крут!",
-                                    closeOnConfirm: false
-                                },
-                                function() {
-                                    swal("Поздравляем!", "Как насчет попробовать еще раз?", "success");
-                                    Backbone.history.navigate('scoreboard', {
-                                        trigger: true
-                                    });
-                                    this.socket.close();
-                                }).bind(this);
-                            break;
-                        } else {
-                            swal({
-                                    title: "Поражение",
-                                    text: "Вас унизили",
-                                    type: "error",
-                                    showCancelButton: false,
-                                    confirmButtonColor: "#DD6B55",
-                                    confirmButtonText: "Мне просто не повезло",
-                                    closeOnConfirm: false
-                                },
-                                function() {
-                                    swal("Не отчаивайся", "Тебе повезет в следующий раз", "success");
-                                    Backbone.history.navigate('scoreboard', {
-                                        trigger: true
-                                    });
-                                    this.socket.close();
-                                }).bind(this);
-                        }
-                        break;
-                    case "enemyDisconnected":
-                        swal({
-                                title: "Ошибка",
-                                text: "Противник вышел из игры",
-                                type: "error",
-                                showCancelButton: false,
-                                confirmButtonColor: "#DD6B55",
-                                confirmButtonText: "Мразь!",
-                                closeOnConfirm: false
-                            },
-                            function() {
-                                Backbone.history.navigate('', {
-                                    trigger: true
-                                });
-                                this.socket.close();
-                            }).bind(this);
-
-                        break;
-                }
-            }.bind(this);
-
+            this.socket.onclose = this.closeHandler.bind(this);
+            this.socket.onmessage = this.messageHandler.bind(this);
         },
         hide: function() {
             if (this.showed) {
-                this.socket.close();
+                this.socket.close(this.CLOSE_NORMAL);
                 this.$el.find('#user_stack').html('');
                 this.$('#sortable3').html('');
                 this.$('#sortable2').html('');
@@ -144,6 +53,91 @@ define([
             Backbone.history.navigate('', {
                 trigger: true
             });
+        },
+        messageHandler: function(msg) {
+            var msgData = JSON.parse(msg.data);
+            switch (msgData.command) {
+                case "start":
+                    this.cardsCollection = msgData['cards'];
+                    this.initializeGame(msgData);
+                    $('body').addClass('loaded');
+                    this.toogleWaiter(msgData.turn);
+                    break;
+                case "nextTurn":
+                    if (msgData.cards > 0) {
+                        this.transferCards(msgData.cards);
+                    }
+                    this.toogleWaiter(msgData.turn);
+                    break;
+                case "endRound":
+                    if (msgData.enemyTransferCards > 0) {
+                        this.transferCards(msgData.enemyTransferCards);
+                    }
+                    this.showHealth(msgData);
+                    this.showPower(msgData);
+                    this.toogleWaiter(true);
+                    this.drawEnemyReal(msgData);
+                    this.makePapauPschhhh(msgData);
+                    this.$el.find('#restart_button').show();
+                    break;
+                case "nextRound":
+                    this.toogleWaiter(msgData.turn);
+                    this.refreshTable(msgData);
+                    break;
+                case "endGame":
+                    if (msgData.win) {
+                        swal({
+                                title: "Победа",
+                                text: "Враг повержен",
+                                type: "success",
+                                showCancelButton: false,
+                                confirmButtonColor: "#DD6B55",
+                                confirmButtonText: "Я крут!",
+                            },
+                            function() {
+                                swal("Поздравляем!", "Как насчет попробовать еще раз?", "success");
+                                this.socket.close(this.CLOSE_NORMAL);
+                            }.bind(this));
+                        break;
+                    } else {
+                        swal({
+                                title: "Поражение",
+                                text: "Вас унизили",
+                                type: "error",
+                                showCancelButton: false,
+                                confirmButtonColor: "#DD6B55",
+                                confirmButtonText: "Мне просто не повезло",
+                            },
+                            function() {
+                                swal("Не отчаивайся", "Тебе повезет в следующий раз", "success");
+                                this.socket.close(this.CLOSE_NORMAL);
+                            }.bind(this));
+                    }
+                    break;
+                case "enemyDisconnected":
+                    swal({
+                            title: "Ошибка",
+                            text: "Противник вышел из игры",
+                            type: "error",
+                            showCancelButton: false,
+                            confirmButtonColor: "#DD6B55",
+                            confirmButtonText: "Мразь!",
+                        },
+                        function() {
+                            this.socket.close(this.CLOSE_NORMAL);
+                        }.bind(this));
+                    break;
+            }
+        },
+        closeHandler: function(event) {
+            Backbone.history.navigate('', {
+                trigger: true
+            });
+            if (event.code == this.CLOSE_ABNORMAL) {
+                swal("Слишком долго", "Похоже, что с тобой не хотят играть", "error");
+            } else if (event.code != this.CLOSE_NORMAL) {
+                swal("Опаньки...", "Соединение с сервером внезапно прервалось", "error");
+            }
         },
         toogleWaiter: function(turn) {
             if (turn) {
