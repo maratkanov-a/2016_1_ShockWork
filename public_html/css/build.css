@@ -3023,6 +3023,14 @@ button {
     margin-bottom: 20px;
 }
 
+.card__size {
+    width: 120px;
+}
+
+.card__size__game {
+    width: 120px;
+}
+
 .playing_card{
     z-index: 10;
     width:120px;
