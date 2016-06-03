@@ -93,6 +93,7 @@ define([
                                 showCancelButton: false,
                                 confirmButtonColor: "#DD6B55",
                                 confirmButtonText: "Я крут!",
+                                closeOnConfirm: false
                             },
                             function() {
                                 swal("Поздравляем!", "Как насчет попробовать еще раз?", "success");
@@ -107,6 +108,7 @@ define([
                                 showCancelButton: false,
                                 confirmButtonColor: "#DD6B55",
                                 confirmButtonText: "Мне просто не повезло",
+                                closeOnConfirm: false
                             },
                             function() {
                                 swal("Не отчаивайся", "Тебе повезет в следующий раз", "success");
