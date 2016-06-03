@@ -31119,10 +31119,12 @@ define('views/game',[
                             }.bind(this));
                         break;
                     }
+                    var rounds = (msgData.rounds) ? "Раунды подошли к концу.\n" : "";
                     if (msgData.win) {
+                    	this.makePapauPschhhh(false);
                         swal({
                                 title: "Победа",
-                                text: "Враг повержен",
+                                text: rounds + "Враг повержен.",
                                 type: "success",
                                 showCancelButton: false,
                                 confirmButtonColor: "#DD6B55",
@@ -31137,7 +31139,7 @@ define('views/game',[
                         this.makePapauPschhhh(true);
                         swal({
                                 title: "Поражение",
-                                text: "Вас унизили",
+                                text: rounds + "Вас унизили.",
                                 type: "error",
                                 showCancelButton: false,
                                 confirmButtonColor: "#DD6B55",
@@ -31170,7 +31172,7 @@ define('views/game',[
                 trigger: true
             });
             if (event.code == this.CLOSE_ABNORMAL) {
-                swal("Слишком долго", "Похоже, что ты долго висишь без дела", "error");
+                swal("Отключение", "Похоже, что ты долго висишь без дела", "error");
             } else if (event.code != this.CLOSE_NORMAL) {
                 swal("Опаньки...", "Соединение с сервером внезапно прервалось", "error");
             }
