@@ -24,6 +24,7 @@ self.addEventListener('install', function(event) {
                 '/img/back.png',
                 '/img/explosion.gif',
                 '/img/la.jpg',
+                '/img/wait.svg',
                 '/img/cards/base-bg.png',
                 '/img/cards/bg.jpg',
                 '/img/cards/button.png',
