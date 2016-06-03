@@ -75,9 +75,9 @@ define([
                     }
                     this.showHealth(msgData);
                     this.showPower(msgData);
-                    this.toogleWaiter(true);
+                    this.toogleWaiter(true);                    
                     this.drawEnemyReal(msgData);
-                    this.makePapauPschhhh(msgData);
+                    this.makePapauPschhhh(msgData.enemyPower > msgData.power, msgData.enemyPower === msgData.power);
                     this.$el.find('#restart_button').show();
                     break;
                 case "nextRound":
@@ -86,6 +86,7 @@ define([
                     break;
                 case "endGame":
                     if (msgData.mana) {
+                        this.makePapauPschhhh(false);
                         swal({
                                 title: "Победа",
                                 text: "Ты собрал вместе команду мечты",
@@ -114,6 +115,7 @@ define([
                                 this.socket.close(this.CLOSE_NORMAL);
                             }.bind(this));
                     } else {
+                        this.makePapauPschhhh(true);
                         swal({
                                 title: "Поражение",
                                 text: "Вас унизили",
@@ -149,7 +151,7 @@ define([
                 trigger: true
             });
             if (event.code == this.CLOSE_ABNORMAL) {
-                swal("Слишком долго", "Похоже, что с тобой не хотят играть", "error");
+                swal("Слишком долго", "Похоже, что ты долго висишь без дела", "error");
             } else if (event.code != this.CLOSE_NORMAL) {
                 swal("Опаньки...", "Соединение с сервером внезапно прервалось", "error");
             }
@@ -167,15 +169,14 @@ define([
             });
             $("#dialog").clone().dialog();
         },
-        makePapauPschhhh: function(msgData) {
-            if (msgData.enemyPower > msgData.power) {
+        makePapauPschhhh: function(enemyWin, draw) {
+            this.$el.find("#sortable2").find(".flame__my").remove();
+            this.$el.find("#sortable3").find(".flame__enemy").remove();
+            if (enemyWin || draw) {
                 this.$el.find('.flame__my').clone().insertBefore(this.$el.find('.correct')).show();
-            } else if (msgData.enemyPower < msgData.power) {
+            }
+            if (!enemyWin || draw) {
                 this.$el.find('.flame__enemy').clone().insertBefore(this.$el.find('.enemy__real__card')).show();
-            } else {
-                this.$el.find('.flame__my').clone().insertBefore(this.$el.find('.correct')).show();
-                this.$el.find('.flame__enemy').clone().insertBefore(this.$el.find('.enemy__real__card')).show();
-
             }
         },
         initializeGame: function(msgData) {

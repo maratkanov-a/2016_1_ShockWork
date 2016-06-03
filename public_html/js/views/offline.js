@@ -447,6 +447,7 @@ define([
                         newThis.$el.find('#restart_button').hide();
                         newThis.render();
                     });
+                return;
             }
             if (user > ai) {
                 newThis.AI_health -= user - ai;

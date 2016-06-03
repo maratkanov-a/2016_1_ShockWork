@@ -1,7 +1,7 @@
 <fest:template xmlns:fest="http://fest.mail.ru" context_name="json">
    <div id="waiter">
    	  <img id="wait_enemy" src="/img/wait.svg" />
-   	  <span id="wait_enemy_text"><h1>Ожидание противника</h1></span>
+   	  <span id="wait_enemy_text"><h1>Противник думает</h1></span>
    </div>
    <div id="dialog" title="Увеличение" class="hidden-card">
       <img class="js-zoom-card" />
