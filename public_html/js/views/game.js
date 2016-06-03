@@ -85,6 +85,20 @@ define([
                     this.refreshTable(msgData);
                     break;
                 case "endGame":
+                    if (msgData.mana) {
+                        swal({
+                                title: "Победа",
+                                text: "Ты собрал вместе команду мечты",
+                                type: "success",
+                                showCancelButton: false,
+                                confirmButtonColor: "#DD6B55",
+                                confirmButtonText: "Ура!"
+                            },
+                            function() {
+                                this.socket.close(this.CLOSE_NORMAL);
+                            }.bind(this));
+                        break;
+                    }
                     if (msgData.win) {
                         swal({
                                 title: "Победа",
@@ -99,7 +113,6 @@ define([
                                 swal("Поздравляем!", "Как насчет попробовать еще раз?", "success");
                                 this.socket.close(this.CLOSE_NORMAL);
                             }.bind(this));
-                        break;
                     } else {
                         swal({
                                 title: "Поражение",
