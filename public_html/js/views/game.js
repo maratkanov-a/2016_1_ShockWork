@@ -161,6 +161,12 @@ define([
                 this.$el.find('#waiter').show();
             }
         },
+        cardZoom: function() {
+            $(".js-zoom-card").attr({
+                src: $(this).attr('src')
+            });
+            $("#dialog").clone().dialog();
+        },
         makePapauPschhhh: function(msgData) {
             if (msgData.enemyPower > msgData.power) {
                 this.$el.find('.flame__my').clone().insertBefore(this.$el.find('.correct')).show();
@@ -208,7 +214,8 @@ define([
                 var cardPath = "img/cards/" + msgData.enemyCards[i].img + ".png";
                 this.$el.find('#one_card').clone().removeClass('.hidden-card').removeAttr('id').find('img').attr("src", cardPath)
                     .data('power', msgData.enemyCards[i].id)
-                    .attr('class', 'enemy__real__card').appendTo(newThis.find('#sortable3'));
+                    .attr('class', 'enemy__real__card').appendTo(newThis.find('#sortable3'))
+                    .dblclick(this.cardZoom);
             }
         },
         transferCards: function(number) {
@@ -278,7 +285,8 @@ define([
                         cursor: '-webkit-grabbing',
                         revert: true,
                         scroll: false
-                    });
+                    })
+                    .dblclick(this.cardZoom);;
             }
         },
         draw_enemy: function(number) {

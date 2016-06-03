@@ -1,5 +1,8 @@
 <fest:template xmlns:fest="http://fest.mail.ru" context_name="json">
    <div id="waiter"></div>
+   <div id="dialog" title="Увеличение" class="hidden-card">
+      <img class="js-zoom-card"/>
+   </div>
    <div id="game" class="row">
       <div class="col s12 m6 offset-m3">
          <nav class="nav">

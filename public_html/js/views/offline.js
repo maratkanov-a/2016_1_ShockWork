@@ -306,6 +306,7 @@ define([
             this.trigger("show", this);
             this.$el.find(".not_my").text('?');
             this.$el.find(".my").text('0');
+
             $('body').addClass('loaded');
         },
         hide: function() {
@@ -391,7 +392,8 @@ define([
                         cursor: '-webkit-grabbing',
                         revert: true,
                         scroll: false
-                    });
+                    })
+                    .dblclick(this.cardZoom);
             }
         },
         aiSimulation: function(stack) {
@@ -407,12 +409,20 @@ define([
                     .attr('id', 'card_ai_' + stack[i].id)
                     .attr('class', 'playing_card')
                     .attr('class', 'enemy__real__card')
-                    .appendTo(newThis.$('#sortable3'));
+                    .appendTo(newThis.$('#sortable3'))
+                    .dblclick(this.cardZoom);
                 newThis.AI_power += stack[i].power;
             }
             this.$el.find('.js-insert-back').html('');
             this.AI_stack.splice(0, 3);
             return this.AI_power
+        },
+
+        cardZoom: function() {
+            $(".js-zoom-card").attr({
+                src: $(this).attr('src')
+            });
+            $("#dialog").clone().dialog();
         },
 
         done: function() {
