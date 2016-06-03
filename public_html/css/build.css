@@ -1370,6 +1370,7 @@ body.stop-scrolling {
   margin-bottom: 15px;
 }
 .enemy__real__card{
+  width: 180px;
   list-style: none;
 }
 .card__place{
@@ -1378,7 +1379,7 @@ body.stop-scrolling {
 }
 .playing_card{
   z-index: 10;
-  width: 120px;
+  width: 180px;
   margin-left: 15px;
   margin-bottom: 20px;
   list-style: none;
@@ -3024,17 +3025,14 @@ button {
 }
 
 .card__size {
-    width: 120px;
+    width: 180px;
 }
 
 .card__size__game {
     width: 120px;
+    margin-bottom: 15px;
 }
 
-.playing_card{
-    z-index: 10;
-    width:120px;
-}
 img{
      cursor: -webkit-grabbing;
 }

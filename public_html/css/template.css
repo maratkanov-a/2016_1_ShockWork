@@ -54,17 +54,14 @@
 }
 
 .card__size {
-    width: 120px;
+    width: 180px;
 }
 
 .card__size__game {
     width: 120px;
+    margin-bottom: 15px;
 }
 
-.playing_card{
-    z-index: 10;
-    width:120px;
-}
 img{
      cursor: -webkit-grabbing;
 }
