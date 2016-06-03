@@ -42566,6 +42566,7 @@ define('views/offline',[
             }
             if (user > ai) {
                 newThis.AI_health -= user - ai;
+                if (newThis.AI_health < 0) newThis.AI_health = 0;
                 this.$('#enemy_health').text(this.AI_health);
                 newThis.$el.find('#button_done').hide();
                 newThis.$el.find('.flame__enemy').clone().insertBefore(newThis.$el.find('.enemy__real__card')).show();
@@ -42573,6 +42574,7 @@ define('views/offline',[
             }
             else if (user < ai) {
                 newThis.USER_health -= ai - user;
+                if (newThis.USER_health < 0) newThis.USER_health = 0;
                 newThis.$el.find('#your_health').text(this.USER_health);
                 newThis.$el.find('#button_done').hide();
                 newThis.$el.find('.flame__my').clone().insertBefore(newThis.$el.find('.correct')).show();
