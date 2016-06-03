@@ -1446,14 +1446,32 @@ body.stop-scrolling {
   position: fixed;
   top: 0px;
   left: 0px;
-  background-color: gray;
+  background-color: rgba(0,0,0, 0.6);
   z-index:350;
-  opacity: 0.7;
+  text-align: center;
 }
 .waiter__span{
   position: fixed;
   top: 200px;
   left: 550px;
+}
+#wait_enemy {
+  width:240px;
+  height:240px;
+  position:fixed;
+  top:50%;
+  left:50%;
+  margin-left:-120px;
+  margin-top:-120px;
+}
+#wait_enemy_text {
+  position: fixed;
+  right: 0;
+  left: 0;
+  margin-right: auto;
+  margin-left: auto;
+  top: 20%;
+  color: #ffffff;
 }
 .flame__enemy{
   margin-top:10px;
